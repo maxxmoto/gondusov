@@ -1,5 +1,13 @@
 ﻿@import "tailwindcss";
 
+@font-face {
+  font-family: 'Cygre';
+  src: url('./fonts/Cygre.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +19,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Cygre', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: #1a1a1a;
   background: #fff;
   overflow-x: hidden;
@@ -925,8 +933,8 @@ a.workplace-item:hover {
 
 .social-button-telegram { background: #0088cc; color: #fff; }
 .social-button-telegram:hover { background: #006da3; }
-.social-button-vk { background: #0077ff; color: #fff; }
-.social-button-vk:hover { background: #0059cc; }
+.social-button-instagram { background: #e4405f; color: #fff; }
+.social-button-instagram:hover { background: #c13584; }
 .social-button-dzen { background: #000; color: #fff; }
 .social-button-dzen:hover { background: #333; }
 
@@ -996,7 +1004,7 @@ a.workplace-item:hover {
   border-radius: 12px;
   font-size: 15px;
   margin-bottom: 14px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Cygre', 'Inter', sans-serif;
   outline: none;
   transition: border-color 0.3s;
 }
@@ -1034,7 +1042,7 @@ a.workplace-item:hover {
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
   margin-top: 4px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Cygre', 'Inter', sans-serif;
 }
 
 .modal-submit:hover { background: #009b96; transform: translateY(-1px); }
