@@ -277,7 +277,7 @@ function App() {
       <section className="about-section" id="about">
         <div className="about-container">
           <h2 className="section-title fade-in">О враче</h2>
-          <p className="about-intro fade-in">Врач-гастроэнтеролог и эндоскопист, диетолог, нутрициолог. Стаж работы — 8 лет. Врач высшей категории, доцент.</p>
+          <p className="about-intro fade-in">Врач-гастроэнтеролог и эндоскопист, диетолог, нутрициолог. Стаж работы — 8 лет. Врач высшей категории.</p>
 
           {/* Timeline */}
           <div className="timeline fade-in">
