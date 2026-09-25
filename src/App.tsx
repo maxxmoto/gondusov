@@ -46,6 +46,7 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedSymptoms, setSelectedSymptoms] = useState<number[]>([]);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const totalSlides = 4;
 
   const symptoms = [
@@ -142,17 +143,39 @@ function App() {
     setIsMobileMenuOpen(false);
   };
 
-  const handleSubmit = () => {
-    const name = (document.getElementById('modalName') as HTMLInputElement)?.value || '';
-    const phone = (document.getElementById('modalPhone') as HTMLInputElement)?.value || '';
-    if (name && phone) {
-      alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
-      closeModal();
-      if (document.getElementById('modalName')) (document.getElementById('modalName') as HTMLInputElement).value = '';
-      if (document.getElementById('modalPhone')) (document.getElementById('modalPhone') as HTMLInputElement).value = '';
-      if (document.getElementById('modalMessage')) (document.getElementById('modalMessage') as HTMLTextAreaElement).value = '';
-    } else {
+  const handleSubmit = async () => {
+    const name = (document.getElementById('modalName') as HTMLInputElement)?.value?.trim() || '';
+    const phone = (document.getElementById('modalPhone') as HTMLInputElement)?.value?.trim() || '';
+    const message = (document.getElementById('modalMessage') as HTMLTextAreaElement)?.value?.trim() || '';
+
+    if (!name || !phone) {
       alert('Пожалуйста, заполните имя и телефон.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, message }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        alert(`Спасибо, ${name}! Мы свяжемся с вами в ближайшее время.`);
+        closeModal();
+        (document.getElementById('modalName') as HTMLInputElement).value = '';
+        (document.getElementById('modalPhone') as HTMLInputElement).value = '';
+        (document.getElementById('modalMessage') as HTMLTextAreaElement).value = '';
+      } else {
+        alert(data.error || 'Не удалось отправить заявку. Пожалуйста, попробуйте ещё раз.');
+      }
+    } catch {
+      alert('Ошибка сети. Пожалуйста, попробуйте ещё раз.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -580,7 +603,9 @@ function App() {
             <input type="text" placeholder="Ваше имя" id="modalName" />
             <input type="tel" placeholder="Телефон" id="modalPhone" />
             <textarea placeholder="Опишите вашу проблему или выберите услугу" id="modalMessage"></textarea>
-            <button className="modal-submit" onClick={handleSubmit}>Отправить заявку</button>
+            <button className="modal-submit" onClick={handleSubmit} disabled={isSubmitting}>
+              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+            </button>
           </div>
         </div>
       )}

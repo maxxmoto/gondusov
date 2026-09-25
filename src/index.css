@@ -1047,6 +1047,12 @@ a.workplace-item:hover {
 
 .modal-submit:hover { background: #009b96; transform: translateY(-1px); }
 
+.modal-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* ===== ANIMATIONS ===== */
 .fade-in {
   opacity: 0;
