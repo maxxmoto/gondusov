@@ -512,7 +512,7 @@ function App() {
               <div
                 key={index}
                 className={`symptom-item ${selectedSymptoms.includes(index) ? 'selected' : ''}`}
-                onClick={() => toggleSymptom(index)}
+                onClick={() => { toggleSymptom(index); openModal(); }}
               >
                 <span className={`check symptom-check-${index} ${selectedSymptoms.includes(index) ? 'permanent' : ''}`}>
                   <CheckIcon />

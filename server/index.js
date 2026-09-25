@@ -50,19 +50,29 @@ function sendJson(res, status, payload) {
 }
 
 async function serveStatic(req, res, pathname) {
-  const safePath = normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, '');
-  let filePath = join(DIST_DIR, safePath);
+  let safePath = '/';
+  try {
+    safePath = normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, '');
+  } catch {
+    safePath = '/';
+  }
+  const filePath = join(DIST_DIR, safePath);
 
   try {
-    const info = await stat(filePath);
-    if (info.isDirectory()) filePath = join(filePath, 'index.html');
+    let target = filePath;
+    const info = await stat(target);
+    if (info.isDirectory()) target = join(target, 'index.html');
+    const data = await readFile(target);
+    res.writeHead(200, { 'Content-Type': MIME[extname(target).toLowerCase()] || 'application/octet-stream' });
+    res.end(data);
+    return;
   } catch {
-    filePath = join(DIST_DIR, 'index.html');
+    // fall through to 404
   }
 
   try {
-    const data = await readFile(filePath);
-    res.writeHead(200, { 'Content-Type': MIME[extname(filePath).toLowerCase()] || 'application/octet-stream' });
+    const data = await readFile(join(DIST_DIR, '404.html'));
+    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(data);
   } catch {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
