@@ -29,8 +29,8 @@ const SERVICE_IMAGES = {
   gastroplasty: 'https://image.qwenlm.ai/generated-images/b90d40f9-0342-4776-80f8-febf1d6fc010/_result.png',
 };
 
-const PHONE_DISPLAY = '+7 (863) 123-45-67';
-const PHONE_TEL = '+78631234567';
+const PHONE_DISPLAY = '+7 989 628 7794';
+const PHONE_TEL = '+79896287794';
 
 const WORKPLACES: { label: string; href?: string }[] = [
   { label: 'СберЗдоровье', href: 'https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997' },
@@ -536,7 +536,7 @@ function App() {
             <h2 className="section-title fade-in">Запись на приём</h2>
             <p className="fade-in">Записаться на консультацию гастроэнтеролога, гастроскопию, колоноскопию с NBI, удаление полипов, программу снижения веса, установку баллона в желудок или консультацию по эндоскопической гастропластике можно по телефону или через онлайн-запись в клинике.</p>
             <div className="appointment-buttons fade-in">
-              <a href="tel:+78631234567" className="btn-primary">
+              <a href="tel:+79896287794" className="btn-primary">
                 <PhoneIcon />
                 Позвонить
               </a>
@@ -599,7 +599,7 @@ function App() {
             <p>Ростов-на-Дону</p>
             <p>ФГБУ «НМИЦ Онкологии»</p>
             <p>МЦ «Семья»</p>
-            <p><a href="tel:+78631234567">+7 (863) 123-45-67</a></p>
+            <p><a href="tel:+79896287794">+7 989 628 7794</a></p>
           </div>
         </div>
         <div className="footer-bottom">
