@@ -68,7 +68,7 @@ function seoPlugin(siteUrl) {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const siteUrl = env.VITE_SITE_URL || 'https://maxxmoto.github.io/gondusov/';
+  const siteUrl = env.VITE_SITE_URL || 'https://drgondusov.ru/';
   return {
     base: './',
     plugins: [react(), tailwindcss(), contactApiPlugin(env), seoPlugin(siteUrl)],
