@@ -964,9 +964,27 @@ a.workplace-item:hover {
 
 .footer a:hover { color: #0ABAB5; }
 
-.footer-bottom {
+.footer-disclaimer {
   max-width: 1400px;
   margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-disclaimer p {
+  margin-bottom: 8px;
+}
+
+.footer-disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 24px auto 0;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
