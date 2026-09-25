@@ -71,31 +71,47 @@ async function serveStatic(req, res, pathname) {
 }
 
 const server = createServer(async (req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host}`);
+  try {
+    const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
-  if (url.pathname === '/health') {
-    sendJson(res, 200, { status: 'ok', uptime: Math.round(process.uptime()) });
-    return;
-  }
-
-  if (url.pathname === '/api/contact') {
-    if (req.method !== 'POST') {
-      sendJson(res, 405, { error: 'Method not allowed' });
+    if (url.pathname === '/health') {
+      sendJson(res, 200, { status: 'ok', uptime: Math.round(process.uptime()) });
       return;
     }
-    const body = await readBody(req);
-    const result = await handleContact(body, process.env);
-    sendJson(res, result.status, result);
-    return;
-  }
 
-  if (req.method !== 'GET' && req.method !== 'HEAD') {
-    res.writeHead(405);
-    res.end();
-    return;
-  }
+    if (url.pathname === '/api/contact') {
+      if (req.method !== 'POST') {
+        sendJson(res, 405, { error: 'Method not allowed' });
+        return;
+      }
+      const body = await readBody(req);
+      const result = await handleContact(body, process.env);
+      sendJson(res, result.status, result);
+      return;
+    }
 
-  await serveStatic(req, res, url.pathname);
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      res.writeHead(405);
+      res.end();
+      return;
+    }
+
+    await serveStatic(req, res, url.pathname);
+  } catch (err) {
+    console.error('[server] request error:', err);
+    if (!res.headersSent) {
+      res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+    }
+    res.end('Internal Server Error');
+  }
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('[server] uncaughtException:', err);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.error('[server] unhandledRejection:', err);
 });
 
 server.listen(PORT, HOST, () => {
