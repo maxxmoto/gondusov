@@ -6,7 +6,7 @@ import { handleContact } from './telegram.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT) || 80;
 const HOST = process.env.HOST || '0.0.0.0';
 
 const MIME = {
@@ -112,6 +112,11 @@ process.on('uncaughtException', (err) => {
 
 process.on('unhandledRejection', (err) => {
   console.error('[server] unhandledRejection:', err);
+});
+
+process.on('SIGTERM', () => {
+  console.log('[server] SIGTERM received, shutting down');
+  server.close(() => process.exit(0));
 });
 
 server.listen(PORT, HOST, () => {
