@@ -6,7 +6,8 @@ import { handleContact } from './telegram.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -72,6 +73,11 @@ async function serveStatic(req, res, pathname) {
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
 
+  if (url.pathname === '/health') {
+    sendJson(res, 200, { status: 'ok', uptime: Math.round(process.uptime()) });
+    return;
+  }
+
   if (url.pathname === '/api/contact') {
     if (req.method !== 'POST') {
       sendJson(res, 405, { error: 'Method not allowed' });
@@ -92,6 +98,6 @@ const server = createServer(async (req, res) => {
   await serveStatic(req, res, url.pathname);
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Server listening on http://${HOST}:${PORT} (PORT=${process.env.PORT ?? 'default'})`);
 });
