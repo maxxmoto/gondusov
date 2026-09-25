@@ -29,6 +29,9 @@ const SERVICE_IMAGES = {
   gastroplasty: 'https://image.qwenlm.ai/generated-images/b90d40f9-0342-4776-80f8-febf1d6fc010/_result.png',
 };
 
+const PHONE_DISPLAY = '+7 (863) 123-45-67';
+const PHONE_TEL = '+78631234567';
+
 const WORKPLACES: { label: string; href?: string }[] = [
   { label: 'СберЗдоровье', href: 'https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997' },
   { label: 'ПроДокторов', href: 'https://prodoctorov.ru/azov/vrach/1139434-gondusov/?utm_referrer=https%3a%2f%2fyandex.ru%2f' },
@@ -47,6 +50,8 @@ function App() {
   const [selectedSymptoms, setSelectedSymptoms] = useState<number[]>([]);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState('');
   const totalSlides = 4;
 
   const symptoms = [
@@ -126,6 +131,8 @@ function App() {
   }, [hasAnimated]);
 
   const openModal = () => {
+    setIsSubmitted(false);
+    setSubmittedName('');
     setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -153,30 +160,38 @@ function App() {
       return;
     }
 
-    setIsSubmitting(true);
-    try {
-      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, message }),
-      });
-      const data = await res.json().catch(() => ({}));
+    // ─────────────────────────────────────────────────────────────
+    // ОТПРАВКА В TELEGRAM-БОТ ВРЕМЕННО ОТКЛЮЧЕНА.
+    // Пока в Amvera не заданы TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID,
+    // заявка не отправляется — вместо этого показываем телефон для звонка.
+    // Чтобы включить бота: раскомментируйте блок ниже и удалите строки
+    // с setSubmittedName(name) / setIsSubmitted(true) в конце функции.
+    //
+    // setIsSubmitting(true);
+    // try {
+    //   const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
+    //   const res = await fetch(endpoint, {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ name, phone, message }),
+    //   });
+    //   const data = await res.json().catch(() => ({}));
+    //
+    //   if (res.ok) {
+    //     setSubmittedName(name);
+    //     setIsSubmitted(true);
+    //   } else {
+    //     alert(data.error || 'Не удалось отправить заявку. Пожалуйста, попробуйте ещё раз.');
+    //   }
+    // } catch {
+    //   alert('Ошибка сети. Пожалуйста, попробуйте ещё раз.');
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
+    // ─────────────────────────────────────────────────────────────
 
-      if (res.ok) {
-        alert(`Спасибо, ${name}! Мы свяжемся с вами в ближайшее время.`);
-        closeModal();
-        (document.getElementById('modalName') as HTMLInputElement).value = '';
-        (document.getElementById('modalPhone') as HTMLInputElement).value = '';
-        (document.getElementById('modalMessage') as HTMLTextAreaElement).value = '';
-      } else {
-        alert(data.error || 'Не удалось отправить заявку. Пожалуйста, попробуйте ещё раз.');
-      }
-    } catch {
-      alert('Ошибка сети. Пожалуйста, попробуйте ещё раз.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setSubmittedName(name);
+    setIsSubmitted(true);
   };
 
   const toggleSymptom = (index: number) => {
@@ -599,13 +614,24 @@ function App() {
             <button className="modal-close" onClick={closeModal} aria-label="Закрыть">
               <CloseIcon />
             </button>
-            <h3>Запись на приём</h3>
-            <input type="text" placeholder="Ваше имя" id="modalName" />
-            <input type="tel" placeholder="Телефон" id="modalPhone" />
-            <textarea placeholder="Опишите вашу проблему или выберите услугу" id="modalMessage"></textarea>
-            <button className="modal-submit" onClick={handleSubmit} disabled={isSubmitting}>
-              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
-            </button>
+            {isSubmitted ? (
+              <div className="modal-success">
+                <h3>Заявка принята</h3>
+                <p>Спасибо{submittedName ? `, ${submittedName}` : ''}! Чтобы подтвердить запись, позвоните по номеру:</p>
+                <a href={`tel:${PHONE_TEL}`} className="modal-phone">{PHONE_DISPLAY}</a>
+                <button className="modal-submit" onClick={closeModal}>Закрыть</button>
+              </div>
+            ) : (
+              <>
+                <h3>Запись на приём</h3>
+                <input type="text" placeholder="Ваше имя" id="modalName" />
+                <input type="tel" placeholder="Телефон" id="modalPhone" />
+                <textarea placeholder="Опишите вашу проблему или выберите услугу" id="modalMessage"></textarea>
+                <button className="modal-submit" onClick={handleSubmit} disabled={isSubmitting}>
+                  {isSubmitting ? 'Отправка…' : 'Отправить заявку'}
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}
