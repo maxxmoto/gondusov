@@ -1,0 +1,24 @@
+{
+  "name": "Гондусов Денис Вадимович — гастроэнтеролог и эндоскопист",
+  "short_name": "Гондусов Денис",
+  "description": "Врач-гастроэнтеролог, эндоскопист, диетолог-нутрициолог в Ростове-на-Дону. Гастроскопия, колоноскопия с NBI, удаление полипов, баллон в желудок.",
+  "lang": "ru",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ABAB5",
+  "icons": [
+    {
+      "src": "./favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

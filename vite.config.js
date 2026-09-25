@@ -30,10 +30,47 @@ function contactApiPlugin(env) {
   };
 }
 
+function seoPlugin(siteUrl) {
+  return {
+    name: 'seo',
+    transformIndexHtml(html) {
+      return html.replace(/__SITE_URL__/g, siteUrl);
+    },
+    generateBundle() {
+      const robots = [
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /api/',
+        '',
+        `Sitemap: ${siteUrl}sitemap.xml`,
+        '',
+      ].join('\n');
+
+      const lastmod = new Date().toISOString().slice(0, 10);
+      const sitemap = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        '  <url>',
+        `    <loc>${siteUrl}</loc>`,
+        `    <lastmod>${lastmod}</lastmod>`,
+        '    <changefreq>monthly</changefreq>',
+        '    <priority>1.0</priority>',
+        '  </url>',
+        '</urlset>',
+        '',
+      ].join('\n');
+
+      this.emitFile({ type: 'asset', fileName: 'robots.txt', source: robots });
+      this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap });
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
+  const siteUrl = env.VITE_SITE_URL || 'https://maxxmoto.github.io/gondusov/';
   return {
     base: './',
-    plugins: [react(), tailwindcss(), contactApiPlugin(env)],
+    plugins: [react(), tailwindcss(), contactApiPlugin(env), seoPlugin(siteUrl)],
   };
 });
