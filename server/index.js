@@ -28,6 +28,19 @@ const MIME = {
   '.txt': 'text/plain; charset=utf-8',
 };
 
+const IMMUTABLE = 'public, max-age=31536000, immutable';
+const STATIC_LONG = 'public, max-age=2592000';
+const NO_CACHE = 'no-cache';
+
+function cacheControlFor(pathname) {
+  if (pathname.startsWith('/assets/')) return IMMUTABLE;
+  const ext = extname(pathname).toLowerCase();
+  if (['.avif', '.webp', '.png', '.jpg', '.jpeg', '.jfif', '.svg', '.ico', '.ttf', '.woff', '.woff2'].includes(ext)) {
+    return STATIC_LONG;
+  }
+  return NO_CACHE;
+}
+
 function readBody(req) {
   return new Promise((resolve) => {
     let raw = '';
@@ -64,7 +77,10 @@ async function serveStatic(req, res, pathname) {
     const info = await stat(target);
     if (info.isDirectory()) target = join(target, 'index.html');
     const data = await readFile(target);
-    res.writeHead(200, { 'Content-Type': MIME[extname(target).toLowerCase()] || 'application/octet-stream' });
+    res.writeHead(200, {
+      'Content-Type': MIME[extname(target).toLowerCase()] || 'application/octet-stream',
+      'Cache-Control': cacheControlFor(pathname),
+    });
     res.end(data);
     return;
   } catch {
@@ -73,10 +89,10 @@ async function serveStatic(req, res, pathname) {
 
   try {
     const data = await readFile(join(DIST_DIR, '404.html'));
-    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': NO_CACHE });
     res.end(data);
   } catch {
-    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': NO_CACHE });
     res.end('Not found');
   }
 }

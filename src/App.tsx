@@ -19,15 +19,15 @@ const DOCTOR_PHOTO = './8082192B-0B52-4BC5-B8B9-646CFA7B3B06.webp';
 const RGMU_PHOTO = './rostgmu.webp';
 const ONCO_PHOTO = './нииц.webp';
 const RESIDENCY_PHOTO = './ординатура.webp';
-const ENDOSCOPY_PHOTO = 'https://image.qwenlm.ai/generated-images/4c6da141-6463-4864-bf1b-5553edc45664/_result.png';
+const ENDOSCOPY_PHOTO = './endoscopy.webp';
 
 const SERVICE_IMAGES = {
-  consultation: 'https://image.qwenlm.ai/generated-images/e57a1a55-4674-4fc5-8dd4-618bb60ed9ca/_result.png',
-  gastroscopy: 'https://image.qwenlm.ai/generated-images/728c13df-525e-4e90-a50a-76e994b30242/_result.png',
-  colonoscopy: 'https://image.qwenlm.ai/generated-images/6325614a-c091-4a8d-b88f-db521d12ed80/_result.png',
-  polyps: 'https://image.qwenlm.ai/generated-images/6be551f2-1f0b-4cd7-8c98-63ed623b5c8a/_result.png',
-  balloon: 'https://image.qwenlm.ai/generated-images/cfd12812-b6c7-48a8-9c01-d94bbe82a52f/_result.png',
-  gastroplasty: 'https://image.qwenlm.ai/generated-images/b90d40f9-0342-4776-80f8-febf1d6fc010/_result.png',
+  consultation: './service-consultation.webp',
+  gastroscopy: './service-gastroscopy.webp',
+  colonoscopy: './service-colonoscopy.webp',
+  polyps: './service-polyps.webp',
+  balloon: './service-balloon.webp',
+  gastroplasty: './service-gastroplasty.webp',
 };
 
 const PHONE_DISPLAY = '+7 989 628 7794';
@@ -320,7 +320,7 @@ function App() {
 
               <div className="timeline-card">
                 <div className="timeline-card-image">
-                  <img src={ENDOSCOPY_PHOTO} alt="Профессиональная переподготовка по эндоскопии" loading="lazy" decoding="async" />
+                  <Picture src={ENDOSCOPY_PHOTO} alt="Профессиональная переподготовка по эндоскопии" loading="lazy" />
                 </div>
                 <div className="timeline-card-body">
                   <span className="timeline-year">2021</span>
@@ -415,7 +415,8 @@ function App() {
         <h2 className="section-title fade-in">Услуги</h2>
         <p className="section-subtitle fade-in">Диагностика и лечение заболеваний желудочно-кишечного тракта, современные эндоскопические исследования, профилактика серьёзных заболеваний и помощь в снижении веса.</p>
         <div className="services-grid">
-          <div className="service-card fade-in" style={{ backgroundImage: `url(${SERVICE_IMAGES.consultation})` }}>
+          <div className="service-card fade-in">
+            <Picture src={SERVICE_IMAGES.consultation} alt="Консультация гастроэнтеролога" className="service-card-img" loading="lazy" />
             <div className="service-card-overlay"></div>
             <div className="service-card-content">
               <div className="service-icon"><StethoscopeIcon /></div>
@@ -423,7 +424,8 @@ function App() {
               <p>Диагностика и лечение заболеваний ЖКТ, рекомендации по питанию и образу жизни.</p>
             </div>
           </div>
-          <div className="service-card fade-in" style={{ backgroundImage: `url(${SERVICE_IMAGES.gastroscopy})` }}>
+          <div className="service-card fade-in">
+            <Picture src={SERVICE_IMAGES.gastroscopy} alt="Гастроскопия" className="service-card-img" loading="lazy" />
             <div className="service-card-overlay"></div>
             <div className="service-card-content">
               <div className="service-icon"><EndoscopeIcon /></div>
@@ -431,7 +433,8 @@ function App() {
               <p>Исследование пищевода, желудка и двенадцатиперстной кишки с биопсией.</p>
             </div>
           </div>
-          <div className="service-card fade-in" style={{ backgroundImage: `url(${SERVICE_IMAGES.colonoscopy})` }}>
+          <div className="service-card fade-in">
+            <Picture src={SERVICE_IMAGES.colonoscopy} alt="Колоноскопия с NBI" className="service-card-img" loading="lazy" />
             <div className="service-card-overlay"></div>
             <div className="service-card-content">
               <div className="service-icon"><MicroscopeIcon /></div>
@@ -439,7 +442,8 @@ function App() {
               <p>Осмотр толстого кишечника с технологией NBI для раннего обнаружения патологий.</p>
             </div>
           </div>
-          <div className="service-card fade-in" style={{ backgroundImage: `url(${SERVICE_IMAGES.polyps})` }}>
+          <div className="service-card fade-in">
+            <Picture src={SERVICE_IMAGES.polyps} alt="Удаление полипов и аденом" className="service-card-img" loading="lazy" />
             <div className="service-card-overlay"></div>
             <div className="service-card-content">
               <div className="service-icon"><ScissorsIcon /></div>
@@ -447,7 +451,8 @@ function App() {
               <p>Эндоскопическое удаление образований без полостной операции.</p>
             </div>
           </div>
-          <div className="service-card fade-in" style={{ backgroundImage: `url(${SERVICE_IMAGES.balloon})` }}>
+          <div className="service-card fade-in">
+            <Picture src={SERVICE_IMAGES.balloon} alt="Баллон в желудок" className="service-card-img" loading="lazy" />
             <div className="service-card-overlay"></div>
             <div className="service-card-content">
               <div className="service-icon"><BalloonIcon /></div>
@@ -455,7 +460,8 @@ function App() {
               <p>Внутрижелудочный баллон для снижения веса и контроля аппетита.</p>
             </div>
           </div>
-          <div className="service-card fade-in" style={{ backgroundImage: `url(${SERVICE_IMAGES.gastroplasty})` }}>
+          <div className="service-card fade-in">
+            <Picture src={SERVICE_IMAGES.gastroplasty} alt="Эндоскопическая гастропластика" className="service-card-img" loading="lazy" />
             <div className="service-card-overlay"></div>
             <div className="service-card-content">
               <div className="service-icon"><SurgeryIcon /></div>
