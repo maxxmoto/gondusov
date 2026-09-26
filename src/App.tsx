@@ -13,6 +13,7 @@ import {
   TimelineArrowIcon,
 } from './components/Icons';
 import { LogoIcon } from './components/Logo';
+import { Picture } from './components/Picture';
 
 const DOCTOR_PHOTO = './8082192B-0B52-4BC5-B8B9-646CFA7B3B06.webp';
 const RGMU_PHOTO = './rostgmu.webp';
@@ -253,10 +254,11 @@ function App() {
           <h1>ГОНДУСОВ<br />ДЕНИС<br />ВАДИМОВИЧ</h1>
         </div>
         <div className="hero-right">
-          <img
+          <Picture
             src={DOCTOR_PHOTO}
             alt="Доктор Гондусов Денис — гастроэнтеролог и эндоскопист"
             className="doctor-photo"
+            loading="eager"
           />
           <div className="quote-bubble">
             <p>«Лучше предотвратить болезнь, чем лечить её»</p>
@@ -284,7 +286,7 @@ function App() {
             <div className="timeline-track" style={{ transform: `translateX(-${currentSlide * (100 / totalSlides)}%)` }}>
               <div className="timeline-card">
                 <div className="timeline-card-image">
-                  <img src={RGMU_PHOTO} alt="Ростовский государственный медицинский университет" />
+                  <Picture src={RGMU_PHOTO} alt="Ростовский государственный медицинский университет" loading="lazy" />
                 </div>
                 <div className="timeline-card-body">
                   <span className="timeline-year">2018</span>
@@ -301,7 +303,7 @@ function App() {
 
               <div className="timeline-card">
                 <div className="timeline-card-image">
-                  <img src={RESIDENCY_PHOTO} alt="Ординатура по гастроэнтерологии" />
+                  <Picture src={RESIDENCY_PHOTO} alt="Ординатура по гастроэнтерологии" loading="lazy" />
                 </div>
                 <div className="timeline-card-body">
                   <span className="timeline-year">2020</span>
@@ -318,7 +320,7 @@ function App() {
 
               <div className="timeline-card">
                 <div className="timeline-card-image">
-                  <img src={ENDOSCOPY_PHOTO} alt="Профессиональная переподготовка по эндоскопии" />
+                  <img src={ENDOSCOPY_PHOTO} alt="Профессиональная переподготовка по эндоскопии" loading="lazy" decoding="async" />
                 </div>
                 <div className="timeline-card-body">
                   <span className="timeline-year">2021</span>
@@ -335,7 +337,7 @@ function App() {
 
               <div className="timeline-card">
                 <div className="timeline-card-image">
-                  <img src={ONCO_PHOTO} alt="ФГБУ НМИЦ Онкологии" />
+                  <Picture src={ONCO_PHOTO} alt="ФГБУ НМИЦ Онкологии" loading="lazy" />
                 </div>
                 <div className="timeline-card-body">
                   <span className="timeline-year">2023</span>
@@ -496,8 +498,8 @@ function App() {
           <p className="fade-in">Особое направление работы — профилактика онкологических заболеваний желудочно-кишечного тракта. Современная эндоскопия позволяет обнаруживать некоторые опасные изменения на ранних стадиях и вовремя определять дальнейшую тактику.</p>
         </div>
         <div className="approach-photo">
-          <img src="./IMG_3930.webp" alt="Комплексный подход к здоровью" className="approach-photo-left" />
-          <img src="./фото2.webp" alt="Комплексный подход к здоровью" className="approach-photo-right" />
+          <Picture src="./IMG_3930.webp" alt="Комплексный подход к здоровью" className="approach-photo-left" loading="lazy" />
+          <Picture src="./фото2.webp" alt="Комплексный подход к здоровью" className="approach-photo-right" loading="lazy" />
           <div className="approach-photo-overlay"></div>
         </div>
       </div>
@@ -568,7 +570,7 @@ function App() {
           </div>
 
           <div className="content-appointment-photo">
-            <img src="./ff2.webp" alt="Гондусов Денис" />
+            <Picture src="./ff2.webp" alt="Гондусов Денис" loading="lazy" />
           </div>
         </div>
       </section>

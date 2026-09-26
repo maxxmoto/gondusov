@@ -1,0 +1,37 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Гондусов Денис Вадимович — гастроэнтеролог и эндоскопист",
+  "url": "https://drgondusov.ru/",
+  "inLanguage": "ru-RU",
+  "description": "Персональный сайт врача-гастроэнтеролога, эндоскописта и диетолога-нутрициолога Гондусова Дениса Вадимовича. Приём в Ростове-на-Дону: гастроскопия, колоноскопия с NBI, удаление полипов, снижение веса.",
+  "dateModified": "2026-09-25",
+  "owner": {
+    "@type": "Person",
+    "name": "Гондусов Денис Вадимович",
+    "jobTitle": "Врач-гастроэнтеролог, эндоскопист, диетолог-нутрициолог",
+    "telephone": "+7 989 628 7794"
+  },
+  "sameAs": [
+    "https://t.me/DrGondusov",
+    "https://www.instagram.com/denis_gondusov",
+    "https://dzen.ru/drgondusov"
+  ],
+  "resources": [
+    {
+      "type": "text/html",
+      "url": "https://drgondusov.ru/",
+      "title": "Главная страница"
+    },
+    {
+      "type": "text/plain",
+      "url": "https://drgondusov.ru/llms.txt",
+      "title": "llms.txt — описание сайта для языковых моделей"
+    },
+    {
+      "type": "application/xml",
+      "url": "https://drgondusov.ru/sitemap.xml",
+      "title": "Карта сайта"
+    }
+  ]
+}
