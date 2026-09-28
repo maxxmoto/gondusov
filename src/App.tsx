@@ -161,38 +161,27 @@ function App() {
       return;
     }
 
-    // ─────────────────────────────────────────────────────────────
-    // ОТПРАВКА В TELEGRAM-БОТ ВРЕМЕННО ОТКЛЮЧЕНА.
-    // Пока в Amvera не заданы TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID,
-    // заявка не отправляется — вместо этого показываем телефон для звонка.
-    // Чтобы включить бота: раскомментируйте блок ниже и удалите строки
-    // с setSubmittedName(name) / setIsSubmitted(true) в конце функции.
-    //
-    // setIsSubmitting(true);
-    // try {
-    //   const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
-    //   const res = await fetch(endpoint, {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ name, phone, message }),
-    //   });
-    //   const data = await res.json().catch(() => ({}));
-    //
-    //   if (res.ok) {
-    //     setSubmittedName(name);
-    //     setIsSubmitted(true);
-    //   } else {
-    //     alert(data.error || 'Не удалось отправить заявку. Пожалуйста, попробуйте ещё раз.');
-    //   }
-    // } catch {
-    //   alert('Ошибка сети. Пожалуйста, попробуйте ещё раз.');
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
-    // ─────────────────────────────────────────────────────────────
+    setIsSubmitting(true);
+    try {
+      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, message }),
+      });
+      const data = await res.json().catch(() => ({}));
 
-    setSubmittedName(name);
-    setIsSubmitted(true);
+      if (res.ok) {
+        setSubmittedName(name);
+        setIsSubmitted(true);
+      } else {
+        alert(data.error || 'Не удалось отправить заявку. Пожалуйста, попробуйте ещё раз.');
+      }
+    } catch {
+      alert('Ошибка сети. Пожалуйста, попробуйте ещё раз.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleSymptom = (index: number) => {
