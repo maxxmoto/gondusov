@@ -623,16 +623,16 @@ function App() {
             {isSubmitted ? (
               <div className="modal-success">
                 <h3>Заявка принята</h3>
-                <p>Спасибо{submittedName ? `, ${submittedName}` : ''}! Чтобы подтвердить запись, позвоните по номеру:</p>
+                <p>Спасибо{submittedName ? `, ${submittedName}` : ''}! Если у вас срочный вопрос, свяжитесь со мной по номеру:</p>
                 <a href={`tel:${PHONE_TEL}`} className="modal-phone">{PHONE_DISPLAY}</a>
-                <a
+                {/* <a
                   href="https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="modal-link"
                 >
                   Записаться на сайте МЦ «Семья»
-                </a>
+                </a> */}
                 <button className="modal-submit" onClick={closeModal}>Закрыть</button>
               </div>
             ) : (
