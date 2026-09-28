@@ -2,7 +2,12 @@ import { createServer } from 'http';
 import { readFile, stat } from 'fs/promises';
 import { join, extname, normalize } from 'path';
 import { fileURLToPath } from 'url';
+import { promisify } from 'util';
+import { gzip, brotliCompress, constants as zlibConstants } from 'zlib';
 import { handleContact } from './telegram.js';
+
+const gzipAsync = promisify(gzip);
+const brotliAsync = promisify(brotliCompress);
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
@@ -41,6 +46,30 @@ function cacheControlFor(pathname) {
   return NO_CACHE;
 }
 
+const COMPRESSIBLE = new Set(['.html', '.js', '.css', '.json', '.svg', '.txt', '.xml', '.webmanifest']);
+
+async function maybeCompress(req, data, headers) {
+  if (data.length < 1024) return data;
+  const accept = String(req.headers['accept-encoding'] || '');
+  headers['Vary'] = 'Accept-Encoding';
+  try {
+    if (/\bbr\b/.test(accept)) {
+      headers['Content-Encoding'] = 'br';
+      return await brotliAsync(data, {
+        params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 5 },
+      });
+    }
+    if (/\bgzip\b/.test(accept)) {
+      headers['Content-Encoding'] = 'gzip';
+      return await gzipAsync(data);
+    }
+  } catch (e) {
+    console.error('[server] compression error:', e);
+    delete headers['Content-Encoding'];
+  }
+  return data;
+}
+
 function readBody(req) {
   return new Promise((resolve) => {
     let raw = '';
@@ -77,11 +106,18 @@ async function serveStatic(req, res, pathname) {
     const info = await stat(target);
     if (info.isDirectory()) target = join(target, 'index.html');
     const data = await readFile(target);
-    res.writeHead(200, {
-      'Content-Type': MIME[extname(target).toLowerCase()] || 'application/octet-stream',
+    const ext = extname(target).toLowerCase();
+    const headers = {
+      'Content-Type': MIME[ext] || 'application/octet-stream',
       'Cache-Control': cacheControlFor(pathname),
-    });
-    res.end(data);
+    };
+    let body = data;
+    if (COMPRESSIBLE.has(ext)) {
+      body = await maybeCompress(req, data, headers);
+    }
+    headers['Content-Length'] = body.length;
+    res.writeHead(200, headers);
+    res.end(req.method === 'HEAD' ? undefined : body);
     return;
   } catch {
     // fall through to 404
