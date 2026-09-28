@@ -60,17 +60,30 @@ export async function handleContact(body, env) {
   if (error) return { status, error };
 
   const token = env.TELEGRAM_BOT_TOKEN;
-  const chatId = env.TELEGRAM_CHAT_ID;
-  if (!token || !chatId) {
+  const chatIds = String(env.TELEGRAM_CHAT_ID || '')
+    .split(/[,\s]+/)
+    .map((id) => id.trim())
+    .filter(Boolean);
+
+  if (!token || chatIds.length === 0) {
     console.error('[contact] TELEGRAM_BOT_TOKEN или TELEGRAM_CHAT_ID не заданы');
     return { status: 500, error: 'Сервис временно недоступен' };
   }
 
-  try {
-    await sendTelegramMessage(lead, { token, chatId });
-    return { status: 200, ok: true };
-  } catch (e) {
-    console.error('[contact] Ошибка отправки в Telegram:', e);
+  const results = await Promise.allSettled(
+    chatIds.map((chatId) => sendTelegramMessage(lead, { token, chatId }))
+  );
+
+  const okCount = results.filter((r) => r.status === 'fulfilled').length;
+  results.forEach((r, i) => {
+    if (r.status === 'rejected') {
+      console.error(`[contact] Ошибка отправки в чат ${chatIds[i]}:`, r.reason);
+    }
+  });
+
+  if (okCount === 0) {
     return { status: 502, error: 'Не удалось отправить заявку' };
   }
+
+  return { status: 200, ok: true, delivered: okCount, total: chatIds.length };
 }
