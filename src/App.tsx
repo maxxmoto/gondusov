@@ -623,8 +623,9 @@ function App() {
             {isSubmitted ? (
               <div className="modal-success">
                 <h3>Заявка принята</h3>
-                <p>Спасибо{submittedName ? `, ${submittedName}` : ''}! Если у вас срочный вопрос, свяжитесь со мной по номеру:</p>
-                <a href={`tel:${PHONE_TEL}`} className="modal-phone">{PHONE_DISPLAY}</a>
+                <p>Спасибо{submittedName ? `, ${submittedName}` : ''}! Мы свяжемся с вами в ближайшее время.</p>
+                {/* <p>Если у вас срочный вопрос, свяжитесь со мной по номеру:</p>
+                <a href={`tel:${PHONE_TEL}`} className="modal-phone">{PHONE_DISPLAY}</a> */}
                 {/* <a
                   href="https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/"
                   target="_blank"
