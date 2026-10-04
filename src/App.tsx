@@ -548,12 +548,13 @@ function App() {
               </div>
             </div>
 
-            <div className="consult-card fade-in">
-              <div className="consult-card-head">
-                <h3>Повторная консультация</h3>
-                <span className="consult-duration">30 минут</span>
-              </div>
-              <div className="consult-body">
+            <div className="consult-card consult-card-photo fade-in" style={{ backgroundImage: 'url(./консультация.webp)' }}>
+              <div className="consult-card-overlay"></div>
+              <div className="consult-card-inner">
+                <div className="consult-card-head">
+                  <h3>Повторная консультация</h3>
+                  <span className="consult-duration">30 минут</span>
+                </div>
                 <ol className="consult-steps">
                   <li>
                     <strong>Оценка динамики.</strong>
@@ -567,13 +568,10 @@ function App() {
                     <strong>Ответы на новые вопросы.</strong>
                   </li>
                 </ol>
-                <div className="consult-side-img">
-                  <Picture src="./консультация.webp" alt="Повторная консультация гастроэнтеролога" loading="lazy" />
+                <div className="consult-price">
+                  <span>Стоимость</span>
+                  <strong>2000 ₽</strong>
                 </div>
-              </div>
-              <div className="consult-price">
-                <span>Стоимость</span>
-                <strong>2000 ₽</strong>
               </div>
             </div>
           </div>

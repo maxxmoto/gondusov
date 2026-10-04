@@ -936,27 +936,30 @@ a.workplace-item:hover {
 
 .consult-card > .consult-steps { flex: 1; }
 
-.consult-body {
+.consult-card-photo {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  min-height: 420px;
+}
+
+.consult-card-photo .consult-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.88);
+  z-index: 0;
+}
+
+.consult-card-photo .consult-card-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
-  gap: 20px;
-  align-items: stretch;
+  flex-direction: column;
   flex: 1;
 }
 
-.consult-body .consult-steps { flex: 1; }
-
-.consult-side-img {
-  flex-shrink: 0;
-  align-self: flex-end;
-  width: 170px;
-}
-
-.consult-side-img img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 14px;
-}
+.consult-card-photo .consult-price { margin-top: auto; }
 
 /* ===== RESULTS ===== */
 .results-section {
@@ -1458,8 +1461,7 @@ a.workplace-item:hover {
   .consult-steps strong { font-size: 14px; }
   .consult-steps span { font-size: 13px; }
   .consult-price strong { font-size: 22px; }
-  .consult-body { flex-direction: column; gap: 16px; }
-  .consult-side-img { align-self: center; width: 140px; }
+  .consult-card-photo { min-height: 360px; }
 
   .results-section { padding: 48px 16px; }
   .results-list { margin-top: 24px; }
