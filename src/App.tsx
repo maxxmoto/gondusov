@@ -682,7 +682,7 @@ function App() {
             <p><a href="tel:+79185680599">+7 918 568-05-99</a></p>
             <p>Ростов-на-Дону</p>
             <p>ФГБУ «НМИЦ Онкологии»</p>
-            <p>МЦ «Семья»</p>
+            <p><a href="https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/" target="_blank" rel="noopener noreferrer">МЦ «Семья»</a></p>
           </div>
 
           <nav aria-label="Профили врача и соцсети">
