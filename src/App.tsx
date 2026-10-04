@@ -577,31 +577,49 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <div>
-            <h4>Гондусов Денис</h4>
-            <p>Врач-гастроэнтеролог и эндоскопист, диетолог, нутрициолог. Стаж работы — 8 лет. Врач высшей категории.</p>
+          <div className="footer-about">
+            <h4>Гондусов Денис Вадимович</h4>
+            <p>Врач-гастроэнтеролог, эндоскопист, диетолог-нутрициолог. Приём в Ростове-на-Дону: консультации, гастроскопия, колоноскопия с NBI, удаление полипов, программы снижения веса. Действующий сотрудник ФГБУ «НМИЦ Онкологии».</p>
+            <p className="footer-addr">Ростов-на-Дону · ФГБУ «НМИЦ Онкологии» · МЦ «Семья»</p>
           </div>
-          <div>
-            <h4>Навигация</h4>
-            <p><a href="#about">Обо мне</a></p>
+
+          <nav aria-label="Разделы сайта">
+            <h4>Разделы</h4>
+            <p><a href="#about">О враче</a></p>
             <p><a href="#services">Услуги</a></p>
-            <p><a href="#approach">Подход</a></p>
-            <p><a href="#when-visit">Когда обратиться</a></p>
-          </div>
-          <div>
+            <p><a href="#approach">Комплексный подход</a></p>
+            <p><a href="#when-visit">Когда обратиться к врачу</a></p>
+            <p><a href="#contacts">Запись на приём</a></p>
+          </nav>
+
+          <nav aria-label="Услуги врача">
             <h4>Услуги</h4>
-            <p><a href="#services">Консультация</a></p>
+            <p><a href="#services">Консультация гастроэнтеролога</a></p>
             <p><a href="#services">Гастроскопия</a></p>
-            <p><a href="#services">Колоноскопия</a></p>
-            <p><a href="#services">Удаление полипов</a></p>
-          </div>
+            <p><a href="#services">Колоноскопия с NBI</a></p>
+            <p><a href="#services">Удаление полипов и аденом</a></p>
+            <p><a href="#services">Баллон в желудок</a></p>
+            <p><a href="#services">Эндоскопическая гастропластика</a></p>
+          </nav>
+
           <div>
             <h4>Контакты</h4>
+            <p><a href="tel:+79185680599">+7 918 568-05-99</a></p>
             <p>Ростов-на-Дону</p>
             <p>ФГБУ «НМИЦ Онкологии»</p>
             <p>МЦ «Семья»</p>
-            <p><a href="tel:+79185680599">+7 918 568-05-99</a></p>
           </div>
+
+          <nav aria-label="Профили врача и соцсети">
+            <h4>Профили и соцсети</h4>
+            <p><a href="https://t.me/DrGondusov" target="_blank" rel="noopener noreferrer">Telegram</a></p>
+            <p><a href="https://www.instagram.com/denis_gondusov" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+            <p><a href="https://dzen.ru/drgondusov" target="_blank" rel="noopener noreferrer">Дзен</a></p>
+            <p><a href="https://prodoctorov.ru/azov/vrach/1139434-gondusov/" target="_blank" rel="noopener noreferrer">ПроДокторов</a></p>
+            <p><a href="https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997" target="_blank" rel="noopener noreferrer">СберЗдоровье</a></p>
+            <p><a href="https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/" target="_blank" rel="noopener noreferrer">НаПоправку</a></p>
+            <p><a href="https://doctu.ru/azov/doctor/gondusov-denis-vadimovich" target="_blank" rel="noopener noreferrer">Doctu</a></p>
+          </nav>
         </div>
         <div className="footer-disclaimer">
           <p>Информация на сайте носит справочно-информационный характер и не является публичной офертой, медицинской консультацией, диагностикой или рекомендацией по лечению.</p>

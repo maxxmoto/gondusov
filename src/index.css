@@ -961,8 +961,18 @@ a.workplace-item:hover {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 2fr 1fr 1.1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.footer-about p {
+  max-width: 360px;
+}
+
+.footer-addr {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
 }
 
 .footer h4 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
