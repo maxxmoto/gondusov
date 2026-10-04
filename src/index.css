@@ -819,6 +819,121 @@ a.workplace-item:hover {
   }
 }
 
+/* ===== CONSULTATION PROCESS ===== */
+.consult-process {
+  padding: 80px 40px;
+  background: #fff;
+}
+
+.consult-process-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.consult-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.consult-card {
+  background: #f8f9fa;
+  border-radius: 24px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.consult-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.consult-card-head h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.consult-duration {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0ABAB5;
+  background: #e6fbfa;
+  padding: 6px 14px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.consult-steps {
+  list-style: none;
+  counter-reset: step;
+  flex: 1;
+}
+
+.consult-steps li {
+  position: relative;
+  padding-left: 44px;
+  margin-bottom: 18px;
+  counter-increment: step;
+}
+
+.consult-steps li:last-child { margin-bottom: 0; }
+
+.consult-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  background: #0ABAB5;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.consult-steps strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.consult-steps span {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.consult-price {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.consult-price span { font-size: 14px; color: #888; }
+
+.consult-price strong {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0ABAB5;
+}
+
 /* ===== APPOINTMENT + USEFUL CONTENT ===== */
 .content-appointment-section {
   padding: 80px 40px 0;
@@ -1266,6 +1381,15 @@ a.workplace-item:hover {
   .when-visit { padding: 48px 16px; }
   .symptoms-list { grid-template-columns: 1fr; gap: 8px; }
   .symptom-item { font-size: 14px; padding: 10px 12px; }
+
+  .consult-process { padding: 48px 16px; }
+  .consult-cards { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+  .consult-card { padding: 24px 20px; border-radius: 20px; }
+  .consult-card-head h3 { font-size: 19px; }
+  .consult-steps li { padding-left: 40px; margin-bottom: 14px; }
+  .consult-steps strong { font-size: 14px; }
+  .consult-steps span { font-size: 13px; }
+  .consult-price strong { font-size: 22px; }
 
   .content-appointment-section { padding: 48px 0 0; }
   .content-appointment-inner {

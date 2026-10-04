@@ -525,6 +525,73 @@ function App() {
         </div>
       </section>
 
+      {/* Consultation Process Section */}
+      <section className="consult-process" id="consultation">
+        <div className="consult-process-container">
+          <h2 className="section-title fade-in">Как проходит консультация</h2>
+          <div className="consult-cards">
+            <div className="consult-card fade-in">
+              <div className="consult-card-head">
+                <h3>Первичная консультация</h3>
+                <span className="consult-duration">40 минут</span>
+              </div>
+              <ol className="consult-steps">
+                <li>
+                  <strong>Подробный разбор жалоб и истории.</strong>
+                  <span>Вы рассказываете, что беспокоит, как давно, какое лечение уже проводилось.</span>
+                </li>
+                <li>
+                  <strong>Анализ имеющихся обследований.</strong>
+                  <span>Если есть анализы, УЗИ, гастроскопия или колоноскопия — разбираем их вместе.</span>
+                </li>
+                <li>
+                  <strong>Разбор питания и образа жизни.</strong>
+                </li>
+                <li>
+                  <strong>Определение первопричины.</strong>
+                  <span>Объясняю простым языком, что могло спровоцировать ситуацию.</span>
+                </li>
+                <li>
+                  <strong>План действий.</strong>
+                  <span>Какие анализы досдать, какие обследования пройти, как корректировать питание и лечение.</span>
+                </li>
+                <li>
+                  <strong>Ответы на вопросы.</strong>
+                </li>
+              </ol>
+              <div className="consult-price">
+                <span>Стоимость</span>
+                <strong>3000 ₽</strong>
+              </div>
+            </div>
+
+            <div className="consult-card fade-in">
+              <div className="consult-card-head">
+                <h3>Повторная консультация</h3>
+                <span className="consult-duration">30 минут</span>
+              </div>
+              <ol className="consult-steps">
+                <li>
+                  <strong>Оценка динамики.</strong>
+                  <span>Смотрим, что изменилось на фоне проводимой терапии.</span>
+                </li>
+                <li>
+                  <strong>Корректировка плана.</strong>
+                  <span>При необходимости меняем стратегию.</span>
+                </li>
+                <li>
+                  <strong>Ответы на новые вопросы.</strong>
+                </li>
+              </ol>
+              <div className="consult-price">
+                <span>Стоимость</span>
+                <strong>2000 ₽</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Useful Content + Appointment */}
       <section className="content-appointment-section">
         <div className="content-appointment-inner">
@@ -589,6 +656,7 @@ function App() {
             <p><a href="#services">Услуги</a></p>
             <p><a href="#approach">Комплексный подход</a></p>
             <p><a href="#when-visit">Когда обратиться к врачу</a></p>
+            <p><a href="#consultation">Как проходит консультация</a></p>
             <p><a href="#contacts">Запись на приём</a></p>
           </nav>
 
@@ -618,7 +686,9 @@ function App() {
             <p><a href="https://prodoctorov.ru/azov/vrach/1139434-gondusov/" target="_blank" rel="noopener noreferrer">ПроДокторов</a></p>
             <p><a href="https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997" target="_blank" rel="noopener noreferrer">СберЗдоровье</a></p>
             <p><a href="https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/" target="_blank" rel="noopener noreferrer">НаПоправку</a></p>
-            <p><a href="https://doctu.ru/azov/doctor/gondusov-denis-vadimovich" target="_blank" rel="noopener noreferrer">Doctu</a></p>
+            <p><a href="https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich" target="_blank" rel="noopener noreferrer">Doctu</a></p>
+            <p><a href="https://smart-azov.ru/company/staff/otdel-gastroenterologii/gondusov-denis-vadimovich/" target="_blank" rel="noopener noreferrer">Smart Азов</a></p>
+            <p><a href="https://zoon.ru/rostov/p-doctor/denis_vadimovich_gondusov/" target="_blank" rel="noopener noreferrer">Zoon</a></p>
           </nav>
         </div>
         <div className="footer-disclaimer">
