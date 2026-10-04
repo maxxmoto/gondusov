@@ -934,6 +934,30 @@ a.workplace-item:hover {
   color: #0ABAB5;
 }
 
+.consult-card > .consult-steps { flex: 1; }
+
+.consult-body {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  flex: 1;
+}
+
+.consult-body .consult-steps { flex: 1; }
+
+.consult-side-img {
+  flex-shrink: 0;
+  align-self: flex-end;
+  width: 170px;
+}
+
+.consult-side-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
 /* ===== RESULTS ===== */
 .results-section {
   padding: 80px 40px;
@@ -1434,6 +1458,8 @@ a.workplace-item:hover {
   .consult-steps strong { font-size: 14px; }
   .consult-steps span { font-size: 13px; }
   .consult-price strong { font-size: 22px; }
+  .consult-body { flex-direction: column; gap: 16px; }
+  .consult-side-img { align-self: center; width: 140px; }
 
   .results-section { padding: 48px 16px; }
   .results-list { margin-top: 24px; }

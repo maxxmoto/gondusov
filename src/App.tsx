@@ -553,19 +553,24 @@ function App() {
                 <h3>Повторная консультация</h3>
                 <span className="consult-duration">30 минут</span>
               </div>
-              <ol className="consult-steps">
-                <li>
-                  <strong>Оценка динамики.</strong>
-                  <span>Смотрим, что изменилось на фоне проводимой терапии.</span>
-                </li>
-                <li>
-                  <strong>Корректировка плана.</strong>
-                  <span>При необходимости меняем стратегию.</span>
-                </li>
-                <li>
-                  <strong>Ответы на новые вопросы.</strong>
-                </li>
-              </ol>
+              <div className="consult-body">
+                <ol className="consult-steps">
+                  <li>
+                    <strong>Оценка динамики.</strong>
+                    <span>Смотрим, что изменилось на фоне проводимой терапии.</span>
+                  </li>
+                  <li>
+                    <strong>Корректировка плана.</strong>
+                    <span>При необходимости меняем стратегию.</span>
+                  </li>
+                  <li>
+                    <strong>Ответы на новые вопросы.</strong>
+                  </li>
+                </ol>
+                <div className="consult-side-img">
+                  <Picture src="./консультация.webp" alt="Повторная консультация гастроэнтеролога" loading="lazy" />
+                </div>
+              </div>
               <div className="consult-price">
                 <span>Стоимость</span>
                 <strong>2000 ₽</strong>
