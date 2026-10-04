@@ -89,23 +89,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = document.querySelectorAll('.fade-in');
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
     const whenVisitSection = document.getElementById('when-visit');
     if (!whenVisitSection) return;
 
@@ -589,6 +572,27 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Results Section */}
+      <section className="results-section" id="results">
+        <div className="results-container">
+          <h2 className="section-title fade-in">Результат после работы</h2>
+          <ul className="results-list">
+            <li className="results-item fade-in">
+              <span className="results-check"><CheckIcon /></span>
+              <p>Поймёте первопричины вашей проблемы и почему симптомы возвращаются.</p>
+            </li>
+            <li className="results-item fade-in">
+              <span className="results-check"><CheckIcon /></span>
+              <p>Получите план дальнейших действий, которые помогут поддерживать стабильное хорошее самочувствие.</p>
+            </li>
+            <li className="results-item fade-in">
+              <span className="results-check"><CheckIcon /></span>
+              <p>Перестанете бояться еды и постоянно подстраивать под самочувствие свою жизнь.</p>
+            </li>
+          </ul>
         </div>
       </section>
 
