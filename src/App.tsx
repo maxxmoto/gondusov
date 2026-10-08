@@ -686,10 +686,6 @@ function App() {
               </svg>
               <span>ТГ</span>
             </a>
-            <a href="https://www.instagram.com/denis_gondusov?stkn=NDM1d2duMWUyM3Vp&utm_source=qr" target="_blank" rel="noopener noreferrer" className="social-button social-button-instagram">
-              <img src="./instagram-1-svgrepo-com.svg" className="social-icon" alt="Instagram" />
-              <span>Instagram</span>
-            </a>
             <a href="https://dzen.ru/drgondusov" target="_blank" rel="noopener noreferrer" className="social-button social-button-dzen">
               <img src="./dzen.svg" className="social-icon" alt="Дзен" />
               <span>Дзен</span>
@@ -742,7 +738,6 @@ function App() {
           <nav aria-label="Профили врача и соцсети">
             <h4>Профили и соцсети</h4>
             <p><a href="https://t.me/DrGondusov" target="_blank" rel="noopener noreferrer">Telegram</a></p>
-            <p><a href="https://www.instagram.com/denis_gondusov" target="_blank" rel="noopener noreferrer">Instagram</a></p>
             <p><a href="https://dzen.ru/drgondusov" target="_blank" rel="noopener noreferrer">Дзен</a></p>
             <p><a href="https://prodoctorov.ru/azov/vrach/1139434-gondusov/" target="_blank" rel="noopener noreferrer">ПроДокторов</a></p>
             <p><a href="https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997" target="_blank" rel="noopener noreferrer">СберЗдоровье</a></p>
@@ -828,7 +823,7 @@ function App() {
               Принять
             </button>
             <button type="button" className="cookie-btn cookie-btn-reject" onClick={() => chooseCookies('rejected')}>
-              Только необходимые
+              Отклонить
             </button>
           </div>
         </div>
