@@ -23,11 +23,13 @@ html {
 }
 
 body {
-  font-family: 'Cygre', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Cygre', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 450;
   color: #1a1a1a;
   background: #fff;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* ===== HEADER ===== */
