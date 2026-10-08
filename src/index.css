@@ -617,30 +617,36 @@ body {
 
 .workplaces-marquee-track {
   display: flex;
-  gap: 40px;
+  align-items: center;
   animation: scrollWorkplaces 30s linear infinite;
   width: max-content;
 }
 
 .workplace-item {
-  font-size: 18px;
-  font-weight: 600;
-  color: #666;
-  white-space: nowrap;
-  padding: 12px 24px;
-  background: #fff;
-  border-radius: 50px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-right: 64px;
+}
+
+.workplace-logo {
+  height: 42px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: filter 0.3s, opacity 0.3s;
 }
 
 a.workplace-item {
   text-decoration: none;
-  transition: color 0.3s, transform 0.3s;
 }
 
-a.workplace-item:hover {
-  color: #0ABAB5;
-  transform: translateY(-2px);
+a.workplace-item:hover .workplace-logo {
+  filter: grayscale(0);
+  opacity: 1;
 }
 
 @keyframes scrollWorkplaces {
@@ -1455,8 +1461,9 @@ a.workplace-item:hover {
   .service-icon svg { width: 22px; height: 22px; }
 
   .workplaces-marquee-section { padding: 24px 0; }
-  .workplaces-marquee-track { gap: 20px; }
-  .workplace-item { font-size: 14px; padding: 10px 18px; }
+  .workplaces-marquee-track { animation-duration: 20s; }
+  .workplace-item { margin-right: 40px; }
+  .workplace-logo { height: 30px; max-width: 130px; }
 
   .approach-section { margin: 0 8px; padding: 40px 20px; border-radius: 24px; }
   .approach-section p { font-size: 14px; line-height: 1.6; }
@@ -1587,8 +1594,7 @@ a.workplace-item:hover {
   .stat-card .label { font-size: 14px; }
   .service-card h3 { font-size: 21px; }
   .service-card p { font-size: 15px; }
-  .workplace-item { font-size: 19px; }
-  .approach-section p { font-size: 17px; }
+.approach-section p { font-size: 17px; }
   .symptom-item { font-size: 16px; }
   .consult-card-head h3 { font-size: 23px; }
   .consult-steps strong { font-size: 16px; }
@@ -1699,32 +1705,4 @@ a.workplace-item:hover {
   }
   .cookie-banner-text { font-size: 12.5px; line-height: 1.45; }
   .cookie-btn { padding: 14px 16px; }
-}
-
-/* ===== TRUST LOGOS STRIP ===== */
-.trust-strip {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 28px 56px;
-  padding: 40px 24px 8px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.trust-strip-item { display: flex; align-items: center; }
-.trust-strip-logo {
-  height: 42px;
-  width: auto;
-  max-width: 180px;
-  object-fit: contain;
-  display: block;
-  filter: grayscale(100%);
-  opacity: 0.55;
-  transition: filter 0.3s, opacity 0.3s;
-}
-.trust-strip-item:hover .trust-strip-logo { filter: grayscale(0); opacity: 1; }
-@media (max-width: 768px) {
-  .trust-strip { gap: 20px 40px; padding: 28px 16px 4px; }
-  .trust-strip-logo { height: 32px; max-width: 140px; }
 }

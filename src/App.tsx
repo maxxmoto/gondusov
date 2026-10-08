@@ -37,36 +37,6 @@ type CookieConsent = 'accepted' | 'rejected' | null;
 const CONSENT_KEY = 'cookie_consent';
 const METRIKA_ID = 113072145;
 
-const TRUST_LOGOS: { src: string; alt: string; href?: string }[] = [
-  { src: './logos/rostgmu.webp', alt: 'РостГМУ', href: 'https://rostgmu.ru/' },
-  {
-    src: './logos/napopravku.webp',
-    alt: 'НаПоправку',
-    href: 'https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/',
-  },
-  {
-    src: './logos/doctu.svg',
-    alt: 'Doctu',
-    href: 'https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich',
-  },
-  {
-    src: './logos/sber.svg',
-    alt: 'СберЗдоровье',
-    href: 'https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997',
-  },
-  {
-    src: './logos/prodoctorov.webp',
-    alt: 'ПроДокторов',
-    href: 'https://prodoctorov.ru/azov/vrach/1139434-gondusov/',
-  },
-  { src: './logos/нмицонкологии.webp', alt: 'НМИЦ Онкологии' },
-  {
-    src: './logos/мцсемья.webp',
-    alt: 'МЦ «Семья»',
-    href: 'https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/',
-  },
-];
-
 function loadMetrika() {
   const w = window as unknown as { ym?: (...args: unknown[]) => void };
   if (w.ym) return;
@@ -90,14 +60,14 @@ function loadMetrika() {
   });
 }
 
-const WORKPLACES: { label: string; href?: string }[] = [
-  { label: 'СберЗдоровье', href: 'https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997' },
-  { label: 'ПроДокторов', href: 'https://prodoctorov.ru/azov/vrach/1139434-gondusov/?utm_referrer=https%3a%2f%2fyandex.ru%2f' },
-  { label: 'НМИЦ Онкологии' },
-  { label: 'МЦ «Семья»' },
-  { label: 'РостГМУ' },
-  { label: 'НаПоправку', href: 'https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/?utm_source=yandex_feeds&utm_medium=organic&utm_campaign=feeds_p&price_type=basic' },
-  { label: 'Doctu', href: 'https://doctu.ru/azov/doctor/gondusov-denis-vadimovich' },
+const WORKPLACES: { label: string; src: string; href?: string }[] = [
+  { label: 'СберЗдоровье', src: './logos/sber.svg', href: 'https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997' },
+  { label: 'ПроДокторов', src: './logos/prodoctorov.webp', href: 'https://prodoctorov.ru/azov/vrach/1139434-gondusov/' },
+  { label: 'НМИЦ Онкологии', src: './logos/нмицонкологии.webp' },
+  { label: 'МЦ «Семья»', src: './logos/мцсемья.webp', href: 'https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/' },
+  { label: 'РостГМУ', src: './logos/rostgmu.webp', href: 'https://rostgmu.ru/' },
+  { label: 'НаПоправку', src: './logos/napopravku.webp', href: 'https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/' },
+  { label: 'Doctu', src: './logos/doctu.svg', href: 'https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich' },
 ];
 
 function App() {
@@ -542,34 +512,21 @@ function App() {
               item.href ? (
                 <a
                   key={index}
-                  className="workplace-item workplace-link"
+                  className="workplace-item"
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {item.label}
+                  <img src={item.src} alt={item.label} className="workplace-logo" loading="lazy" decoding="async" />
                 </a>
               ) : (
-                <div key={index} className="workplace-item">{item.label}</div>
+                <div key={index} className="workplace-item">
+                  <img src={item.src} alt={item.label} className="workplace-logo" loading="lazy" decoding="async" />
+                </div>
               )
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Trust Logos Strip */}
-      <div className="trust-strip">
-        {TRUST_LOGOS.map((logo, i) => (
-          <div className="trust-strip-item" key={i}>
-            {logo.href ? (
-              <a href={logo.href} target="_blank" rel="noopener noreferrer">
-                <img src={logo.src} alt={logo.alt} className="trust-strip-logo" loading="lazy" decoding="async" />
-              </a>
-            ) : (
-              <img src={logo.src} alt={logo.alt} className="trust-strip-logo" loading="lazy" decoding="async" />
-            )}
-          </div>
-        ))}
       </div>
 
       {/* Approach Section */}
