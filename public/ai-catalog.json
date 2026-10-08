@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Гондусов Денис Вадимович — гастроэнтеролог и эндоскопист",
-  "url": "https://drgondusov.ru/",
+  "url": "https://Dr_161.ru/",
   "inLanguage": "ru-RU",
   "description": "Персональный сайт врача-гастроэнтеролога, эндоскописта и диетолога-нутрициолога Гондусова Дениса Вадимовича. Приём в Ростове-на-Дону: гастроскопия, колоноскопия с NBI, удаление полипов, снижение веса.",
   "dateModified": "2026-09-25",
@@ -13,33 +13,33 @@
     "telephone": "+7 918 568-05-99"
   },
   "sameAs": [
-    "https://t.me/DrGondusov",
-    "https://dzen.ru/drgondusov"
+    "https://t.me/Dr_161",
+    "https://dzen.ru/Dr_161"
   ],
   "resources": [
     {
       "type": "text/html",
-      "url": "https://drgondusov.ru/",
+      "url": "https://Dr_161.ru/",
       "title": "Главная страница"
     },
     {
       "type": "text/plain",
-      "url": "https://drgondusov.ru/llms.txt",
+      "url": "https://Dr_161.ru/llms.txt",
       "title": "llms.txt — описание сайта для языковых моделей"
     },
     {
       "type": "application/xml",
-      "url": "https://drgondusov.ru/sitemap.xml",
+      "url": "https://Dr_161.ru/sitemap.xml",
       "title": "Карта сайта"
     },
     {
       "type": "text/html",
-      "url": "https://drgondusov.ru/privacy.html",
+      "url": "https://Dr_161.ru/privacy.html",
       "title": "Политика конфиденциальности"
     },
     {
       "type": "text/html",
-      "url": "https://drgondusov.ru/agreement.html",
+      "url": "https://Dr_161.ru/agreement.html",
       "title": "Согласие на обработку персональных данных"
     }
   ]
