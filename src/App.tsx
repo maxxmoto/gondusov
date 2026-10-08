@@ -141,7 +141,7 @@ function App() {
   const handleSubmit = async () => {
     const name = (document.getElementById('modalName') as HTMLInputElement)?.value?.trim() || '';
     const phone = (document.getElementById('modalPhone') as HTMLInputElement)?.value?.trim() || '';
-    const message = (document.getElementById('modalMessage') as HTMLTextAreaElement)?.value?.trim() || '';
+    const message = '';
 
     if (!name || !phone) {
       alert('Пожалуйста, заполните имя и телефон.');
@@ -736,7 +736,6 @@ function App() {
                 <h3>Запись на приём</h3>
                 <input type="text" placeholder="Ваше имя" id="modalName" />
                 <input type="tel" placeholder="Телефон" id="modalPhone" />
-                <textarea placeholder="Опишите вашу проблему или выберите услугу" id="modalMessage"></textarea>
                 <button className="modal-submit" onClick={handleSubmit} disabled={isSubmitting}>
                   {isSubmitting ? 'Отправка…' : 'Отправить заявку'}
                 </button>
