@@ -733,7 +733,7 @@ function App() {
               </div>
             ) : (
               <>
-                <h3>Запись на приём</h3>
+                <h3>Запись на онлайн-консультацию</h3>
                 <input type="text" placeholder="Ваше имя" id="modalName" />
                 <input type="tel" placeholder="Телефон" id="modalPhone" />
                 <button className="modal-submit" onClick={handleSubmit} disabled={isSubmitting}>
