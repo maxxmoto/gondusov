@@ -1701,53 +1701,30 @@ a.workplace-item:hover {
   .cookie-btn { padding: 14px 16px; }
 }
 
-/* ===== PROFILES & REVIEWS MARQUEE ===== */
-.profiles-marquee-section {
-  padding: 36px 0;
-  background: #fff;
-  overflow: hidden;
-}
-.profiles-marquee-label {
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #999;
-  margin-bottom: 18px;
-}
-.profiles-marquee { overflow: hidden; width: 100%; }
-.profiles-marquee-track {
+/* ===== TRUST LOGOS STRIP ===== */
+.trust-strip {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  width: max-content;
-  animation: scrollProfiles 30s linear infinite;
-  will-change: transform;
+  gap: 28px 56px;
+  padding: 40px 24px 8px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.profiles-marquee:hover .profiles-marquee-track { animation-play-state: paused; }
-.profiles-marquee-item { flex-shrink: 0; margin-right: 64px; }
-.profiles-marquee-logo {
-  height: 40px;
+.trust-strip-item { display: flex; align-items: center; }
+.trust-strip-logo {
+  height: 42px;
   width: auto;
-  max-width: 170px;
+  max-width: 180px;
   object-fit: contain;
   display: block;
   filter: grayscale(100%);
-  opacity: 0.5;
+  opacity: 0.55;
   transition: filter 0.3s, opacity 0.3s;
 }
-.profiles-marquee-item:hover .profiles-marquee-logo { filter: grayscale(0); opacity: 1; }
-@keyframes scrollProfiles {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
+.trust-strip-item:hover .trust-strip-logo { filter: grayscale(0); opacity: 1; }
 @media (max-width: 768px) {
-  .profiles-marquee-section { padding: 26px 0; }
-  .profiles-marquee-track { animation-duration: 20s; }
-  .profiles-marquee-item { margin-right: 44px; }
-  .profiles-marquee-logo { height: 30px; max-width: 130px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .profiles-marquee-track { animation: none; flex-wrap: wrap; justify-content: center; gap: 24px; }
-  .profiles-marquee-item { margin-right: 0; }
+  .trust-strip { gap: 20px 40px; padding: 28px 16px 4px; }
+  .trust-strip-logo { height: 32px; max-width: 140px; }
 }

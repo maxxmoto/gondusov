@@ -37,7 +37,18 @@ type CookieConsent = 'accepted' | 'rejected' | null;
 const CONSENT_KEY = 'cookie_consent';
 const METRIKA_ID = 113072145;
 
-const PROFILE_LOGOS: { src: string; alt: string; href?: string }[] = [
+const TRUST_LOGOS: { src: string; alt: string; href?: string }[] = [
+  { src: './logos/rostgmu.webp', alt: 'РостГМУ', href: 'https://rostgmu.ru/' },
+  {
+    src: './logos/napopravku.webp',
+    alt: 'НаПоправку',
+    href: 'https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/',
+  },
+  {
+    src: './logos/doctu.svg',
+    alt: 'Doctu',
+    href: 'https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich',
+  },
   {
     src: './logos/sber.svg',
     alt: 'СберЗдоровье',
@@ -48,17 +59,12 @@ const PROFILE_LOGOS: { src: string; alt: string; href?: string }[] = [
     alt: 'ПроДокторов',
     href: 'https://prodoctorov.ru/azov/vrach/1139434-gondusov/',
   },
-  {
-    src: './logos/napopravku.webp',
-    alt: 'НаПоправку',
-    href: 'https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/',
-  },
+  { src: './logos/нмицонкологии.webp', alt: 'НМИЦ Онкологии' },
   {
     src: './logos/мцсемья.webp',
     alt: 'МЦ «Семья»',
     href: 'https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/',
   },
-  { src: './logos/обк-2.webp', alt: 'ОКБ №2' },
 ];
 
 function loadMetrika() {
@@ -331,26 +337,6 @@ function App() {
         </button>
       </div>
 
-      {/* Profiles & Reviews Marquee */}
-      <div className="profiles-marquee-section">
-        <div className="profiles-marquee-label">Профили и отзывы</div>
-        <div className="profiles-marquee">
-          <div className="profiles-marquee-track">
-            {[...PROFILE_LOGOS, ...PROFILE_LOGOS].map((logo, i) => (
-              <div className="profiles-marquee-item" key={i}>
-                {logo.href ? (
-                  <a href={logo.href} target="_blank" rel="noopener noreferrer">
-                    <img src={logo.src} alt={logo.alt} className="profiles-marquee-logo" loading="lazy" decoding="async" />
-                  </a>
-                ) : (
-                  <img src={logo.src} alt={logo.alt} className="profiles-marquee-logo" loading="lazy" decoding="async" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* About Section */}
       <section className="about-section" id="about">
         <div className="about-container">
@@ -569,6 +555,21 @@ function App() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Trust Logos Strip */}
+      <div className="trust-strip">
+        {TRUST_LOGOS.map((logo, i) => (
+          <div className="trust-strip-item" key={i}>
+            {logo.href ? (
+              <a href={logo.href} target="_blank" rel="noopener noreferrer">
+                <img src={logo.src} alt={logo.alt} className="trust-strip-logo" loading="lazy" decoding="async" />
+              </a>
+            ) : (
+              <img src={logo.src} alt={logo.alt} className="trust-strip-logo" loading="lazy" decoding="async" />
+            )}
+          </div>
+        ))}
       </div>
 
       {/* Approach Section */}
