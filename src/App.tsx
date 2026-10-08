@@ -33,6 +33,33 @@ const SERVICE_IMAGES = {
 const PHONE_DISPLAY = '+7 918 568-05-99';
 const PHONE_TEL = '+79185680599';
 
+type CookieConsent = 'accepted' | 'rejected' | null;
+const CONSENT_KEY = 'cookie_consent';
+const METRIKA_ID = 113072145;
+
+function loadMetrika() {
+  const w = window as unknown as { ym?: (...args: unknown[]) => void };
+  if (w.ym) return;
+  /* eslint-disable */
+  (function (m: any, e: any, t: any, r: any, i: any, k?: any, a?: any) {
+    m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+    m[i].l = Date.now();
+    for (let j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+    k = e.createElement(t); a = e.getElementsByTagName(t)[0]; k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+  })(window, document, 'script', `https://mc.yandex.ru/metrika/tag.js?id=${METRIKA_ID}`, 'ym');
+  /* eslint-enable */
+  (window as any).ym(METRIKA_ID, 'init', {
+    ssr: true,
+    webvisor: true,
+    clickmap: true,
+    ecommerce: 'dataLayer',
+    referrer: document.referrer,
+    url: location.href,
+    accurateTrackBounce: true,
+    trackLinks: true,
+  });
+}
+
 const WORKPLACES: { label: string; href?: string }[] = [
   { label: 'СберЗдоровье', href: 'https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997' },
   { label: 'ПроДокторов', href: 'https://prodoctorov.ru/azov/vrach/1139434-gondusov/?utm_referrer=https%3a%2f%2fyandex.ru%2f' },
@@ -54,7 +81,27 @@ function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedName, setSubmittedName] = useState('');
   const [isAgreed, setIsAgreed] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
+    try {
+      return (localStorage.getItem(CONSENT_KEY) as CookieConsent) || null;
+    } catch {
+      return null;
+    }
+  });
   const totalSlides = 4;
+
+  useEffect(() => {
+    if (cookieConsent === 'accepted') loadMetrika();
+  }, [cookieConsent]);
+
+  const chooseCookies = (value: 'accepted' | 'rejected') => {
+    try {
+      localStorage.setItem(CONSENT_KEY, value);
+    } catch {
+      /* ignore */
+    }
+    setCookieConsent(value);
+  };
 
   const symptoms = [
     'Боль и тяжесть в животе',
@@ -711,7 +758,7 @@ function App() {
           <p>Имеются противопоказания. Необходима консультация специалиста.</p>
         </div>
         <div className="footer-bottom">
-          © 2026 Гондусов Денис. Все права защищены. · <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
+          © 2026 Гондусов Денис. Все права защищены. · <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a> · <button type="button" className="footer-cookie-btn" onClick={() => setCookieConsent(null)}>Настройки cookie</button>
         </div>
       </footer>
 
@@ -759,6 +806,29 @@ function App() {
                 </button>
               </>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Cookie consent banner */}
+      {cookieConsent === null && (
+        <div
+          className="cookie-banner"
+          role="dialog"
+          aria-live="polite"
+          aria-label="Использование файлов cookie"
+        >
+          <p className="cookie-banner-text">
+            Мы используем файлы cookie для аналитики, чтобы улучшать работу сайта. Подробнее — в{' '}
+            <a href="./privacy.html" target="_blank" rel="noopener noreferrer">политике конфиденциальности</a>.
+          </p>
+          <div className="cookie-banner-actions">
+            <button type="button" className="cookie-btn cookie-btn-accept" onClick={() => chooseCookies('accepted')}>
+              Принять
+            </button>
+            <button type="button" className="cookie-btn cookie-btn-reject" onClick={() => chooseCookies('rejected')}>
+              Только необходимые
+            </button>
           </div>
         </div>
       )}
