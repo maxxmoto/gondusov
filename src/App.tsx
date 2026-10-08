@@ -80,7 +80,8 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedName, setSubmittedName] = useState('');
-  const [isAgreed, setIsAgreed] = useState(false);
+  const [isDataConsent, setIsDataConsent] = useState(false);
+  const [isPolicyAgreed, setIsPolicyAgreed] = useState(false);
   const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     try {
       return (localStorage.getItem(CONSENT_KEY) as CookieConsent) || null;
@@ -169,7 +170,8 @@ function App() {
   const openModal = () => {
     setIsSubmitted(false);
     setSubmittedName('');
-    setIsAgreed(false);
+    setIsDataConsent(false);
+    setIsPolicyAgreed(false);
     setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -197,8 +199,8 @@ function App() {
       return;
     }
 
-    if (!isAgreed) {
-      alert('Пожалуйста, подтвердите согласие на обработку персональных данных.');
+    if (!isDataConsent || !isPolicyAgreed) {
+      alert('Пожалуйста, подтвердите согласие на обработку персональных данных и ознакомьтесь с политикой конфиденциальности.');
       return;
     }
 
@@ -754,7 +756,7 @@ function App() {
           <p>Копирование материалов сайта без согласия правообладателя не допускается.</p>
         </div>
         <div className="footer-bottom">
-          © 2026 Гондусов Денис. Все права защищены. · <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a> · <button type="button" className="footer-cookie-btn" onClick={() => setCookieConsent(null)}>Настройки cookie</button>
+          © 2026 Гондусов Денис. Все права защищены. · <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a> · <a href="./agreement.html" target="_blank" rel="noopener noreferrer">Согласие на обработку ПД</a> · <button type="button" className="footer-cookie-btn" onClick={() => setCookieConsent(null)}>Настройки cookie</button>
         </div>
       </footer>
 
@@ -789,12 +791,23 @@ function App() {
                 <label className="modal-consent">
                   <input
                     type="checkbox"
-                    checked={isAgreed}
-                    onChange={(e) => setIsAgreed(e.target.checked)}
+                    checked={isDataConsent}
+                    onChange={(e) => setIsDataConsent(e.target.checked)}
                   />
                   <span>
-                    Я даю согласие на обработку персональных данных и ознакомлен(а) с{' '}
-                    <a href="./privacy.html" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a>.
+                    Я даю согласие на обработку персональных данных{' '}
+                    <a href="./agreement.html" target="_blank" rel="noopener noreferrer">(согласие)</a>
+                  </span>
+                </label>
+                <label className="modal-consent">
+                  <input
+                    type="checkbox"
+                    checked={isPolicyAgreed}
+                    onChange={(e) => setIsPolicyAgreed(e.target.checked)}
+                  />
+                  <span>
+                    Я ознакомлен(а) и согласен(а) с{' '}
+                    <a href="./privacy.html" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a>
                   </span>
                 </label>
                 <button className="modal-submit" onClick={handleSubmit} disabled={isSubmitting}>

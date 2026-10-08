@@ -117,6 +117,12 @@ function seoPlugin(siteUrl) {
         '    <changefreq>yearly</changefreq>',
         '    <priority>0.3</priority>',
         '  </url>',
+        '  <url>',
+        `    <loc>${siteUrl}agreement.html</loc>`,
+        `    <lastmod>${lastmod}</lastmod>`,
+        '    <changefreq>yearly</changefreq>',
+        '    <priority>0.3</priority>',
+        '  </url>',
         '</urlset>',
         '',
       ].join('\n');

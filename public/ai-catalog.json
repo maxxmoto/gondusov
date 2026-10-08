@@ -31,6 +31,16 @@
       "type": "application/xml",
       "url": "https://drgondusov.ru/sitemap.xml",
       "title": "Карта сайта"
+    },
+    {
+      "type": "text/html",
+      "url": "https://drgondusov.ru/privacy.html",
+      "title": "Политика конфиденциальности"
+    },
+    {
+      "type": "text/html",
+      "url": "https://drgondusov.ru/agreement.html",
+      "title": "Согласие на обработку персональных данных"
     }
   ]
 }
