@@ -315,7 +315,7 @@ function App() {
     setFlippedServices((prev) => ({ ...prev, [index]: !prev[index] }));
     window.setTimeout(() => {
       setShowBack((prev) => ({ ...prev, [index]: !prev[index] }));
-    }, 360);
+    }, 225);
   };
 
   const toggleSymptom = (index: number) => {
