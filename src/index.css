@@ -679,13 +679,6 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-@supports not ((transform-style: preserve-3d) and (backface-visibility: hidden)) {
-  .service-card-inner { transform: none !important; transition: none; }
-  .service-card-back { display: none; justify-content: center; overflow-y: auto; }
-  .service-card.is-flipped .service-card-back { display: flex; }
-  .service-card.is-flipped .service-card-front { display: none; }
-}
-
 .service-card-img {
   position: absolute;
   inset: 0;

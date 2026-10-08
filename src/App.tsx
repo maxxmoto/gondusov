@@ -165,6 +165,7 @@ function App() {
   const [isDataConsent, setIsDataConsent] = useState(false);
   const [isPolicyAgreed, setIsPolicyAgreed] = useState(false);
   const [flippedServices, setFlippedServices] = useState<Record<number, boolean>>({});
+  const [showBack, setShowBack] = useState<Record<number, boolean>>({});
   const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     try {
       return (localStorage.getItem(CONSENT_KEY) as CookieConsent) || null;
@@ -312,6 +313,9 @@ function App() {
 
   const toggleService = (index: number) => {
     setFlippedServices((prev) => ({ ...prev, [index]: !prev[index] }));
+    window.setTimeout(() => {
+      setShowBack((prev) => ({ ...prev, [index]: !prev[index] }));
+    }, 360);
   };
 
   const toggleSymptom = (index: number) => {
@@ -541,7 +545,7 @@ function App() {
               onClick={() => toggleService(index)}
             >
               <div className="service-card-inner">
-                <div className="service-card-face service-card-front">
+                <div className="service-card-face service-card-front" style={{ display: showBack[index] ? 'none' : 'block' }}>
                   <Picture src={service.img} alt={service.title} className="service-card-img" loading="lazy" />
                   <div className="service-card-overlay"></div>
                   <div className="service-card-content">
@@ -558,7 +562,7 @@ function App() {
                     <RotateIcon />
                   </button>
                 </div>
-                <div className="service-card-face service-card-back">
+                <div className="service-card-face service-card-back" style={{ display: showBack[index] ? 'flex' : 'none' }}>
                   <h3>{service.title}</h3>
                   <ul className="service-card-details">
                     {service.details.map((detail, j) => (
