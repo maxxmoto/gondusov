@@ -53,6 +53,7 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedName, setSubmittedName] = useState('');
+  const [isAgreed, setIsAgreed] = useState(false);
   const totalSlides = 4;
 
   const symptoms = [
@@ -121,6 +122,7 @@ function App() {
   const openModal = () => {
     setIsSubmitted(false);
     setSubmittedName('');
+    setIsAgreed(false);
     setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -145,6 +147,11 @@ function App() {
 
     if (!name || !phone) {
       alert('Пожалуйста, заполните имя и телефон.');
+      return;
+    }
+
+    if (!isAgreed) {
+      alert('Пожалуйста, подтвердите согласие на обработку персональных данных.');
       return;
     }
 
@@ -704,7 +711,7 @@ function App() {
           <p>Имеются противопоказания. Необходима консультация специалиста.</p>
         </div>
         <div className="footer-bottom">
-          © 2026 Гондусов Денис. Все права защищены.
+          © 2026 Гондусов Денис. Все права защищены. · <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
         </div>
       </footer>
 
@@ -736,6 +743,17 @@ function App() {
                 <h3>Запись на онлайн-консультацию</h3>
                 <input type="text" placeholder="Ваше имя" id="modalName" />
                 <input type="tel" placeholder="Телефон" id="modalPhone" />
+                <label className="modal-consent">
+                  <input
+                    type="checkbox"
+                    checked={isAgreed}
+                    onChange={(e) => setIsAgreed(e.target.checked)}
+                  />
+                  <span>
+                    Я даю согласие на обработку персональных данных и ознакомлен(а) с{' '}
+                    <a href="./privacy.html" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a>.
+                  </span>
+                </label>
                 <button className="modal-submit" onClick={handleSubmit} disabled={isSubmitting}>
                   {isSubmitting ? 'Отправка…' : 'Отправить заявку'}
                 </button>

@@ -1245,6 +1245,35 @@ a.workplace-item:hover {
 .modal input:focus, .modal textarea:focus { border-color: #0ABAB5; }
 .modal textarea { height: 100px; resize: vertical; }
 
+.modal-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 4px 0 18px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.modal-consent input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  accent-color: #0ABAB5;
+  cursor: pointer;
+}
+
+.modal-consent span {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.modal-consent a {
+  color: #0ABAB5;
+  text-decoration: underline;
+}
+
 .modal-close {
   position: absolute;
   top: 16px;

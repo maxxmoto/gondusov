@@ -56,6 +56,12 @@ function seoPlugin(siteUrl) {
         '    <changefreq>monthly</changefreq>',
         '    <priority>1.0</priority>',
         '  </url>',
+        '  <url>',
+        `    <loc>${siteUrl}privacy.html</loc>`,
+        `    <lastmod>${lastmod}</lastmod>`,
+        '    <changefreq>yearly</changefreq>',
+        '    <priority>0.3</priority>',
+        '  </url>',
         '</urlset>',
         '',
       ].join('\n');
