@@ -11,6 +11,7 @@ import {
   ArrowIcon,
   CloseIcon,
   TimelineArrowIcon,
+  RotateIcon,
 } from './components/Icons';
 import { LogoIcon } from './components/Logo';
 import { Picture } from './components/Picture';
@@ -70,6 +71,87 @@ const WORKPLACES: { label: string; src?: string; href?: string; size?: 'sm' | 'l
   { label: 'Doctu', src: './logos/doctu.svg', href: 'https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich', size: 'sm' },
 ];
 
+const SERVICES: {
+  title: string;
+  desc: string;
+  img: string;
+  icon: React.ReactNode;
+  details: string[];
+}[] = [
+  {
+    title: 'Консультация гастроэнтеролога',
+    desc: 'Диагностика и лечение заболеваний ЖКТ, рекомендации по питанию и образу жизни.',
+    img: SERVICE_IMAGES.consultation,
+    icon: <StethoscopeIcon />,
+    details: [
+      'Детальный разбор жалоб и истории болезни',
+      'Оценка результатов анализов и ранее проведённых исследований',
+      'Индивидуальные рекомендации по питанию и образу жизни',
+      'Составление плана лечения и дальнейшего наблюдения',
+    ],
+  },
+  {
+    title: 'Гастроскопия',
+    desc: 'Исследование пищевода, желудка и двенадцатиперстной кишки с биопсией.',
+    img: SERVICE_IMAGES.gastroscopy,
+    icon: <EndoscopeIcon />,
+    details: [
+      'Осмотр пищевода, желудка и двенадцатиперстной кишки',
+      'Взятие биопсии при необходимости',
+      'Контроль уже выявленных изменений слизистой',
+      'Проводится быстро, по желанию — с седацией',
+    ],
+  },
+  {
+    title: 'Колоноскопия с NBI',
+    desc: 'Осмотр толстого кишечника с технологией NBI для раннего обнаружения патологий.',
+    img: SERVICE_IMAGES.colonoscopy,
+    icon: <MicroscopeIcon />,
+    details: [
+      'Осмотр всей толстой кишки',
+      'Технология NBI для раннего выявления патологий',
+      'Биопсия и удаление образований за один сеанс',
+      'Требует предварительной подготовки кишечника',
+    ],
+  },
+  {
+    title: 'Удаление полипов и аденом',
+    desc: 'Эндоскопическое удаление образований без полостной операции.',
+    img: SERVICE_IMAGES.polyps,
+    icon: <ScissorsIcon />,
+    details: [
+      'Удаление образований без разреза и полостной операции',
+      'Выполняется во время гастроскопии или колоноскопии',
+      'Гистологическое исследование удалённого образования',
+      'Короткий срок восстановления',
+    ],
+  },
+  {
+    title: 'Баллон в желудок',
+    desc: 'Внутрижелудочный баллон для снижения веса и контроля аппетита.',
+    img: SERVICE_IMAGES.balloon,
+    icon: <BalloonIcon />,
+    details: [
+      'Установка баллона эндоскопически, без операции',
+      'Снижение объёма желудка и контроль аппетита',
+      'Сопровождение врача и план питания на весь период',
+      'Удаляется так же эндоскопически',
+    ],
+  },
+  {
+    title: 'Эндоскопическая гастропластика',
+    desc: 'Малоинвазивное уменьшение объёма желудка без хирургии.',
+    img: SERVICE_IMAGES.gastroplasty,
+    icon: <SurgeryIcon />,
+    details: [
+      'Ушивание стенки желудка через эндоскоп, без разрезов',
+      'Значительное уменьшение объёма желудка',
+      'Снижение веса без полостной операции',
+      'Короткий период восстановления',
+    ],
+  },
+];
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -82,6 +164,7 @@ function App() {
   const [submittedName, setSubmittedName] = useState('');
   const [isDataConsent, setIsDataConsent] = useState(false);
   const [isPolicyAgreed, setIsPolicyAgreed] = useState(false);
+  const [flippedServices, setFlippedServices] = useState<Record<number, boolean>>({});
   const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     try {
       return (localStorage.getItem(CONSENT_KEY) as CookieConsent) || null;
@@ -225,6 +308,10 @@ function App() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const toggleService = (index: number) => {
+    setFlippedServices((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
   const toggleSymptom = (index: number) => {
@@ -447,60 +534,49 @@ function App() {
         <h2 className="section-title fade-in">Услуги</h2>
         <p className="section-subtitle fade-in">Диагностика и лечение заболеваний желудочно-кишечного тракта, современные эндоскопические исследования, профилактика серьёзных заболеваний и помощь в снижении веса.</p>
         <div className="services-grid">
-          <div className="service-card fade-in">
-            <Picture src={SERVICE_IMAGES.consultation} alt="Консультация гастроэнтеролога" className="service-card-img" loading="lazy" />
-            <div className="service-card-overlay"></div>
-            <div className="service-card-content">
-              <div className="service-icon"><StethoscopeIcon /></div>
-              <h3>Консультация гастроэнтеролога</h3>
-              <p>Диагностика и лечение заболеваний ЖКТ, рекомендации по питанию и образу жизни.</p>
+          {SERVICES.map((service, index) => (
+            <div
+              className={`service-card fade-in ${flippedServices[index] ? 'is-flipped' : ''}`}
+              key={service.title}
+              onClick={() => toggleService(index)}
+            >
+              <div className="service-card-inner">
+                <div className="service-card-face service-card-front">
+                  <Picture src={service.img} alt={service.title} className="service-card-img" loading="lazy" />
+                  <div className="service-card-overlay"></div>
+                  <div className="service-card-content">
+                    <div className="service-icon">{service.icon}</div>
+                    <h3>{service.title}</h3>
+                    <p>{service.desc}</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="service-card-flip-btn"
+                    aria-label="Подробнее"
+                    onClick={(e) => { e.stopPropagation(); toggleService(index); }}
+                  >
+                    <RotateIcon />
+                  </button>
+                </div>
+                <div className="service-card-face service-card-back">
+                  <h3>{service.title}</h3>
+                  <ul className="service-card-details">
+                    {service.details.map((detail, j) => (
+                      <li key={j}>{detail}</li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    className="service-card-flip-btn service-card-flip-btn-back"
+                    aria-label="Вернуться"
+                    onClick={(e) => { e.stopPropagation(); toggleService(index); }}
+                  >
+                    <RotateIcon />
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="service-card fade-in">
-            <Picture src={SERVICE_IMAGES.gastroscopy} alt="Гастроскопия" className="service-card-img" loading="lazy" />
-            <div className="service-card-overlay"></div>
-            <div className="service-card-content">
-              <div className="service-icon"><EndoscopeIcon /></div>
-              <h3>Гастроскопия</h3>
-              <p>Исследование пищевода, желудка и двенадцатиперстной кишки с биопсией.</p>
-            </div>
-          </div>
-          <div className="service-card fade-in">
-            <Picture src={SERVICE_IMAGES.colonoscopy} alt="Колоноскопия с NBI" className="service-card-img" loading="lazy" />
-            <div className="service-card-overlay"></div>
-            <div className="service-card-content">
-              <div className="service-icon"><MicroscopeIcon /></div>
-              <h3>Колоноскопия с NBI</h3>
-              <p>Осмотр толстого кишечника с технологией NBI для раннего обнаружения патологий.</p>
-            </div>
-          </div>
-          <div className="service-card fade-in">
-            <Picture src={SERVICE_IMAGES.polyps} alt="Удаление полипов и аденом" className="service-card-img" loading="lazy" />
-            <div className="service-card-overlay"></div>
-            <div className="service-card-content">
-              <div className="service-icon"><ScissorsIcon /></div>
-              <h3>Удаление полипов и аденом</h3>
-              <p>Эндоскопическое удаление образований без полостной операции.</p>
-            </div>
-          </div>
-          <div className="service-card fade-in">
-            <Picture src={SERVICE_IMAGES.balloon} alt="Баллон в желудок" className="service-card-img" loading="lazy" />
-            <div className="service-card-overlay"></div>
-            <div className="service-card-content">
-              <div className="service-icon"><BalloonIcon /></div>
-              <h3>Баллон в желудок</h3>
-              <p>Внутрижелудочный баллон для снижения веса и контроля аппетита.</p>
-            </div>
-          </div>
-          <div className="service-card fade-in">
-            <Picture src={SERVICE_IMAGES.gastroplasty} alt="Эндоскопическая гастропластика" className="service-card-img" loading="lazy" />
-            <div className="service-card-overlay"></div>
-            <div className="service-card-content">
-              <div className="service-icon"><SurgeryIcon /></div>
-              <h3>Эндоскопическая гастропластика</h3>
-              <p>Малоинвазивное уменьшение объёма желудка без хирургии.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 

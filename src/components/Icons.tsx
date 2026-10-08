@@ -94,3 +94,10 @@ export const TimelineArrowIcon: React.FC<IconProps> = ({ className = "w-6 h-6" }
     <polyline points="9 18 15 12 9 6" />
   </svg>
 );
+
+export const RotateIcon: React.FC<IconProps> = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+    <polyline points="21 3 21 8 16 8" />
+  </svg>
+);
