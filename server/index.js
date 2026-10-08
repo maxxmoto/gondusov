@@ -169,6 +169,8 @@ async function serveStatic(req, res, pathname) {
 
 const server = createServer(async (req, res) => {
   try {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
     if (url.pathname === '/health') {
