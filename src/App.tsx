@@ -37,6 +37,30 @@ type CookieConsent = 'accepted' | 'rejected' | null;
 const CONSENT_KEY = 'cookie_consent';
 const METRIKA_ID = 113072145;
 
+const PROFILE_LOGOS: { src: string; alt: string; href?: string }[] = [
+  {
+    src: './logos/sber.svg',
+    alt: 'СберЗдоровье',
+    href: 'https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997',
+  },
+  {
+    src: './logos/prodoctorov.webp',
+    alt: 'ПроДокторов',
+    href: 'https://prodoctorov.ru/azov/vrach/1139434-gondusov/',
+  },
+  {
+    src: './logos/napopravku.webp',
+    alt: 'НаПоправку',
+    href: 'https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/',
+  },
+  {
+    src: './logos/мцсемья.webp',
+    alt: 'МЦ «Семья»',
+    href: 'https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/',
+  },
+  { src: './logos/обк-2.webp', alt: 'ОКБ №2' },
+];
+
 function loadMetrika() {
   const w = window as unknown as { ym?: (...args: unknown[]) => void };
   if (w.ym) return;
@@ -305,6 +329,26 @@ function App() {
         <button className="arrow-btn" onClick={openModal} aria-label="Записаться">
           <ArrowIcon />
         </button>
+      </div>
+
+      {/* Profiles & Reviews Marquee */}
+      <div className="profiles-marquee-section">
+        <div className="profiles-marquee-label">Профили и отзывы</div>
+        <div className="profiles-marquee">
+          <div className="profiles-marquee-track">
+            {[...PROFILE_LOGOS, ...PROFILE_LOGOS].map((logo, i) => (
+              <div className="profiles-marquee-item" key={i}>
+                {logo.href ? (
+                  <a href={logo.href} target="_blank" rel="noopener noreferrer">
+                    <img src={logo.src} alt={logo.alt} className="profiles-marquee-logo" loading="lazy" decoding="async" />
+                  </a>
+                ) : (
+                  <img src={logo.src} alt={logo.alt} className="profiles-marquee-logo" loading="lazy" decoding="async" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* About Section */}
