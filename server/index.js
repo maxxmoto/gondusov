@@ -105,19 +105,53 @@ async function serveStatic(req, res, pathname) {
     let target = filePath;
     const info = await stat(target);
     if (info.isDirectory()) target = join(target, 'index.html');
-    const data = await readFile(target);
     const ext = extname(target).toLowerCase();
     const headers = {
       'Content-Type': MIME[ext] || 'application/octet-stream',
       'Cache-Control': cacheControlFor(pathname),
     };
-    let body = data;
+
     if (COMPRESSIBLE.has(ext)) {
-      body = await maybeCompress(req, data, headers);
+      const accept = String(req.headers['accept-encoding'] || '');
+      headers['Vary'] = 'Accept-Encoding';
+
+      let encoding = null;
+      let servedFile = null;
+      if (/\bbr\b/.test(accept)) {
+        try {
+          await stat(`${target}.br`);
+          encoding = 'br';
+          servedFile = `${target}.br`;
+        } catch { /* no precompressed brotli */ }
+      }
+      if (encoding === null && /\bgzip\b/.test(accept)) {
+        try {
+          await stat(`${target}.gz`);
+          encoding = 'gzip';
+          servedFile = `${target}.gz`;
+        } catch { /* no precompressed gzip */ }
+      }
+      if (encoding && servedFile) {
+        const compressed = await readFile(servedFile);
+        headers['Content-Encoding'] = encoding;
+        headers['Content-Length'] = compressed.length;
+        res.writeHead(200, headers);
+        res.end(req.method === 'HEAD' ? undefined : compressed);
+        return;
+      }
+
+      const data = await readFile(target);
+      const body = await maybeCompress(req, data, headers);
+      headers['Content-Length'] = body.length;
+      res.writeHead(200, headers);
+      res.end(req.method === 'HEAD' ? undefined : body);
+      return;
     }
-    headers['Content-Length'] = body.length;
+
+    const data = await readFile(target);
+    headers['Content-Length'] = data.length;
     res.writeHead(200, headers);
-    res.end(req.method === 'HEAD' ? undefined : body);
+    res.end(req.method === 'HEAD' ? undefined : data);
     return;
   } catch {
     // fall through to 404
