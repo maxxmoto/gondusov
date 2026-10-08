@@ -679,6 +679,11 @@ function App() {
                 Онлайн-запись
               </a>
             </div>
+            <p className="appointment-legal fade-in">
+              Нажимая кнопку онлайн-записи, вы подтверждаете, что ознакомлены с{' '}
+              <a href="./privacy.html" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a> и даёте{' '}
+              <a href="./agreement.html" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a>.
+            </p>
           </div>
 
           <div className="social-buttons fade-in">

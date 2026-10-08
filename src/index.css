@@ -1074,6 +1074,16 @@ a.workplace-item:hover {
   flex-wrap: wrap;
 }
 
+.appointment-legal {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #888;
+}
+
+.appointment-legal a { color: #0ABAB5; text-decoration: underline; }
+.appointment-legal a:hover { text-decoration: none; }
+
 .btn-primary {
   background: #0ABAB5;
   color: #fff;
