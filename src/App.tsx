@@ -665,7 +665,7 @@ function App() {
 
           <div className="appointment-block" id="contacts">
             <h2 className="section-title fade-in">Запись на консультацию</h2>
-            <p className="fade-in">Записаться на консультацию гастроэнтеролога, гастроскопию, колоноскопию с NBI, удаление полипов, программу снижения веса, установку баллона в желудок или консультацию по эндоскопической гастропластике можно по телефону или через онлайн-запись в клинике.</p>
+            <p className="fade-in">На сайте можно записаться на онлайн-консультацию. Остальные услуги — по телефону или через онлайн-запись в клинике.</p>
             <div className="appointment-buttons fade-in">
               <a href="tel:+79185680599" className="btn-primary">
                 <PhoneIcon />
