@@ -1075,7 +1075,7 @@ a.workplace-item:hover {
 }
 
 .appointment-legal {
-  margin-top: 12px;
+  margin-top: 28px;
   font-size: 13px;
   line-height: 1.5;
   color: #888;
@@ -1145,6 +1145,9 @@ a.workplace-item:hover {
 .social-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); }
 
 .social-icon { width: 24px; height: 24px; }
+
+.social-label-desktop { display: inline; }
+.social-label-mobile { display: none; }
 
 .social-button-telegram { background: #0088cc; color: #fff; }
 .social-button-telegram:hover { background: #006da3; }
@@ -1555,6 +1558,8 @@ a.workplace-item:hover {
   .btn-appointment { padding: 8px 14px; font-size: 12px; }
   .btn-full { display: none; }
   .btn-short { display: inline; }
+  .social-label-desktop { display: none; }
+  .social-label-mobile { display: inline; }
 }
 
 @media (max-width: 480px) {
