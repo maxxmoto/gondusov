@@ -622,6 +622,10 @@ body {
   width: max-content;
 }
 
+.workplaces-marquee:hover .workplaces-marquee-track {
+  animation-play-state: paused;
+}
+
 .workplace-item {
   flex-shrink: 0;
   display: flex;
@@ -640,11 +644,31 @@ body {
   transition: filter 0.3s, opacity 0.3s;
 }
 
+.workplace-logo-sm { height: 26px; max-width: 110px; }
+.workplace-logo-lg { height: 56px; max-width: 240px; }
+
+.workplace-item-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #555;
+  white-space: nowrap;
+  padding: 12px 26px;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.workplace-item-text:hover {
+  color: #0ABAB5;
+}
+
 a.workplace-item {
   text-decoration: none;
 }
 
-a.workplace-item:hover .workplace-logo {
+.workplace-item:hover .workplace-logo {
   filter: grayscale(0);
   opacity: 1;
 }
@@ -1464,6 +1488,9 @@ a.workplace-item:hover .workplace-logo {
   .workplaces-marquee-track { animation-duration: 20s; }
   .workplace-item { margin-right: 40px; }
   .workplace-logo { height: 30px; max-width: 130px; }
+  .workplace-logo-sm { height: 20px; max-width: 90px; }
+  .workplace-logo-lg { height: 42px; max-width: 200px; }
+  .workplace-item-text { font-size: 17px; padding: 10px 20px; }
 
   .approach-section { margin: 0 8px; padding: 40px 20px; border-radius: 24px; }
   .approach-section p { font-size: 14px; line-height: 1.6; }
