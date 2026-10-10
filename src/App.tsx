@@ -313,9 +313,7 @@ function App() {
 
   const toggleService = (index: number) => {
     setFlippedServices((prev) => ({ ...prev, [index]: !prev[index] }));
-    window.setTimeout(() => {
-      setShowBack((prev) => ({ ...prev, [index]: !prev[index] }));
-    }, 140);
+    setShowBack((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
   const toggleSymptom = (index: number) => {
