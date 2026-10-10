@@ -1985,9 +1985,11 @@ a.workplace-item {
   box-shadow: 0 12px 30px rgba(10, 186, 181, 0.6);
 }
 .float-telegram-icon {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
+  position: absolute;
+  inset: 7px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   display: block;
   border-radius: 50%;
 }
