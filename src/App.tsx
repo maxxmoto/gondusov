@@ -197,7 +197,7 @@ function formatPhone(raw: string): string {
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [phoneValue, setPhoneValue] = useState('');
+  const [phoneValue, setPhoneValue] = useState('+7');
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
   const [showFloat, setShowFloat] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
