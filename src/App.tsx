@@ -66,7 +66,7 @@ const WORKPLACES: { label: string; src?: string; href?: string; size?: 'sm' | 'l
   { label: 'ПроДокторов', src: './logos/prodoctorov.webp', href: 'https://prodoctorov.ru/azov/vrach/1139434-gondusov/' },
   { label: 'НМИЦ Онкологии', src: './logos/нмицонкологии.webp' },
   { label: 'МЦ «Семья»', src: './logos/мцсемья.webp', href: 'https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/' },
-  { label: 'РостГМУ', src: './logos/rostmu_logo.png', href: 'https://rostgmu.ru/' },
+  { label: 'РостГМУ', src: './logos/rostmu_logo.webp', href: 'https://rostgmu.ru/' },
   { label: 'НаПоправку', src: './logos/napopravku.webp', href: 'https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/', size: 'lg' },
   { label: 'Doctu', src: './logos/doctu.svg', href: 'https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich', size: 'sm' },
 ];
