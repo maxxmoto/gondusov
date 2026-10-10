@@ -152,6 +152,33 @@ const SERVICES: {
   },
 ];
 
+const FAQ_ITEMS: { q: string; a: string }[] = [
+  {
+    q: 'Как подготовиться к гастроскопии?',
+    a: 'Исследование проводится натощак: не есть 8–12 часов, не пить за 2–3 часа (допустимо небольшое количество воды). Утром лучше не курить. Точную схему подготовки врач даёт при записи.',
+  },
+  {
+    q: 'Нужна ли особая подготовка к колоноскопии?',
+    a: 'Да. За 2–3 дня — специальная диета, затем приём слабительных по схеме. Качество исследования напрямую зависит от чистоты кишечника, поэтому подготовку важно выполнить полностью.',
+  },
+  {
+    q: 'Больно ли делать гастроскопию и колоноскопию?',
+    a: 'Неприятные ощущения возможны, но большинство пациентов переносят исследование спокойно. По желанию и показаниям обследование можно провести с медикаментозным сном (седацией) — это обсуждается заранее.',
+  },
+  {
+    q: 'Сколько длится исследование?',
+    a: 'Гастроскопия занимает около 10–15 минут, колоноскопия — 20–30 минут. С седацией немного дольше, так как нужно время на засыпание и пробуждение.',
+  },
+  {
+    q: 'Можно ли записаться онлайн?',
+    a: 'Да, через сайт доступна онлайн-запись на консультацию. На приём и исследования в клинике можно записаться по телефону.',
+  },
+  {
+    q: 'Что взять с собой на приём?',
+    a: 'Паспорт, полис, результаты предыдущих обследований и анализов, список принимаемых лекарств. Дополнительные направления не требуются.',
+  },
+];
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -166,6 +193,7 @@ function App() {
   const [isPolicyAgreed, setIsPolicyAgreed] = useState(false);
   const [flippedServices, setFlippedServices] = useState<Record<number, boolean>>({});
   const [showBack, setShowBack] = useState<Record<number, boolean>>({});
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     try {
       return (localStorage.getItem(CONSENT_KEY) as CookieConsent) || null;
@@ -280,6 +308,12 @@ function App() {
 
     if (!name || !phone) {
       alert('Пожалуйста, заполните имя и телефон.');
+      return;
+    }
+
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+      alert('Пожалуйста, введите корректный номер телефона.');
       return;
     }
 
@@ -747,6 +781,30 @@ function App() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="faq-section" id="faq">
+        <div className="faq-container">
+          <h2 className="section-title fade-in">Частые вопросы</h2>
+          <div className="faq-list">
+            {FAQ_ITEMS.map((item, i) => (
+              <div className={`faq-item ${openFaq === i ? 'open' : ''}`} key={i}>
+                <button
+                  type="button"
+                  className="faq-question"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                >
+                  <span>{item.q}</span>
+                  <span className="faq-icon" aria-hidden="true">{openFaq === i ? '−' : '+'}</span>
+                </button>
+                <div className="faq-answer">
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Useful Content + Appointment */}
       <section className="content-appointment-section">
         <div className="content-appointment-inner">
@@ -939,6 +997,20 @@ function App() {
           </div>
         </div>
       )}
+
+      {/* Floating Telegram */}
+      <a
+        href="https://t.me/Dr_161"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="float-telegram"
+        aria-label="Написать в Telegram"
+        title="Написать в Telegram"
+      >
+        <svg className="float-telegram-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+        </svg>
+      </a>
     </div>
   );
 }

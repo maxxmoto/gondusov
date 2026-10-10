@@ -1874,3 +1874,118 @@ a.workplace-item {
   .cookie-banner-text { font-size: 12.5px; line-height: 1.45; }
   .cookie-btn { padding: 14px 16px; }
 }
+
+/* ===== FAQ ===== */
+.faq-section {
+  padding: 80px 20px;
+}
+.faq-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.faq-section .section-title {
+  text-align: center;
+  margin-bottom: 8px;
+}
+.faq-list {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.faq-item.open {
+  border-color: #0ABAB5;
+  box-shadow: 0 10px 30px rgba(10, 186, 181, 0.12);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1a1a1a;
+  text-align: left;
+}
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e0f7f6;
+  color: #0ABAB5;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s, background 0.25s;
+}
+.faq-item.open .faq-icon {
+  background: #0ABAB5;
+  color: #fff;
+  transform: rotate(180deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 400px;
+}
+.faq-answer p {
+  padding: 0 24px 20px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #555;
+}
+
+/* ===== FLOATING TELEGRAM ===== */
+.float-telegram {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2500;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #0088cc;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 136, 204, 0.45);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.float-telegram:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 136, 204, 0.55);
+}
+.float-telegram-icon {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 768px) {
+  .faq-section { padding: 48px 16px; }
+  .faq-question { font-size: 15.5px; padding: 16px 18px; }
+  .faq-answer p { font-size: 14px; padding: 0 18px 16px; }
+
+  .float-telegram { right: 16px; bottom: 16px; width: 54px; height: 54px; }
+  .float-telegram-icon { width: 28px; height: 28px; }
+}
