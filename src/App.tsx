@@ -171,9 +171,30 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
 ];
 
+function formatPhone(raw: string): string {
+  let d = raw.replace(/\D/g, '');
+  if (d.startsWith('8')) d = '7' + d.slice(1);
+  if (!d.startsWith('7')) d = '7' + d;
+  d = d.slice(0, 11);
+  const p1 = d.slice(1, 4);
+  const p2 = d.slice(4, 7);
+  const p3 = d.slice(7, 9);
+  const p4 = d.slice(9, 11);
+  let out = '+7';
+  if (!p1) return out;
+  out += ` (${p1}`;
+  if (!p2) return out;
+  out += `) ${p2}`;
+  if (!p3) return out;
+  out += `-${p3}`;
+  if (p4) out += `-${p4}`;
+  return out;
+}
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [phoneValue, setPhoneValue] = useState('');
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
   const [showFloat, setShowFloat] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
@@ -236,8 +257,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const id = window.setInterval(() => setChatOpen(true), 20000);
-    return () => window.clearInterval(id);
+    let intervalId: number | undefined;
+    const first = window.setTimeout(() => {
+      setChatOpen(true);
+      intervalId = window.setInterval(() => setChatOpen(true), 30000);
+    }, 20000);
+    return () => {
+      window.clearTimeout(first);
+      if (intervalId) window.clearInterval(intervalId);
+    };
   }, []);
 
   useEffect(() => {
@@ -944,7 +972,14 @@ function App() {
               <>
                 <h3>Запись на онлайн-консультацию</h3>
                 <input type="text" placeholder="Ваше имя" id="modalName" />
-                <input type="tel" placeholder="Телефон" id="modalPhone" />
+                <input
+                  type="tel"
+                  inputMode="tel"
+                  placeholder="+7 (___) ___-__-__"
+                  id="modalPhone"
+                  value={phoneValue}
+                  onChange={(e) => setPhoneValue(formatPhone(e.target.value))}
+                />
                 <label className="modal-consent">
                   <input
                     type="checkbox"
@@ -1041,9 +1076,7 @@ function App() {
         aria-label="Написать в Telegram"
         title="Написать в Telegram"
       >
-        <svg className="float-telegram-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-        </svg>
+        <img src="./chat.webp" alt="Написать в Telegram" className="float-telegram-icon" />
         </a>
       )}
     </div>

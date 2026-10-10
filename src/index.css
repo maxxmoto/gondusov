@@ -1988,6 +1988,9 @@ a.workplace-item {
 .float-telegram-icon {
   width: 30px;
   height: 30px;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
 }
 
 @keyframes floatTelegramIn {
