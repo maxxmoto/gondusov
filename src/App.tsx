@@ -236,8 +236,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const t = window.setTimeout(() => setChatOpen(true), 20000);
-    return () => window.clearTimeout(t);
+    const id = window.setInterval(() => setChatOpen(true), 20000);
+    return () => window.clearInterval(id);
   }, []);
 
   useEffect(() => {
