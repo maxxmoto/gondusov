@@ -1003,7 +1003,7 @@ function App() {
       {chatOpen && (
         <div className="chat-widget" role="dialog" aria-label="Чат с врачом">
           <div className="chat-head">
-            <span className="chat-avatar"><StethoscopeIcon /></span>
+            <img src="./chatlogo.png" alt="Гондусов Денис" className="chat-avatar" />
             <span className="chat-head-text">
               <span className="chat-head-name">Гондусов Денис</span>
               <span className="chat-head-status">онлайн · гастроэнтеролог</span>
