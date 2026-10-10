@@ -937,6 +937,19 @@ function App() {
             <p><a href="https://zoon.ru/rostov/p-doctor/denis_vadimovich_gondusov/" target="_blank" rel="noopener noreferrer">Zoon</a></p>
           </nav>
         </div>
+        <nav className="footer-sitemap" aria-label="Карта сайта">
+          <h4>Карта сайта</h4>
+          <p><a href="#about">О враче</a></p>
+          <p><a href="#services">Услуги</a></p>
+          <p><a href="#approach">Комплексный подход к здоровью</a></p>
+          <p><a href="#when-visit">Когда обратиться к врачу</a></p>
+          <p><a href="#consultation">Как проходит консультация</a></p>
+          <p><a href="#results">Результаты</a></p>
+          <p><a href="#faq">Частые вопросы</a></p>
+          <p><a href="#contacts">Запись на консультацию</a></p>
+          <p><a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></p>
+          <p><a href="./agreement.html" target="_blank" rel="noopener noreferrer">Согласие на обработку ПД</a></p>
+        </nav>
         <div className="footer-disclaimer">
           <p>Сайт принадлежит частному лицу — Гондусову Денису Вадимовичу — и носит исключительно справочно-информационный характер. Сайт не является медицинской организацией и не оказывает медицинские услуги.</p>
           <p>Медицинские услуги (консультации, диагностика, эндоскопические исследования и др.) оказываются лицензированными медицинскими организациями по месту работы врача. Постановка диагноза и назначение лечения возможны только по итогам очной консультации.</p>

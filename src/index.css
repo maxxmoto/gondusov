@@ -1361,6 +1361,32 @@ a.workplace-item {
 
 .footer a:hover { color: #0ABAB5; }
 
+.footer-sitemap {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 8px;
+  padding: 22px 40px 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 30px;
+  align-items: baseline;
+}
+.footer-sitemap h4 {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.footer-sitemap p,
+.footer-sitemap a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+.footer-sitemap a:hover {
+  color: #0ABAB5;
+}
+
 .footer-disclaimer {
   max-width: 1400px;
   margin: 40px auto 0;
@@ -1729,6 +1755,7 @@ a.workplace-item {
   .footer-content { grid-template-columns: 1fr; gap: 28px; }
   .footer h4 { font-size: 14px; }
   .footer p, .footer a { font-size: 13px; }
+  .footer-sitemap { padding: 18px 0 4px; gap: 8px 20px; }
 
   .modal { padding: 28px 20px; border-radius: 20px; }
   .modal h3 { font-size: 22px; }
