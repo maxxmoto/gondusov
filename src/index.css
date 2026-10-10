@@ -840,7 +840,6 @@ a.workplace-item {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url('./backgroundkompleks.png');
   background-repeat: no-repeat;
   background-position: right center;
   background-size: contain;

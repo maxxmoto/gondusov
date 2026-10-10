@@ -687,7 +687,7 @@ function App() {
 
       {/* Approach Section */}
       <div className="approach-section" id="approach">
-        <div className="approach-bg" aria-hidden="true"></div>
+        <div className="approach-bg" aria-hidden="true" style={{ backgroundImage: "url('./backgroundkompleks.png')" }}></div>
         <div className="approach-content">
           <h2 className="section-title fade-in">Комплексный подход к здоровью</h2>
           <p className="fade-in">Основная задача — не только убрать неприятные симптомы, но и понять их причину. Большое внимание уделяется ранней диагностике заболеваний желудка и кишечника. Многие серьёзные изменения могут долго не вызывать заметных симптомов, поэтому своевременное обследование играет важную роль.</p>
