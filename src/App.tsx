@@ -33,6 +33,9 @@ const SERVICE_IMAGES = {
 
 const PHONE_DISPLAY = '+7 918 568-05-99';
 const PHONE_TEL = '+79185680599';
+const TG_CONTACT_HREF =
+  'https://t.me/Dr_161?text=' +
+  encodeURIComponent('Здравствуйте! Пишу с сайта drgondusov.ru. Хочу задать вопрос. Опишу свою проблему: ');
 
 type CookieConsent = 'accepted' | 'rejected' | null;
 const CONSENT_KEY = 'cookie_consent';
@@ -684,6 +687,7 @@ function App() {
 
       {/* Approach Section */}
       <div className="approach-section" id="approach">
+        <div className="approach-bg" aria-hidden="true"></div>
         <div className="approach-content">
           <h2 className="section-title fade-in">Комплексный подход к здоровью</h2>
           <p className="fade-in">Основная задача — не только убрать неприятные симптомы, но и понять их причину. Большое внимание уделяется ранней диагностике заболеваний желудка и кишечника. Многие серьёзные изменения могут долго не вызывать заметных симптомов, поэтому своевременное обследование играет важную роль.</p>
@@ -1052,7 +1056,7 @@ function App() {
               <p>Здравствуйте! Я — врач Денис Вадимович Гондусов. Задайте свой вопрос — отвечу лично в Телеграм.</p>
             </div>
             <a
-              href="https://t.me/Dr_161"
+              href={TG_CONTACT_HREF}
               target="_blank"
               rel="noopener noreferrer"
               className="chat-cta"
@@ -1069,7 +1073,7 @@ function App() {
       {/* Floating Telegram */}
       {showFloat && (
         <a
-        href="https://t.me/Dr_161"
+        href={TG_CONTACT_HREF}
         target="_blank"
         rel="noopener noreferrer"
         className="float-telegram"
