@@ -612,6 +612,7 @@ body {
 
 .service-card-back h3 {
   font-size: 19px;
+  font-weight: 800;
   color: #fff;
   margin-bottom: 12px;
 }
