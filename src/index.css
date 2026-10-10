@@ -610,7 +610,7 @@ body {
   padding: 30px 26px 22px;
 }
 
-.service-card-back h3 {
+.service-card-face.service-card-back h3 {
   font-size: 19px;
   font-weight: 800;
   color: #fff;
