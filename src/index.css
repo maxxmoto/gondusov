@@ -1596,11 +1596,11 @@ a.workplace-item {
   .consultation-banner .arrow-btn svg { width: 28px; height: 28px; }
 
   .section { padding: 48px 16px; }
-  .section-title { font-size: 28px; }
-  .section-subtitle { font-size: 15px; margin-bottom: 24px; line-height: 1.5; }
+  .section-title { font-size: 30px; }
+  .section-subtitle { font-size: 16px; margin-bottom: 24px; line-height: 1.5; }
 
   .about-section { padding: 48px 16px 24px; }
-  .about-intro { font-size: 15px; margin-bottom: 28px; line-height: 1.6; }
+  .about-intro { font-size: 16px; margin-bottom: 28px; line-height: 1.6; }
   .timeline { margin-bottom: 32px; overflow: hidden; }
   .timeline-track { width: 400%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
   .timeline-card { width: 25%; min-width: 25%; max-width: 25%; flex-shrink: 0; }
@@ -1613,7 +1613,7 @@ a.workplace-item {
   .timeline-dots { display: flex; }
 
   .about-details { grid-template-columns: 1fr; gap: 28px; }
-  .about-details-text p { font-size: 15px; line-height: 1.6; }
+  .about-details-text p { font-size: 16px; line-height: 1.6; }
   .about-stats { display: block; }
   .about-stats .stat-card { display: none; }
   .about-stats .stats-marquee { display: block; }
@@ -1621,10 +1621,10 @@ a.workplace-item {
   .services-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
   .service-card { height: 300px; min-height: 300px; }
   .service-card-content { padding: 20px; }
-  .service-card h3 { font-size: 18px; margin-bottom: 8px; }
-  .service-card p { font-size: 14px; line-height: 1.45; }
+  .service-card h3 { font-size: 19px; margin-bottom: 8px; }
+  .service-card p { font-size: 15px; line-height: 1.45; }
   .service-card-back { padding: 24px 20px; }
-  .service-card-details li { font-size: 14px; }
+  .service-card-details li { font-size: 15px; }
   .service-card-flip-btn { width: 36px; height: 36px; top: 12px; right: 12px; }
   .service-icon { width: 44px; height: 44px; margin-bottom: 12px; }
   .service-icon svg { width: 22px; height: 22px; }
@@ -1638,7 +1638,7 @@ a.workplace-item {
   .workplace-item-text { font-size: 17px; padding: 10px 20px; }
 
   .approach-section { margin: 0 8px; padding: 40px 20px; border-radius: 24px; }
-  .approach-section p { font-size: 15px; line-height: 1.6; }
+  .approach-section p { font-size: 16px; line-height: 1.6; }
   .approach-photo {
     position: static;
     right: auto;
@@ -1672,7 +1672,7 @@ a.workplace-item {
 
   .when-visit { padding: 48px 16px; }
   .symptoms-list { grid-template-columns: 1fr; gap: 8px; }
-  .symptom-item { font-size: 15px; padding: 10px 12px; }
+  .symptom-item { font-size: 16px; padding: 10px 12px; }
 
   .consult-process { padding: 48px 16px; }
   .consult-cards { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
@@ -1687,7 +1687,7 @@ a.workplace-item {
   .results-section { padding: 48px 16px; }
   .results-list { margin-top: 24px; }
   .results-item { padding: 16px 18px; gap: 12px; }
-  .results-item p { font-size: 15px; line-height: 1.6; }
+  .results-item p { font-size: 16px; line-height: 1.6; }
   .results-check { width: 28px; height: 28px; }
   .results-check svg { width: 14px; height: 14px; }
 
@@ -1704,7 +1704,7 @@ a.workplace-item {
     row-gap: 24px;
   }
   .appointment-block { grid-area: appointment; padding: 0 16px; }
-  .appointment-block > p { font-size: 15px; line-height: 1.6; }
+  .appointment-block > p { font-size: 16px; line-height: 1.6; }
   .appointment-buttons { flex-direction: row; flex-wrap: wrap; }
   .btn-primary, .btn-secondary { justify-content: center; padding: 14px 20px; font-size: 14px; }
 
@@ -1755,35 +1755,35 @@ a.workplace-item {
   .logo-text { font-size: 17px; }
   .nav a { font-size: 16px; }
   .btn-appointment { font-size: 15px; }
-  .section-title { font-size: 48px; }
-  .section-subtitle { font-size: 20px; }
-  .about-intro { font-size: 19px; }
-  .about-details-text p { font-size: 18px; }
+  .section-title { font-size: 50px; }
+  .section-subtitle { font-size: 21px; }
+  .about-intro { font-size: 20px; }
+  .about-details-text p { font-size: 19px; }
   .timeline-card-body h3 { font-size: 19px; }
   .timeline-card-body p { font-size: 15px; }
   .timeline-year { font-size: 15px; }
   .stat-card .number { font-size: 32px; }
   .stat-card .label { font-size: 15px; }
-  .service-card h3 { font-size: 22px; }
-  .service-card p { font-size: 16px; }
-  .service-card-details li { font-size: 15px; }
-  .approach-section p { font-size: 18px; }
-  .symptom-item { font-size: 17px; }
+  .service-card h3 { font-size: 23px; }
+  .service-card p { font-size: 17px; }
+  .service-card-details li { font-size: 16px; }
+  .approach-section p { font-size: 19px; }
+  .symptom-item { font-size: 18px; }
   .consult-card-head h3 { font-size: 24px; }
   .consult-steps strong { font-size: 17px; }
   .consult-steps span { font-size: 16px; }
   .consult-duration { font-size: 16px; }
   .consult-price strong { font-size: 30px; }
   .consult-price span { font-size: 16px; }
-  .results-item p { font-size: 18px; }
+  .results-item p { font-size: 19px; }
   .appointment-section > p,
-  .appointment-block > p { font-size: 19px; }
+  .appointment-block > p { font-size: 20px; }
   .btn-primary, .btn-secondary { font-size: 17px; }
   .social-button { font-size: 18px; }
   .workplace-item-text { font-size: 20px; }
-  .faq-question { font-size: 17.5px; }
-  .faq-answer p { font-size: 16px; }
-  .footer p, .footer a { font-size: 16px; }
+  .faq-question { font-size: 18px; }
+  .faq-answer p { font-size: 17px; }
+  .footer p, .footer a { font-size: 17px; }
   .footer h4 { font-size: 17px; }
   .modal h3 { font-size: 28px; }
   .modal input, .modal textarea { font-size: 17px; }
@@ -1985,10 +1985,8 @@ a.workplace-item {
   box-shadow: 0 12px 30px rgba(10, 186, 181, 0.6);
 }
 .float-telegram-icon {
-  position: absolute;
-  inset: 7px;
-  width: auto;
-  height: auto;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   display: block;
   border-radius: 50%;
@@ -2117,5 +2115,5 @@ a.workplace-item {
   .faq-answer p { font-size: 14px; padding: 0 18px 16px; }
 
   .float-telegram { right: 28px; bottom: 28px; width: 54px; height: 54px; }
-  .float-telegram-icon { width: 28px; height: 28px; }
+  .float-telegram-icon { width: 36px; height: 36px; }
 }
