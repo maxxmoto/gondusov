@@ -1752,41 +1752,45 @@ a.workplace-item {
 
 /* ===== DESKTOP TEXT BOOST ===== */
 @media (min-width: 1025px) {
-  .logo-text { font-size: 16px; }
-  .nav a { font-size: 15px; }
-  .btn-appointment { font-size: 14px; }
-  .section-title { font-size: 46px; }
-  .section-subtitle { font-size: 19px; }
-  .about-intro { font-size: 18px; }
-  .about-details-text p { font-size: 17px; }
-  .timeline-card-body h3 { font-size: 18px; }
-  .timeline-card-body p { font-size: 14px; }
-  .timeline-year { font-size: 14px; }
-  .stat-card .number { font-size: 30px; }
-  .stat-card .label { font-size: 14px; }
-  .service-card h3 { font-size: 21px; }
-  .service-card p { font-size: 15px; }
-.approach-section p { font-size: 17px; }
-  .symptom-item { font-size: 16px; }
-  .consult-card-head h3 { font-size: 23px; }
-  .consult-steps strong { font-size: 16px; }
-  .consult-steps span { font-size: 15px; }
-  .consult-duration { font-size: 15px; }
-  .consult-price strong { font-size: 28px; }
-  .consult-price span { font-size: 15px; }
-  .results-item p { font-size: 17px; }
+  .logo-text { font-size: 17px; }
+  .nav a { font-size: 16px; }
+  .btn-appointment { font-size: 15px; }
+  .section-title { font-size: 48px; }
+  .section-subtitle { font-size: 20px; }
+  .about-intro { font-size: 19px; }
+  .about-details-text p { font-size: 18px; }
+  .timeline-card-body h3 { font-size: 19px; }
+  .timeline-card-body p { font-size: 15px; }
+  .timeline-year { font-size: 15px; }
+  .stat-card .number { font-size: 32px; }
+  .stat-card .label { font-size: 15px; }
+  .service-card h3 { font-size: 22px; }
+  .service-card p { font-size: 16px; }
+  .service-card-details li { font-size: 15px; }
+  .approach-section p { font-size: 18px; }
+  .symptom-item { font-size: 17px; }
+  .consult-card-head h3 { font-size: 24px; }
+  .consult-steps strong { font-size: 17px; }
+  .consult-steps span { font-size: 16px; }
+  .consult-duration { font-size: 16px; }
+  .consult-price strong { font-size: 30px; }
+  .consult-price span { font-size: 16px; }
+  .results-item p { font-size: 18px; }
   .appointment-section > p,
-  .appointment-block > p { font-size: 18px; }
-  .btn-primary, .btn-secondary { font-size: 16px; }
-  .social-button { font-size: 17px; }
-  .footer p, .footer a { font-size: 15px; }
-  .footer h4 { font-size: 16px; }
-  .modal h3 { font-size: 27px; }
-  .modal input, .modal textarea { font-size: 16px; }
-  .modal-submit { font-size: 16px; }
-  .modal-phone { font-size: 25px; }
-  .modal-success > p { font-size: 16px; }
-  .modal-link { font-size: 16px; }
+  .appointment-block > p { font-size: 19px; }
+  .btn-primary, .btn-secondary { font-size: 17px; }
+  .social-button { font-size: 18px; }
+  .workplace-item-text { font-size: 20px; }
+  .faq-question { font-size: 17.5px; }
+  .faq-answer p { font-size: 16px; }
+  .footer p, .footer a { font-size: 16px; }
+  .footer h4 { font-size: 17px; }
+  .modal h3 { font-size: 28px; }
+  .modal input, .modal textarea { font-size: 17px; }
+  .modal-submit { font-size: 17px; }
+  .modal-phone { font-size: 26px; }
+  .modal-success > p { font-size: 17px; }
+  .modal-link { font-size: 17px; }
 }
 
 /* ===== COOKIE BANNER ===== */
