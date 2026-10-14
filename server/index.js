@@ -30,6 +30,8 @@ const MIME = {
   '.ttf': 'font/ttf',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
   '.txt': 'text/plain; charset=utf-8',
 };
 
@@ -40,7 +42,7 @@ const NO_CACHE = 'no-cache';
 function cacheControlFor(pathname) {
   if (pathname.startsWith('/assets/')) return IMMUTABLE;
   const ext = extname(pathname).toLowerCase();
-  if (['.avif', '.webp', '.png', '.jpg', '.jpeg', '.jfif', '.svg', '.ico', '.ttf', '.woff', '.woff2'].includes(ext)) {
+  if (['.avif', '.webp', '.png', '.jpg', '.jpeg', '.jfif', '.svg', '.ico', '.ttf', '.woff', '.woff2', '.mp4', '.webm'].includes(ext)) {
     return STATIC_LONG;
   }
   return NO_CACHE;
@@ -149,6 +151,38 @@ async function serveStatic(req, res, pathname) {
     }
 
     const data = await readFile(target);
+    const rangeHeader = req.headers.range;
+    if (rangeHeader) {
+      const m = /^bytes=(\d*)-(\d*)$/.exec(String(rangeHeader));
+      if (m) {
+        const size = data.length;
+        let start = m[1] ? parseInt(m[1], 10) : 0;
+        let end = m[2] ? parseInt(m[2], 10) : size - 1;
+        if (Number.isNaN(start)) start = 0;
+        if (Number.isNaN(end) || end >= size) end = size - 1;
+        if (start > end || start >= size) {
+          res.writeHead(416, {
+            'Content-Type': headers['Content-Type'],
+            'Content-Range': `bytes */${size}`,
+            'Accept-Ranges': 'bytes',
+          });
+          res.end();
+          return;
+        }
+        const chunk = data.subarray(start, end + 1);
+        res.writeHead(206, {
+          'Content-Type': headers['Content-Type'],
+          'Cache-Control': headers['Cache-Control'],
+          'Content-Range': `bytes ${start}-${end}/${size}`,
+          'Accept-Ranges': 'bytes',
+          'Content-Length': chunk.length,
+        });
+        res.end(req.method === 'HEAD' ? undefined : chunk);
+        return;
+      }
+    }
+
+    headers['Accept-Ranges'] = 'bytes';
     headers['Content-Length'] = data.length;
     res.writeHead(200, headers);
     res.end(req.method === 'HEAD' ? undefined : data);

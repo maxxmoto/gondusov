@@ -212,6 +212,7 @@ function App() {
   const [flippedServices, setFlippedServices] = useState<Record<number, boolean>>({});
   const [showBack, setShowBack] = useState<Record<number, boolean>>({});
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [movieDone, setMovieDone] = useState(false);
   const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     try {
       return (localStorage.getItem(CONSENT_KEY) as CookieConsent) || null;
@@ -698,6 +699,18 @@ function App() {
           <Picture src="./фото2.webp" alt="Комплексный подход к здоровью" className="approach-photo-right" loading="lazy" />
           <div className="approach-photo-overlay"></div>
         </div>
+        {!movieDone && (
+          <video
+            className="approach-video"
+            src="./komplex.mp4"
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            onEnded={() => setMovieDone(true)}
+            onError={() => setMovieDone(true)}
+          />
+        )}
       </div>
 
       {/* When to Visit Section */}
