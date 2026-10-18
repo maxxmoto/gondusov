@@ -700,16 +700,19 @@ function App() {
           <div className="approach-photo-overlay"></div>
         </div>
         {!movieDone && (
-          <video
-            className="approach-video"
-            src="./komplex.mp4"
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            onEnded={() => setMovieDone(true)}
-            onError={() => setMovieDone(true)}
-          />
+          <>
+            <video
+              className="approach-video"
+              src="./komplex.mp4"
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              onEnded={() => setMovieDone(true)}
+              onError={() => setMovieDone(true)}
+            />
+            <div className="approach-video-overlay" aria-hidden="true"></div>
+          </>
         )}
       </div>
 

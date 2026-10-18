@@ -873,13 +873,22 @@ a.workplace-item {
   pointer-events: none;
 }
 
-.approach-section .section-title { color: #fff; }
+.approach-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(90deg, rgba(3, 33, 37, 0.68) 0%, rgba(3, 33, 37, 0.42) 55%, rgba(3, 33, 37, 0.22) 100%);
+  pointer-events: none;
+}
+
+.approach-section .section-title { color: #fff; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45); }
 
 .approach-section p {
   font-size: 16px;
   line-height: 1.7;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
   margin-bottom: 16px;
   max-width: 800px;
 }
@@ -1674,6 +1683,7 @@ a.workplace-item {
   .workplace-item-text { font-size: 17px; padding: 10px 20px; }
 
   .approach-section { margin: 0 8px; padding: 40px 20px; border-radius: 24px; }
+  .approach-video-overlay { background: rgba(3, 33, 37, 0.6); }
   .approach-section p { font-size: 16px; line-height: 1.6; }
   .approach-photo {
     position: static;
