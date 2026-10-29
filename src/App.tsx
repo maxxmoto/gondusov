@@ -494,7 +494,7 @@ function App() {
       <div className="consultation-banner">
         <h2>КОНСУЛЬТАЦИЯ</h2>
         <a href={TG_CONTACT_HREF} target="_blank" rel="noopener noreferrer" className="arrow-btn" aria-label="Связаться в Telegram">
-          <TgIcon />
+          <ArrowIcon />
         </a>
       </div>
 
