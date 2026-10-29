@@ -2290,7 +2290,9 @@ a.workplace-item {
     position: static;
     order: 2;
     flex: 0 0 45%;
-    transform: translate(10px, -10px);
+    align-self: flex-end;
+    margin-left: -16px;
+    margin-bottom: -28px;
   }
   .promo-photo img { height: auto; width: 100%; }
   .promo-text {
