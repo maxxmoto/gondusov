@@ -472,6 +472,7 @@ function App() {
       <header className={`header ${isHeaderScrolled ? 'scrolled' : ''}`}>
         <a href="#" className="logo">
           <LogoIcon />
+          <span className="logo-text">Гондусов Денис</span>
         </a>
 
         <nav className="nav">
@@ -482,16 +483,36 @@ function App() {
           <a href="#contacts">Контакты</a>
         </nav>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div className="header-actions">
+          <a href="tel:+79185680599" className="header-phone">+7 918 568-05-99</a>
+
+          <a
+            href={TG_CONTACT_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-social header-social-tg"
+            aria-label="Написать в Telegram"
+          >
+            <TgIcon />
+          </a>
+
+          <a
+            href="https://dzen.ru/drgondusov"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-social header-social-dzen"
+            aria-label="Дзен"
+          >
+            <img src="./dzen.svg" alt="" width={38} height={38} loading="eager" />
+          </a>
+
           <a
             href={TG_CONTACT_HREF}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-appointment"
           >
-            <TgIcon className="btn-tg-icon" />
-            <span className="btn-full">СВЯЗАТЬСЯ</span>
-            <span className="btn-short">Связь</span>
+            Написать
           </a>
 
           <button
@@ -511,6 +532,9 @@ function App() {
           <a href="#approach" onClick={closeMobileMenu}>Подход</a>
           <a href="#when-visit" onClick={closeMobileMenu}>Когда обратиться</a>
           <a href="#contacts" onClick={closeMobileMenu}>Контакты</a>
+          <a href="tel:+79185680599" className="mobile-menu-phone" onClick={closeMobileMenu}>
+            +7 918 568-05-99
+          </a>
         </div>
       </header>
 

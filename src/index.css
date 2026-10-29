@@ -35,21 +35,23 @@ body {
 /* ===== HEADER ===== */
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 10px;
+  left: 10px;
+  right: 10px;
   z-index: 1000;
-  background: #fff;
-  padding: 14px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #f0f0f0;
+  gap: 18px;
+  padding: 8px 16px 8px 20px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #eef9f8 0%, #dceff0 100%);
+  border-bottom: none;
+  box-shadow: 0 10px 30px rgba(10, 60, 60, 0.08);
   transition: box-shadow 0.3s ease;
 }
 
 .header.scrolled {
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 14px 40px rgba(10, 60, 60, 0.16);
 }
 
 .logo {
@@ -58,48 +60,107 @@ body {
   gap: 10px;
   text-decoration: none;
   color: #1a1a1a;
+  flex-shrink: 0;
 }
 
 .logo svg,
 .logo img {
-  width: 72px;
-  height: 72px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   object-fit: contain;
 }
 
 .logo-text {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.5px;
+  line-height: 1.15;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 
 .nav {
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(14px, 1.6vw, 28px);
+  margin-left: 6px;
 }
 
 .nav a {
   text-decoration: none;
   color: #1a1a1a;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .nav a:hover {
   color: #0ABAB5;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.header-phone {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.header-phone:hover {
+  color: #0ABAB5;
+}
+
+.header-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.header-social:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.header-social-tg {
+  background: #229ED9;
+  color: #fff;
+}
+
+.header-social-tg svg {
+  width: 20px;
+  height: 20px;
+}
+
+.header-social-dzen img {
+  width: 38px;
+  height: 38px;
+  display: block;
+  border-radius: 50%;
+}
+
 .btn-appointment {
-  background: #0ABAB5;
+  background: #16262e;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 13px;
+  padding: 11px 20px;
+  border-radius: 12px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
@@ -108,8 +169,20 @@ body {
 }
 
 .btn-appointment:hover {
-  background: #009b96;
+  background: #0ABAB5;
   transform: translateY(-1px);
+}
+
+#about,
+#services,
+#approach,
+#when-visit,
+#consultation,
+#results,
+#faq,
+#contacts,
+#video {
+  scroll-margin-top: 90px;
 }
 
 .btn-full { display: inline; }
@@ -153,6 +226,8 @@ body {
   padding: 16px 20px;
   flex-direction: column;
   gap: 4px;
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
@@ -169,14 +244,19 @@ body {
 
 .mobile-menu a:last-child { border-bottom: none; }
 
+.mobile-menu-phone {
+  color: #0ABAB5 !important;
+  font-weight: 700 !important;
+}
+
 /* ===== HERO ===== */
 .hero {
-  margin-top: 66px;
+  margin-top: 82px;
   padding: 12px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  min-height: calc(100vh - 66px);
+  min-height: calc(100vh - 82px);
 }
 
 .hero-left {
@@ -1859,6 +1939,13 @@ a.workplace-item {
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1400px) {
+  .header-phone,
+  .header-social {
+    display: none;
+  }
+}
+
 @media (max-width: 1200px) {
   .hero-left h1 { font-size: 56px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1882,11 +1969,11 @@ a.workplace-item {
 }
 
 @media (max-width: 768px) {
-  .header { padding: 10px 16px; }
-  .logo svg, .logo img { width: 60px; height: 60px; }
+  .header { top: 8px; left: 8px; right: 8px; padding: 6px 12px; border-radius: 16px; gap: 12px; }
+  .logo svg, .logo img { width: 38px; height: 38px; }
   .logo-text { font-size: 14px; }
 
-  .hero { margin-top: 58px; padding: 8px; gap: 8px; }
+  .hero { margin-top: 70px; padding: 8px; gap: 8px; }
   .hero-left { padding: 32px 24px; border-radius: 20px; min-height: 240px; }
   .hero-left h1 { font-size: 36px; letter-spacing: -1px; }
   .hero-specialty { top: 24px; right: 24px; font-size: 10px; max-width: 120px; }
@@ -2054,14 +2141,18 @@ a.workplace-item {
   .hero-left { padding: 24px 20px; }
   .consultation-banner h2 { font-size: 20px; }
   .section-title { font-size: 24px; }
+  .logo-text { font-size: 13px; }
+}
+
+@media (max-width: 360px) {
   .logo-text { display: none; }
 }
 
 /* ===== DESKTOP TEXT BOOST ===== */
 @media (min-width: 1025px) {
-  .logo-text { font-size: 17px; }
-  .nav a { font-size: 16px; }
-  .btn-appointment { font-size: 15px; }
+  .logo-text { font-size: 16px; }
+  .nav a { font-size: 15px; }
+  .btn-appointment { font-size: 14px; }
   .section-title { font-size: 50px; }
   .section-subtitle { font-size: 21px; }
   .about-intro { font-size: 20px; }
