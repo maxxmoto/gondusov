@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import {
   StethoscopeIcon,
   EndoscopeIcon,
@@ -223,6 +223,8 @@ function App() {
   const [showBack, setShowBack] = useState<Record<number, boolean>>({});
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [movieDone, setMovieDone] = useState(false);
+  const [isVisitkaPlaying, setIsVisitkaPlaying] = useState(false);
+  const visitkaRef = useRef<HTMLVideoElement | null>(null);
   const [isDesktop, setIsDesktop] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(min-width: 769px)').matches
   );
@@ -246,6 +248,14 @@ function App() {
       /* ignore */
     }
     setCookieConsent(value);
+  };
+
+  const playVisitka = () => {
+    const video = visitkaRef.current;
+    if (!video) return;
+    if (video.ended) video.currentTime = 0;
+    const attempt = video.play();
+    if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
   };
 
   const symptoms = [
@@ -506,6 +516,43 @@ function App() {
           <ArrowIcon />
         </a>
       </div>
+
+      {/* Video Introduction */}
+      <section className="visitka-section" id="video">
+        <div className="visitka-inner">
+          <div className="visitka-text">
+            <h2 className="section-title fade-in">Видео-визитка</h2>
+            <p className="fade-in">О подходе к диагностике и лечению — в коротком видео.</p>
+          </div>
+          <div className="visitka-card fade-in">
+            <video
+              ref={visitkaRef}
+              className="visitka-video"
+              poster="./visitka-poster.webp"
+              preload="none"
+              playsInline
+              controls={isVisitkaPlaying}
+              onPlay={() => setIsVisitkaPlaying(true)}
+              onEnded={() => setIsVisitkaPlaying(false)}
+            >
+              <source src="./visitka.mp4" type="video/mp4" />
+              Ваш браузер не поддерживает воспроизведение видео.
+            </video>
+            {!isVisitkaPlaying && (
+              <button
+                type="button"
+                className="visitka-play"
+                aria-label="Смотреть видео-визитку"
+                onClick={playVisitka}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
 
       {/* About Section */}
       <section className="about-section" id="about">
