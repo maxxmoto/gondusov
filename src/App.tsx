@@ -876,6 +876,10 @@ function App() {
         <div className="promo-photo">
           <img src="./img_4263.webp" alt="Врач, который поможет" loading="lazy" />
         </div>
+        <div className="promo-text">
+          <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
+          <p className="fade-in">Очень хорошие отзывы: пациенты довольны результатом, отмечают внимательное отношение и рекомендуют врача.</p>
+        </div>
         <div className="promo-widget">
           <div id="pd_widget_mini" className="pd_widget_mini" data-doctor="873904">
             <a
@@ -896,10 +900,6 @@ function App() {
               />
             </a>
           </div>
-        </div>
-        <div className="promo-text">
-          <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
-          <p className="fade-in">Очень хорошие отзывы: пациенты довольны результатом, отмечают внимательное отношение и рекомендуют врача.</p>
         </div>
       </section>
 
