@@ -546,7 +546,7 @@ function App() {
                 onClick={playVisitka}
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z" />
+                  <path d="M7 5v14l10-7z" />
                 </svg>
               </button>
             )}
