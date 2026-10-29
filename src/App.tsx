@@ -874,13 +874,12 @@ function App() {
       {/* Reviews / ProDoktorov widget */}
       <section className="promo-section">
         <div className="promo-inner">
-          <h2 className="section-title promo-title fade-in">Врач, который поможет</h2>
+          <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
           <div className="promo-row">
             <div className="promo-photo">
-              <img src="./img_4263.webp" alt="Врач, который поможет" loading="lazy" />
+              <img src="./gondusov_otzivy.webp" alt="Врач, который поможет" loading="lazy" />
             </div>
             <div className="promo-widget">
-              <p className="promo-widget-label">Отзывы на ПроДокторов</p>
               <div id="pd_widget_mini" className="pd_widget_mini" data-doctor="873904">
                 <a
                   target="_blank"
