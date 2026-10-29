@@ -2215,11 +2215,11 @@ a.workplace-item {
   background: #eef6f6;
   overflow: hidden;
   min-height: 460px;
-  padding: 40px 48px 40px 330px;
+  padding: 48px 64px 48px 340px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  justify-content: center;
+  gap: clamp(24px, 3vw, 56px);
 }
 .promo-photo {
   position: absolute;
@@ -2247,17 +2247,18 @@ a.workplace-item {
   margin: 0 44px;
 }
 #pd_widget_mini {
-  transform: scale(1.3);
+  transform: scale(1.5);
   transform-origin: center;
 }
 .promo-text {
   position: relative;
   z-index: 1;
-  flex: 0 1 340px;
+  flex: 0 1 460px;
 }
 .promo-title {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   text-align: left;
+  font-size: clamp(30px, 3vw, 42px);
 }
 .promo-title span {
   color: #0ABAB5;
@@ -2266,8 +2267,8 @@ a.workplace-item {
   text-underline-offset: 6px;
 }
 .promo-text p {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.65;
   color: #444;
   margin: 0;
 }
