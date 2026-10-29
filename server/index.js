@@ -204,6 +204,11 @@ async function serveStatic(req, res, pathname) {
 const server = createServer(async (req, res) => {
   try {
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+    res.setHeader('Content-Language', 'ru');
 
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
