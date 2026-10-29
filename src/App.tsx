@@ -883,7 +883,7 @@ function App() {
         </div>
         <div className="promo-text">
           <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
-          <p className="fade-in">Очень хорошие отзывы: пациенты довольны результатом, отмечают внимательное отношение и рекомендуют врача.</p>
+          <p className="fade-in">Врач получает положительные отзывы: пациенты отмечают внимательное отношение, подробное объяснение диагноза и понятные рекомендации по лечению.</p>
         </div>
         <div className="promo-widget">
           <div id="pd_widget_mini" className="pd_widget_mini" data-doctor="873904">
