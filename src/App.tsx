@@ -472,7 +472,6 @@ function App() {
       <header className={`header ${isHeaderScrolled ? 'scrolled' : ''}`}>
         <a href="#" className="logo">
           <LogoIcon />
-          <span className="logo-text">Гондусов Денис</span>
         </a>
 
         <nav className="nav">
