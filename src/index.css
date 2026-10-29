@@ -2214,27 +2214,12 @@ a.workplace-item {
   border-radius: 32px;
   background: #eef6f6;
   overflow: hidden;
-  min-height: 480px;
-  padding: 96px 40px 40px 340px;
+  min-height: 460px;
+  padding: 40px 48px 40px 330px;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-.promo-title {
-  position: absolute;
-  top: 34px;
-  left: 0;
-  right: 0;
-  margin: 0;
-  padding: 0 20px;
-  text-align: center;
-  z-index: 2;
-}
-.promo-title span {
-  color: #0ABAB5;
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-underline-offset: 6px;
+  justify-content: space-between;
+  gap: 32px;
 }
 .promo-photo {
   position: absolute;
@@ -2255,39 +2240,60 @@ a.workplace-item {
 .promo-widget {
   position: relative;
   z-index: 1;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  margin: 0 44px;
 }
 #pd_widget_mini {
-  transform: scale(1.6);
+  transform: scale(1.3);
   transform-origin: center;
+}
+.promo-text {
+  position: relative;
+  z-index: 1;
+  flex: 0 1 340px;
+}
+.promo-title {
+  margin: 0 0 14px;
+  text-align: left;
+}
+.promo-title span {
+  color: #0ABAB5;
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+}
+.promo-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
   .promo-section {
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 12px;
     min-height: 0;
     padding: 28px 16px;
     margin: 0 8px;
     border-radius: 24px;
   }
-  .promo-title {
-    position: static;
-    flex: 0 0 100%;
-    margin: 0 0 14px;
-    padding: 0;
-    font-size: 22px;
-  }
   .promo-photo {
     position: static;
     order: 2;
-    flex: 0 0 42%;
+    flex: 0 0 45%;
   }
   .promo-photo img { height: auto; width: 100%; }
-  .promo-widget { order: 1; flex: 1 1 auto; width: auto; }
+  .promo-text {
+    order: 1;
+    flex: 0 0 100%;
+  }
+  .promo-title { font-size: 24px; }
+  .promo-widget { order: 3; flex: 1 1 auto; margin: 0; }
   #pd_widget_mini { transform: scale(1.1); }
 }

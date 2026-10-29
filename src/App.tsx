@@ -873,7 +873,6 @@ function App() {
 
       {/* Reviews / ProDoktorov widget */}
       <section className="promo-section">
-        <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
         <div className="promo-photo">
           <img src="./img_4263.webp" alt="Врач, который поможет" loading="lazy" />
         </div>
@@ -897,6 +896,10 @@ function App() {
               />
             </a>
           </div>
+        </div>
+        <div className="promo-text">
+          <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
+          <p className="fade-in">Очень хорошие отзывы: пациенты довольны результатом, отмечают внимательное отношение и рекомендуют врача.</p>
         </div>
       </section>
 
