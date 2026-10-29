@@ -2282,16 +2282,15 @@ a.workplace-item {
     justify-content: space-between;
     gap: 12px;
     min-height: 0;
-    padding: 28px 16px 0;
+    padding: 28px 16px;
     margin: 0 8px;
     border-radius: 24px;
   }
   .promo-photo {
     position: static;
     order: 2;
-    flex: 0 0 52%;
-    align-self: flex-end;
-    margin-left: -16px;
+    flex: 0 0 45%;
+    transform: translate(10px, -10px);
   }
   .promo-photo img { height: auto; width: 100%; }
   .promo-text {
