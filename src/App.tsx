@@ -184,13 +184,12 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
 ];
 
 const VISITKA_THESES: { start: number; end: number; text: string }[] = [
-  { start: 0.72, end: 3.8, text: 'Гондусов Денис Вадимович' },
+  { start: 0.72, end: 3.8, text: 'Здравствуйте! Я — Гондусов Денис Вадимович.' },
   { start: 3.8, end: 8.7, text: 'Гастроэнтеролог · эндоскопист · врач превентивной медицины' },
   { start: 8.7, end: 15.5, text: 'Клиническая гастроэнтерология и эндоскопическая диагностика' },
   { start: 15.5, end: 21.6, text: 'Принципы превентивной медицины' },
-  { start: 21.6, end: 27.8, text: 'Обоснованная диагностика, индивидуальный подход и понятные рекомендации' },
-  { start: 27.8, end: 31.5, text: 'Без лишних назначений' },
-  { start: 31.5, end: 36.2, text: 'Сохранить здоровье на годы вперёд' },
+  { start: 21.6, end: 31.5, text: 'Обоснованная диагностика, индивидуальный подход и понятные рекомендации' },
+  { start: 31.5, end: 36.2, text: 'Цель — сохранить здоровье на годы вперёд' },
 ];
 
 function formatPhone(raw: string): string {
@@ -234,6 +233,7 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [movieDone, setMovieDone] = useState(false);
   const [isVisitkaPlaying, setIsVisitkaPlaying] = useState(false);
+  const [visitkaEnded, setVisitkaEnded] = useState(false);
   const [visitkaThesis, setVisitkaThesis] = useState(0);
   const visitkaRef = useRef<HTMLVideoElement | null>(null);
   const [isDesktop, setIsDesktop] = useState(
@@ -264,6 +264,7 @@ function App() {
   const playVisitka = () => {
     const video = visitkaRef.current;
     if (!video) return;
+    setVisitkaEnded(false);
     if (video.ended) video.currentTime = 0;
     const attempt = video.play();
     if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
@@ -303,7 +304,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!isDesktop || isVisitkaPlaying) return;
+    if (!isDesktop || isVisitkaPlaying || visitkaEnded) return;
     let cancelled = false;
     let timer = 0;
     const show = (index: number) => {
@@ -318,7 +319,7 @@ function App() {
       cancelled = true;
       window.clearTimeout(timer);
     };
-  }, [isDesktop, isVisitkaPlaying]);
+  }, [isDesktop, isVisitkaPlaying, visitkaEnded]);
 
   useEffect(() => {
     const video = visitkaRef.current;
@@ -566,7 +567,7 @@ function App() {
         <div className="visitka-inner">
           <div className="visitka-text">
             <h2 className="section-title visitka-title fade-in">Видео-визитка</h2>
-            {isDesktop ? (
+            {isDesktop && !visitkaEnded ? (
               <p className="visitka-lead visitka-theses fade-in" aria-live="polite">
                 <span key={visitkaThesis} className="visitka-thesis">
                   {VISITKA_THESES[visitkaThesis].text}
@@ -585,7 +586,10 @@ function App() {
               playsInline
               controls={isVisitkaPlaying}
               onPlay={() => setIsVisitkaPlaying(true)}
-              onEnded={() => setIsVisitkaPlaying(false)}
+              onEnded={() => {
+                setIsVisitkaPlaying(false);
+                setVisitkaEnded(true);
+              }}
             >
               <source src="./visitka.mp4" type="video/mp4" />
               Ваш браузер не поддерживает воспроизведение видео.
