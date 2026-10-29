@@ -282,6 +282,15 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (document.querySelector('script[data-pd-widget]')) return;
+    const s = document.createElement('script');
+    s.src = 'https://prodoctorov.ru/static/js/widget_mini.js?v06';
+    s.defer = true;
+    s.setAttribute('data-pd-widget', '1');
+    document.body.appendChild(s);
+  }, []);
+
+  useEffect(() => {
     let intervalId: number | undefined;
     const first = window.setTimeout(() => {
       setChatOpen(true);
@@ -859,6 +868,36 @@ function App() {
               <p>Перестанете бояться еды и постоянно подстраивать под самочувствие свою жизнь.</p>
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* Reviews / ProDoktorov widget */}
+      <section className="promo-section">
+        <div className="promo-photo">
+          <img src="./img_4263.png" alt="Врач, который поможет" loading="lazy" />
+          <p className="promo-caption">Врач, который <span>поможет</span></p>
+        </div>
+        <div className="promo-widget">
+          <p className="promo-widget-label">Отзывы на ПроДокторов</p>
+          <div id="pd_widget_mini" className="pd_widget_mini" data-doctor="873904">
+            <a
+              target="_blank"
+              className="pd_doctor_name"
+              href="https://prodoctorov.ru/rostov-na-donu/vrach/873904-gondusov/"
+              rel="noopener noreferrer"
+            >
+              Гондусов Денис Вадимович
+            </a>
+            <div className="pd_widget_mini_content" id="pd_widget_mini_content_d873904"></div>
+            <a target="_blank" href="https://prodoctorov.ru/" rel="noopener noreferrer">
+              <img
+                className="pd_logo"
+                width={96}
+                src="https://prodoctorov.ru/static/_v1/pd/logos/logo-pd-widget.png"
+                alt="ПроДокторов"
+              />
+            </a>
+          </div>
         </div>
       </section>
 

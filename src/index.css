@@ -2206,3 +2206,61 @@ a.workplace-item {
   animation: chatSheen 2.8s ease-in-out infinite;
   pointer-events: none;
 }
+
+/* ===== REVIEWS / PRODOKTOROV WIDGET ===== */
+.promo-section {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 60px 0;
+}
+.promo-photo {
+  flex: 0 0 40%;
+  max-width: 560px;
+}
+.promo-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0 24px 24px 0;
+}
+.promo-caption {
+  margin-top: 16px;
+  padding-left: 40px;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1a1a1a;
+}
+.promo-caption span {
+  color: #0ABAB5;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+.promo-widget {
+  flex: 1 1 auto;
+  max-width: 420px;
+  padding-right: 40px;
+}
+.promo-widget-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 768px) {
+  .promo-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    padding: 40px 0;
+  }
+  .promo-photo { flex: none; max-width: none; }
+  .promo-photo img { border-radius: 0; }
+  .promo-caption { padding: 0 16px; font-size: 22px; }
+  .promo-widget { max-width: none; padding: 0 16px; }
+}
