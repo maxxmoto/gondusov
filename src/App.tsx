@@ -737,8 +737,8 @@ function App() {
           <p className="fade-in">Особое направление работы — профилактика онкологических заболеваний желудочно-кишечного тракта. Современная эндоскопия позволяет обнаруживать некоторые опасные изменения на ранних стадиях и вовремя определять дальнейшую тактику.</p>
         </div>
         <div className="approach-photo">
-          <Picture src="./IMG_3930.webp" alt="Комплексный подход к здоровью" className="approach-photo-left" loading="lazy" />
-          <Picture src="./фото2.webp" alt="Комплексный подход к здоровью" className="approach-photo-right" loading="lazy" />
+          <Picture src="./IMG_3930.webp" alt="Медицинская литература по гастроэнтерологии и визитки врача" className="approach-photo-left" loading="lazy" />
+          <Picture src="./фото2.webp" alt="Гондусов Денис надевает медицинские перчатки перед приёмом" className="approach-photo-right" loading="lazy" />
           <div className="approach-photo-overlay"></div>
         </div>
         {!movieDone && isDesktop && (
@@ -820,7 +820,12 @@ function App() {
               </div>
             </div>
 
-            <div className="consult-card consult-card-photo fade-in" style={{ backgroundImage: 'url(./консультация.webp)' }}>
+            <div
+              className="consult-card consult-card-photo fade-in"
+              style={{ backgroundImage: 'url(./консультация.webp)' }}
+              role="img"
+              aria-label="Повторная консультация гастроэнтеролога"
+            >
               <div className="consult-card-overlay"></div>
               <div className="consult-card-inner">
                 <div className="consult-card-head">
@@ -874,7 +879,7 @@ function App() {
       {/* Reviews / ProDoktorov widget */}
       <section className="promo-section">
         <div className="promo-photo">
-          <img src="./img_4263.webp" alt="Врач, который поможет" loading="lazy" />
+          <img src="./img_4263.webp" alt="Портрет Гондусова Дениса Вадимовича в медицинской маске" loading="lazy" />
         </div>
         <div className="promo-text">
           <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
