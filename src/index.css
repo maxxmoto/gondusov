@@ -414,9 +414,8 @@ body {
 
 .visitka-play {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  margin: auto;
   width: 84px;
   height: 84px;
   border: none;
@@ -433,7 +432,7 @@ body {
 
 .visitka-play:hover {
   background: #09a8a3;
-  transform: translate(-50%, -50%) scale(1.06);
+  transform: scale(1.06);
 }
 
 .visitka-play svg {
