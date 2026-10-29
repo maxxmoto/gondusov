@@ -8,3 +8,8 @@ dist
 *_diff.html
 *_diff.css
 *.tsbuildinfo
+
+# source images (use public/*.webp)
+IMG_4257.jpeg
+IMG_4263.png
+gondusov_otzivy.png
