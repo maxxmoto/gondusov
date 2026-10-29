@@ -2291,8 +2291,7 @@ a.workplace-item {
     order: 2;
     flex: 0 0 45%;
     align-self: flex-end;
-    margin-left: -16px;
-    margin-bottom: -28px;
+    transform: translate(-16px, 28px);
   }
   .promo-photo img { height: auto; width: 100%; }
   .promo-text {
