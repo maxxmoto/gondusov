@@ -183,6 +183,16 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
   },
 ];
 
+const VISITKA_THESES: { start: number; end: number; text: string }[] = [
+  { start: 0.72, end: 3.8, text: 'Гондусов Денис Вадимович' },
+  { start: 3.8, end: 8.7, text: 'Гастроэнтеролог · эндоскопист · врач превентивной медицины' },
+  { start: 8.7, end: 15.5, text: 'Клиническая гастроэнтерология и эндоскопическая диагностика' },
+  { start: 15.5, end: 21.6, text: 'Принципы превентивной медицины' },
+  { start: 21.6, end: 27.8, text: 'Обоснованная диагностика, индивидуальный подход и понятные рекомендации' },
+  { start: 27.8, end: 31.5, text: 'Без лишних назначений' },
+  { start: 31.5, end: 36.2, text: 'Сохранить здоровье на годы вперёд' },
+];
+
 function formatPhone(raw: string): string {
   let d = raw.replace(/\D/g, '');
   if (d.startsWith('8')) d = '7' + d.slice(1);
@@ -224,6 +234,7 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [movieDone, setMovieDone] = useState(false);
   const [isVisitkaPlaying, setIsVisitkaPlaying] = useState(false);
+  const [visitkaThesis, setVisitkaThesis] = useState(0);
   const visitkaRef = useRef<HTMLVideoElement | null>(null);
   const [isDesktop, setIsDesktop] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(min-width: 769px)').matches
@@ -290,6 +301,39 @@ function App() {
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
   }, []);
+
+  useEffect(() => {
+    if (!isDesktop || isVisitkaPlaying) return;
+    let cancelled = false;
+    let timer = 0;
+    const show = (index: number) => {
+      setVisitkaThesis(index);
+      const duration = VISITKA_THESES[index].end - VISITKA_THESES[index].start;
+      timer = window.setTimeout(() => {
+        if (!cancelled) show((index + 1) % VISITKA_THESES.length);
+      }, Math.max(2200, duration * 1000));
+    };
+    show(0);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+  }, [isDesktop, isVisitkaPlaying]);
+
+  useEffect(() => {
+    const video = visitkaRef.current;
+    if (!isDesktop || !isVisitkaPlaying || !video) return;
+    const sync = () => {
+      const time = video.currentTime;
+      const index = VISITKA_THESES.findIndex((item) => time >= item.start && time < item.end);
+      if (index !== -1) setVisitkaThesis(index);
+      else if (time < VISITKA_THESES[0].start) setVisitkaThesis(0);
+      else setVisitkaThesis(VISITKA_THESES.length - 1);
+    };
+    video.addEventListener('timeupdate', sync);
+    sync();
+    return () => video.removeEventListener('timeupdate', sync);
+  }, [isDesktop, isVisitkaPlaying]);
 
   useEffect(() => {
     if (document.querySelector('script[data-pd-widget]')) return;
@@ -522,7 +566,15 @@ function App() {
         <div className="visitka-inner">
           <div className="visitka-text">
             <h2 className="section-title visitka-title fade-in">Видео-визитка</h2>
-            <p className="visitka-lead fade-in">О подходе к диагностике и лечению — в коротком видео.</p>
+            {isDesktop ? (
+              <p className="visitka-lead visitka-theses fade-in" aria-live="polite">
+                <span key={visitkaThesis} className="visitka-thesis">
+                  {VISITKA_THESES[visitkaThesis].text}
+                </span>
+              </p>
+            ) : (
+              <p className="visitka-lead fade-in">О подходе к диагностике и лечению — в коротком видео.</p>
+            )}
           </div>
           <div className="visitka-card fade-in">
             <video
