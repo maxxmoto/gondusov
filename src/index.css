@@ -2245,7 +2245,7 @@ a.workplace-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 56px;
+  margin: 0 56px 0 132px;
 }
 #pd_widget_mini {
   transform: scale(1.75);
