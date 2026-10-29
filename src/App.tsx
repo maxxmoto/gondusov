@@ -37,6 +37,15 @@ const TG_CONTACT_HREF =
   'https://t.me/Dr_161?text=' +
   encodeURIComponent('Здравствуйте! Пишу с сайта drgondusov.ru. Хочу задать вопрос. Опишу свою проблему: ');
 
+// Форма временно отключена (юридический вопрос). Код формы сохранён, чтобы вернуть.
+const FORM_ENABLED = false;
+
+const TgIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+  </svg>
+);
+
 type CookieConsent = 'accepted' | 'rejected' | null;
 const CONSENT_KEY = 'cookie_consent';
 const METRIKA_ID = 113072145;
@@ -196,6 +205,7 @@ function formatPhone(raw: string): string {
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tgPromptOpen, setTgPromptOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [phoneValue, setPhoneValue] = useState('+7');
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
@@ -337,6 +347,16 @@ function App() {
     document.body.style.overflow = '';
   };
 
+  const openTgPrompt = () => {
+    setTgPromptOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeTgPrompt = () => {
+    setTgPromptOpen(false);
+    document.body.style.overflow = '';
+  };
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -420,12 +440,14 @@ function App() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <a
-            href="#"
+            href={TG_CONTACT_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-appointment"
-            onClick={(e) => { e.preventDefault(); openModal(); }}
           >
-            <span className="btn-full">ЗАПИСАТЬСЯ</span>
-            <span className="btn-short">Запись</span>
+            <TgIcon className="btn-tg-icon" />
+            <span className="btn-full">СВЯЗАТЬСЯ</span>
+            <span className="btn-short">Связь</span>
           </a>
 
           <button
@@ -471,9 +493,9 @@ function App() {
       {/* Consultation Banner */}
       <div className="consultation-banner">
         <h2>КОНСУЛЬТАЦИЯ</h2>
-        <button className="arrow-btn" onClick={openModal} aria-label="Записаться">
-          <ArrowIcon />
-        </button>
+        <a href={TG_CONTACT_HREF} target="_blank" rel="noopener noreferrer" className="arrow-btn" aria-label="Связаться в Telegram">
+          <TgIcon />
+        </a>
       </div>
 
       {/* About Section */}
@@ -737,7 +759,7 @@ function App() {
               <div
                 key={index}
                 className={`symptom-item ${selectedSymptoms.includes(index) ? 'selected' : ''}`}
-                onClick={() => { toggleSymptom(index); openModal(); }}
+                onClick={() => { toggleSymptom(index); openTgPrompt(); }}
               >
                 <span className={`check symptom-check-${index} ${selectedSymptoms.includes(index) ? 'permanent' : ''}`}>
                   <CheckIcon />
@@ -881,11 +903,13 @@ function App() {
                 Позвонить
               </a>
               <a
-                href="#"
+                href={TG_CONTACT_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-secondary"
-                onClick={(e) => { e.preventDefault(); openModal(); }}
               >
-                Онлайн-запись
+                <TgIcon className="btn-tg-icon" />
+                Написать в Telegram
               </a>
             </div>
             <p className="appointment-legal fade-in">
@@ -988,8 +1012,8 @@ function App() {
         </div>
       </footer>
 
-      {/* Modal */}
-      {isModalOpen && (
+      {/* Modal (форма временно отключена — FORM_ENABLED = false) */}
+      {FORM_ENABLED && isModalOpen && (
         <div className="modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}>
           <div className="modal">
             <button className="modal-close" onClick={closeModal} aria-label="Закрыть">
@@ -1050,6 +1074,28 @@ function App() {
                 </button>
               </>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Telegram prompt (вместо формы) */}
+      {tgPromptOpen && (
+        <div className="modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) closeTgPrompt(); }}>
+          <div className="modal tg-prompt">
+            <button className="modal-close" onClick={closeTgPrompt} aria-label="Закрыть">
+              <CloseIcon />
+            </button>
+            <h3>Напишите мне в Telegram</h3>
+            <p className="tg-prompt-text">Опишите свою проблему — я отвечу лично и подскажу, что делать дальше.</p>
+            <a
+              href={TG_CONTACT_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="modal-submit tg-prompt-btn"
+            >
+              <TgIcon className="btn-tg-icon" />
+              Написать в Telegram
+            </a>
           </div>
         </div>
       )}

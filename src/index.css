@@ -2164,3 +2164,30 @@ a.workplace-item {
   .float-telegram { right: 28px; bottom: 28px; width: 54px; height: 54px; }
   .float-telegram-icon { width: 36px; height: 36px; }
 }
+
+/* ===== TG CONTACT BUTTONS (форма временно отключена) ===== */
+.btn-appointment,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-tg-icon { width: 18px; height: 18px; flex-shrink: 0; }
+.consultation-banner .arrow-btn svg { width: 34px; height: 34px; }
+
+.tg-prompt { text-align: center; }
+.tg-prompt-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 0 22px;
+}
+.tg-prompt-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.tg-prompt-btn .btn-tg-icon { width: 20px; height: 20px; }
