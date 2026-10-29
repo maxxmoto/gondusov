@@ -873,33 +873,29 @@ function App() {
 
       {/* Reviews / ProDoktorov widget */}
       <section className="promo-section">
-        <div className="promo-inner">
-          <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
-          <div className="promo-row">
-            <div className="promo-photo">
-              <img src="./gondusov_otzivy.webp" alt="Врач, который поможет" loading="lazy" />
-            </div>
-            <div className="promo-widget">
-              <div id="pd_widget_mini" className="pd_widget_mini" data-doctor="873904">
-                <a
-                  target="_blank"
-                  className="pd_doctor_name"
-                  href="https://prodoctorov.ru/rostov-na-donu/vrach/873904-gondusov/"
-                  rel="noopener noreferrer"
-                >
-                  Гондусов Денис Вадимович
-                </a>
-                <div className="pd_widget_mini_content" id="pd_widget_mini_content_d873904"></div>
-                <a target="_blank" href="https://prodoctorov.ru/" rel="noopener noreferrer">
-                  <img
-                    className="pd_logo"
-                    width={96}
-                    src="https://prodoctorov.ru/static/_v1/pd/logos/logo-pd-widget.png"
-                    alt="ПроДокторов"
-                  />
-                </a>
-              </div>
-            </div>
+        <h2 className="section-title promo-title fade-in">Врач, который <span>поможет</span></h2>
+        <div className="promo-photo">
+          <img src="./img_4263.webp" alt="Врач, который поможет" loading="lazy" />
+        </div>
+        <div className="promo-widget">
+          <div id="pd_widget_mini" className="pd_widget_mini" data-doctor="873904">
+            <a
+              target="_blank"
+              className="pd_doctor_name"
+              href="https://prodoctorov.ru/rostov-na-donu/vrach/873904-gondusov/"
+              rel="noopener noreferrer"
+            >
+              Гондусов Денис Вадимович
+            </a>
+            <div className="pd_widget_mini_content" id="pd_widget_mini_content_d873904"></div>
+            <a target="_blank" href="https://prodoctorov.ru/" rel="noopener noreferrer">
+              <img
+                className="pd_logo"
+                width={96}
+                src="https://prodoctorov.ru/static/_v1/pd/logos/logo-pd-widget.png"
+                alt="ПроДокторов"
+              />
+            </a>
           </div>
         </div>
       </section>
