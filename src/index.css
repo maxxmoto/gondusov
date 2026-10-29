@@ -352,56 +352,70 @@ body {
 
 /* ===== VIDEO VISITKA ===== */
 .visitka-section {
+  position: relative;
   margin: 0 12px 12px;
-  padding: 56px 48px;
+  padding: 56px 64px;
   border-radius: 32px;
-  background: #eef6f6;
+  background: #0ABAB5;
+  background-image: linear-gradient(135deg, #0ABAB5 0%, #079c99 100%);
+  overflow: hidden;
+}
+
+.visitka-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
 }
 
 .visitka-inner {
+  position: relative;
+  z-index: 1;
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: clamp(32px, 5vw, 80px);
+  justify-content: space-between;
+  gap: clamp(32px, 6vw, 96px);
 }
 
 .visitka-text {
-  flex: 0 1 480px;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 40px;
-  border-radius: 24px;
-  background: #0ABAB5;
+  flex: 0 1 560px;
   color: #fff;
 }
 
 .visitka-title {
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   text-align: left;
   color: #fff;
+  font-size: clamp(40px, 3.8vw, 58px);
+  line-height: 1.02;
 }
 
 .visitka-lead {
   margin: 0;
+  max-width: 480px;
   font-size: 18px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .visitka-card {
   position: relative;
   flex: 0 0 auto;
-  width: 340px;
+  width: clamp(300px, 30vw, 400px);
   max-width: 100%;
   aspect-ratio: 720 / 890;
-  border-radius: 24px;
+  border-radius: 28px;
   overflow: hidden;
   background: #0d1b1b;
-  box-shadow: 0 24px 60px rgba(10, 60, 60, 0.18);
+  border: 5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
 }
 
 .visitka-video {
@@ -448,8 +462,12 @@ body {
     border-radius: 24px;
     background: #fff;
   }
+  .visitka-section::before {
+    display: none;
+  }
   .visitka-inner {
     flex-direction: column;
+    justify-content: flex-start;
     gap: 20px;
     text-align: center;
     max-width: none;
@@ -486,6 +504,7 @@ body {
   .visitka-card {
     width: 100%;
     aspect-ratio: 720 / 890;
+    border: none;
     border-radius: 20px;
     box-shadow: none;
   }
