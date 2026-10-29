@@ -520,22 +520,23 @@ function App() {
       {/* Video Introduction */}
       <section className="visitka-section" id="video">
         <div className="visitka-inner">
-          <div className="visitka-text">
-            <h2 className="section-title fade-in">Видео-визитка</h2>
-            <p className="fade-in">О подходе к диагностике и лечению — в коротком видео.</p>
+          <div className="visitka-head">
+            <h2 className="visitka-title fade-in">Видео-визитка</h2>
+            <p className="visitka-lead fade-in">О подходе к диагностике и лечению — в коротком видео.</p>
           </div>
           <div className="visitka-card fade-in">
             <video
+              key={isDesktop ? 'wide' : 'portrait'}
               ref={visitkaRef}
               className="visitka-video"
-              poster="./visitka-poster.webp"
+              poster={isDesktop ? './visitka-wide-poster.webp' : './visitka-poster.webp'}
               preload="none"
               playsInline
               controls={isVisitkaPlaying}
               onPlay={() => setIsVisitkaPlaying(true)}
               onEnded={() => setIsVisitkaPlaying(false)}
             >
-              <source src="./visitka.mp4" type="video/mp4" />
+              <source src={isDesktop ? './visitka-wide.mp4' : './visitka.mp4'} type="video/mp4" />
               Ваш браузер не поддерживает воспроизведение видео.
             </video>
             {!isVisitkaPlaying && (
