@@ -40,12 +40,6 @@ const TG_CONTACT_HREF =
 // Форма временно отключена (юридический вопрос). Код формы сохранён, чтобы вернуть.
 const FORM_ENABLED = false;
 
-const TgIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-  </svg>
-);
-
 type CookieConsent = 'accepted' | 'rejected' | null;
 const CONSENT_KEY = 'cookie_consent';
 const METRIKA_ID = 113072145;
@@ -178,8 +172,8 @@ const FAQ_ITEMS: { q: string; a: string }[] = [
     a: 'Гастроскопия занимает около 10–15 минут, колоноскопия — 20–30 минут. С седацией немного дольше, так как нужно время на засыпание и пробуждение.',
   },
   {
-    q: 'Можно ли записаться онлайн?',
-    a: 'Да, через сайт доступна онлайн-запись на консультацию. На приём и исследования в клинике можно записаться по телефону.',
+    q: 'Как записаться на консультацию?',
+    a: 'Записаться можно по телефону или через Telegram. Приём и исследования проводятся в клинике.',
   },
 ];
 
@@ -475,11 +469,11 @@ function App() {
         </a>
 
         <nav className="nav">
-          <a href="#about">Обо мне</a>
-          <a href="#services">Услуги</a>
-          <a href="#approach">Подход</a>
-          <a href="#when-visit">Когда обратиться</a>
-          <a href="#contacts">Контакты</a>
+          <a href="#obo-mne">Обо мне</a>
+          <a href="#uslugi">Услуги</a>
+          <a href="#podhod">Подход</a>
+          <a href="#kogda-obratitsya">Когда обратиться</a>
+          <a href="#kontakty">Контакты</a>
         </nav>
 
         <div className="header-actions">
@@ -492,7 +486,7 @@ function App() {
             className="header-social header-social-tg"
             aria-label="Написать в Telegram"
           >
-            <TgIcon />
+            <img src="./telegram.webp" alt="" width={38} height={38} loading="eager" />
           </a>
 
           <a
@@ -526,11 +520,11 @@ function App() {
         </div>
 
         <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-          <a href="#about" onClick={closeMobileMenu}>Обо мне</a>
-          <a href="#services" onClick={closeMobileMenu}>Услуги</a>
-          <a href="#approach" onClick={closeMobileMenu}>Подход</a>
-          <a href="#when-visit" onClick={closeMobileMenu}>Когда обратиться</a>
-          <a href="#contacts" onClick={closeMobileMenu}>Контакты</a>
+          <a href="#obo-mne" onClick={closeMobileMenu}>Обо мне</a>
+          <a href="#uslugi" onClick={closeMobileMenu}>Услуги</a>
+          <a href="#podhod" onClick={closeMobileMenu}>Подход</a>
+          <a href="#kogda-obratitsya" onClick={closeMobileMenu}>Когда обратиться</a>
+          <a href="#kontakty" onClick={closeMobileMenu}>Контакты</a>
           <a href="tel:+79185680599" className="mobile-menu-phone" onClick={closeMobileMenu}>
             +7 918 568-05-99
           </a>
@@ -618,7 +612,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section className="about-section" id="about">
+      <section className="about-section" id="obo-mne">
         <div className="about-container">
           <h2 className="section-title fade-in">О враче</h2>
           <p className="about-intro fade-in">Врач-гастроэнтеролог и эндоскопист, диетолог, нутрициолог. Стаж работы — 8 лет. Врач высшей категории.</p>
@@ -753,7 +747,7 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section className="section" id="services">
+      <section className="section" id="uslugi">
         <h2 className="section-title fade-in">Услуги</h2>
         <p className="section-subtitle fade-in">Диагностика и лечение заболеваний желудочно-кишечного тракта, современные эндоскопические исследования, профилактика серьёзных заболеваний и помощь в снижении веса.</p>
         <div className="services-grid">
@@ -839,7 +833,7 @@ function App() {
       </div>
 
       {/* Approach Section */}
-      <div className="approach-section" id="approach">
+      <div className="approach-section" id="podhod">
         <div className="approach-content">
           <h2 className="section-title fade-in">Комплексный подход к здоровью</h2>
           <p className="fade-in">Основная задача — не только убрать неприятные симптомы, но и понять их причину. Большое внимание уделяется ранней диагностике заболеваний желудка и кишечника. Многие серьёзные изменения могут долго не вызывать заметных симптомов, поэтому своевременное обследование играет важную роль.</p>
@@ -869,7 +863,7 @@ function App() {
       </div>
 
       {/* When to Visit Section */}
-      <section className="when-visit" id="when-visit">
+      <section className="when-visit" id="kogda-obratitsya">
         <div className="when-visit-content">
           <h2 className="section-title fade-in">Когда стоит обратиться к врачу</h2>
           <p className="section-subtitle fade-in">Выбери свою проблему:</p>
@@ -891,7 +885,7 @@ function App() {
       </section>
 
       {/* Consultation Process Section */}
-      <section className="consult-process" id="consultation">
+      <section className="consult-process" id="konsultaciya">
         <div className="consult-process-container">
           <h2 className="section-title fade-in">Как проходит консультация</h2>
           <div className="consult-cards">
@@ -966,7 +960,7 @@ function App() {
       </section>
 
       {/* Results Section */}
-      <section className="results-section" id="results">
+      <section className="results-section" id="rezultaty">
         <div className="results-container">
           <h2 className="section-title fade-in">Результат после работы</h2>
           <ul className="results-list">
@@ -1050,9 +1044,9 @@ function App() {
             <p className="section-subtitle fade-in">Подписывайтесь на мои социальные сети, где я делюсь полезной информацией о здоровье ЖКТ, питании и профилактике заболеваний.</p>
           </div>
 
-          <div className="appointment-block" id="contacts">
+          <div className="appointment-block" id="kontakty">
             <h2 className="section-title fade-in">Запись на консультацию</h2>
-            <p className="fade-in">На сайте можно записаться на онлайн-консультацию. Остальные услуги — по телефону или через онлайн-запись в клинике.</p>
+            <p className="fade-in">Записаться можно по телефону или через Telegram. Приём и исследования — в клинике.</p>
             <div className="appointment-buttons fade-in">
               <a href="tel:+79185680599" className="btn-primary">
                 <PhoneIcon />
@@ -1064,12 +1058,12 @@ function App() {
                 rel="noopener noreferrer"
                 className="btn-secondary"
               >
-                <TgIcon className="btn-tg-icon" />
+                <img src="./telegram.webp" className="btn-tg-icon" alt="" width={18} height={18} />
                 Написать в Telegram
               </a>
             </div>
             <p className="appointment-legal fade-in">
-              Нажимая кнопку онлайн-записи, вы подтверждаете, что ознакомлены с{' '}
+              Нажимая кнопку, вы подтверждаете, что ознакомлены с{' '}
               <a href="./privacy.html" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a> и даёте{' '}
               <a href="./agreement.html" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a>.
             </p>
@@ -1106,22 +1100,22 @@ function App() {
 
           <nav aria-label="Разделы сайта">
             <h4>Разделы</h4>
-            <p><a href="#about">О враче</a></p>
-            <p><a href="#services">Услуги</a></p>
-            <p><a href="#approach">Комплексный подход</a></p>
-            <p><a href="#when-visit">Когда обратиться к врачу</a></p>
-            <p><a href="#consultation">Как проходит консультация</a></p>
-            <p><a href="#contacts">Запись на консультацию</a></p>
+            <p><a href="#obo-mne">О враче</a></p>
+            <p><a href="#uslugi">Услуги</a></p>
+            <p><a href="#podhod">Комплексный подход</a></p>
+            <p><a href="#kogda-obratitsya">Когда обратиться к врачу</a></p>
+            <p><a href="#konsultaciya">Как проходит консультация</a></p>
+            <p><a href="#kontakty">Запись на консультацию</a></p>
           </nav>
 
           <nav aria-label="Услуги врача">
             <h4>Услуги</h4>
-            <p><a href="#services">Консультация гастроэнтеролога</a></p>
-            <p><a href="#services">Гастроскопия</a></p>
-            <p><a href="#services">Колоноскопия с NBI</a></p>
-            <p><a href="#services">Удаление полипов и аденом</a></p>
-            <p><a href="#services">Баллон в желудок</a></p>
-            <p><a href="#services">Эндоскопическая гастропластика</a></p>
+            <p><a href="#uslugi">Консультация гастроэнтеролога</a></p>
+            <p><a href="#uslugi">Гастроскопия</a></p>
+            <p><a href="#uslugi">Колоноскопия с NBI</a></p>
+            <p><a href="#uslugi">Удаление полипов и аденом</a></p>
+            <p><a href="#uslugi">Баллон в желудок</a></p>
+            <p><a href="#uslugi">Эндоскопическая гастропластика</a></p>
           </nav>
 
           <div>
@@ -1146,14 +1140,14 @@ function App() {
         </div>
         <nav className="footer-sitemap" aria-label="Карта сайта">
           <h4>Карта сайта</h4>
-          <p><a href="#about">О враче</a></p>
-          <p><a href="#services">Услуги</a></p>
-          <p><a href="#approach">Комплексный подход к здоровью</a></p>
-          <p><a href="#when-visit">Когда обратиться к врачу</a></p>
-          <p><a href="#consultation">Как проходит консультация</a></p>
-          <p><a href="#results">Результаты</a></p>
+          <p><a href="#obo-mne">О враче</a></p>
+          <p><a href="#uslugi">Услуги</a></p>
+          <p><a href="#podhod">Комплексный подход к здоровью</a></p>
+          <p><a href="#kogda-obratitsya">Когда обратиться к врачу</a></p>
+          <p><a href="#konsultaciya">Как проходит консультация</a></p>
+          <p><a href="#rezultaty">Результаты</a></p>
           <p><a href="#faq">Частые вопросы</a></p>
-          <p><a href="#contacts">Запись на консультацию</a></p>
+          <p><a href="#kontakty">Запись на консультацию</a></p>
           <p><a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></p>
           <p><a href="./agreement.html" target="_blank" rel="noopener noreferrer">Согласие на обработку ПД</a></p>
         </nav>
@@ -1193,7 +1187,7 @@ function App() {
               </div>
             ) : (
               <>
-                <h3>Запись на онлайн-консультацию</h3>
+                <h3>Запись на консультацию</h3>
                 <input type="text" placeholder="Ваше имя" id="modalName" />
                 <input
                   type="tel"
@@ -1249,7 +1243,7 @@ function App() {
               rel="noopener noreferrer"
               className="modal-submit tg-prompt-btn"
             >
-              <TgIcon className="btn-tg-icon" />
+              <img src="./telegram.webp" className="btn-tg-icon" alt="" width={18} height={18} />
               Написать в Telegram
             </a>
           </div>

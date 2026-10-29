@@ -2,11 +2,11 @@ import React from 'react';
 
 export const LogoIcon: React.FC<{ className?: string }> = ({ className = '' }) => (
   <img
-    src="./logo.png"
+    src="./logo.webp"
     alt="Dr. Gondusov"
     className={className}
-    width={1204}
-    height={700}
+    width={512}
+    height={298}
     decoding="async"
   />
 );

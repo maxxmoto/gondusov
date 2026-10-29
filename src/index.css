@@ -35,9 +35,9 @@ body {
 /* ===== HEADER ===== */
 .header {
   position: fixed;
-  top: 10px;
-  left: 10px;
-  right: 10px;
+  top: 14px;
+  left: 16px;
+  right: 16px;
   z-index: 1000;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -142,13 +142,14 @@ body {
 }
 
 .header-social-tg {
-  background: #229ED9;
-  color: #fff;
+  background: transparent;
 }
 
-.header-social-tg svg {
-  width: 20px;
-  height: 20px;
+.header-social-tg img {
+  width: 38px;
+  height: 38px;
+  display: block;
+  border-radius: 50%;
 }
 
 .header-social-dzen img {
@@ -177,16 +178,16 @@ body {
   transform: translateY(-1px);
 }
 
-#about,
-#services,
-#approach,
-#when-visit,
-#consultation,
-#results,
+#obo-mne,
+#uslugi,
+#podhod,
+#kogda-obratitsya,
+#konsultaciya,
+#rezultaty,
 #faq,
-#contacts,
+#kontakty,
 #video {
-  scroll-margin-top: 104px;
+  scroll-margin-top: 112px;
 }
 
 .btn-full { display: inline; }
@@ -255,12 +256,12 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  margin-top: 100px;
+  margin-top: 104px;
   padding: 12px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 104px);
 }
 
 .hero-left {
@@ -1973,10 +1974,10 @@ a.workplace-item {
 }
 
 @media (max-width: 768px) {
-  .header { top: 8px; left: 8px; right: 8px; padding: 8px 12px; border-radius: 16px; column-gap: 12px; }
+  .header { top: 10px; left: 12px; right: 12px; padding: 8px 12px; border-radius: 16px; column-gap: 12px; }
   .logo img { height: 42px; width: auto; max-width: 110px; }
 
-  .hero { margin-top: 78px; padding: 8px; gap: 8px; }
+  .hero { margin-top: 82px; padding: 8px; gap: 8px; }
   .hero-left { padding: 32px 24px; border-radius: 20px; min-height: 240px; }
   .hero-left h1 { font-size: 36px; letter-spacing: -1px; }
   .hero-specialty { top: 24px; right: 24px; font-size: 10px; max-width: 120px; }
