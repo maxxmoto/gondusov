@@ -1999,8 +1999,8 @@ a.workplace-item {
   .about-intro { font-size: 16px; margin-bottom: 28px; line-height: 1.6; }
   .timeline { margin-bottom: 32px; overflow: hidden; }
   .timeline-track { width: 400%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-  .timeline-card { width: 25%; min-width: 25%; max-width: 25%; flex-shrink: 0; }
-  .timeline-card-image, .timeline-card-icon { height: 120px; }
+  .timeline-card { width: 25%; min-width: 25%; max-width: 25%; flex-shrink: 0; border-radius: 18px; }
+  .timeline-card-image, .timeline-card-icon { height: 160px; }
   .timeline-card-body { padding: 16px; }
   .timeline-card-body h3 { font-size: 16px; margin-bottom: 6px; }
   .timeline-card-body p { font-size: 14px; line-height: 1.45; }
