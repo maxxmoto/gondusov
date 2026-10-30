@@ -14,6 +14,12 @@
   box-sizing: border-box;
 }
 
+:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(11, 59, 68, 0.9);
+}
+
 picture {
   display: contents;
 }
@@ -1815,6 +1821,13 @@ a.workplace-item {
 }
 
 .modal input:focus, .modal textarea:focus { border-color: #0ABAB5; }
+
+.modal input:focus-visible,
+.modal textarea:focus-visible {
+  outline: 2px solid #0ABAB5;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(10, 186, 181, 0.25);
+}
 .modal textarea { height: 100px; resize: vertical; }
 
 .modal-consent {

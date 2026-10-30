@@ -209,6 +209,26 @@ const server = createServer(async (req, res) => {
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
     res.setHeader('Content-Language', 'ru');
+    res.setHeader(
+      'Content-Security-Policy',
+      [
+        "default-src 'self'",
+        "base-uri 'self'",
+        "object-src 'none'",
+        "frame-ancestors 'none'",
+        "script-src 'self' https://mc.yandex.ru https://prodoctorov.ru",
+        "style-src 'self' 'unsafe-inline'",
+        "img-src 'self' data: https://mc.yandex.ru https://*.yandex.ru https://prodoctorov.ru https://*.prodoctorov.ru",
+        "font-src 'self' data:",
+        "connect-src 'self' https://mc.yandex.ru https://*.yandex.ru https://prodoctorov.ru https://*.prodoctorov.ru",
+        "media-src 'self'",
+        "manifest-src 'self'",
+        "worker-src 'self' blob:",
+        "frame-src 'self' https://prodoctorov.ru https://mc.yandex.ru",
+        "form-action 'self'",
+        'upgrade-insecure-requests',
+      ].join('; ')
+    );
 
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
