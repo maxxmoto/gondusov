@@ -480,11 +480,11 @@ function App() {
           <a href="tel:+79185680599" className="header-phone">+7 918 568-05-99</a>
 
           <a
-            href={TG_CONTACT_HREF}
+            href="https://t.me/DrGondusov"
             target="_blank"
             rel="noopener noreferrer"
             className="header-social header-social-tg"
-            aria-label="Написать в Telegram"
+            aria-label="Телеграм-канал"
           >
             <img src="./telegram.webp" alt="" width={38} height={38} loading="eager" />
           </a>
