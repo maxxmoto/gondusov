@@ -1989,6 +1989,7 @@ a.workplace-item {
 @media (max-width: 768px) {
   .header { top: 10px; left: 12px; right: 12px; padding: 8px 12px; border-radius: 16px; column-gap: 12px; }
   .logo img { height: 42px; width: auto; max-width: 110px; }
+  .header-social-tg { display: flex; }
 
   .hero { margin-top: 82px; padding: 8px; gap: 8px; }
   .hero-left { padding: 32px 24px; border-radius: 20px; min-height: 240px; }
