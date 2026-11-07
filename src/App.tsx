@@ -227,8 +227,10 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [movieDone, setMovieDone] = useState(false);
   const [isVisitkaPlaying, setIsVisitkaPlaying] = useState(false);
+  const [visitkaPreload, setVisitkaPreload] = useState(false);
   const [visitkaThesis, setVisitkaThesis] = useState(0);
   const visitkaRef = useRef<HTMLVideoElement | null>(null);
+  const visitkaSectionRef = useRef<HTMLElement | null>(null);
   const [isDesktop, setIsDesktop] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(min-width: 769px)').matches
   );
@@ -309,6 +311,34 @@ function App() {
     sync();
     return () => video.removeEventListener('timeupdate', sync);
   }, [isVisitkaPlaying]);
+
+  useEffect(() => {
+    if (visitkaPreload) return;
+    const el = visitkaSectionRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      setVisitkaPreload(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setVisitkaPreload(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '300px 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [visitkaPreload]);
+
+  useEffect(() => {
+    const video = visitkaRef.current;
+    if (!video || !visitkaPreload || isVisitkaPlaying) return;
+    if (video.preload !== 'auto') video.preload = 'auto';
+    if (video.readyState === 0) video.load();
+  }, [visitkaPreload, isVisitkaPlaying]);
 
   useEffect(() => {
     if (document.querySelector('script[data-pd-widget]')) return;
@@ -560,7 +590,7 @@ function App() {
       </div>
 
       {/* Video Introduction */}
-      <section className="visitka-section" id="video">
+      <section className="visitka-section" id="video" ref={visitkaSectionRef}>
         <div className="visitka-inner">
           <div className="visitka-text">
             <h2 className="section-title visitka-title fade-in">Видео-визитка</h2>
@@ -576,16 +606,17 @@ function App() {
           </div>
           <div className="visitka-card fade-in">
             <video
+              key={isDesktop ? 'desktop' : 'mobile'}
               ref={visitkaRef}
               className="visitka-video"
-              poster="./visitka-poster.webp"
-              preload="none"
+              poster={isDesktop ? './visitka-poster.webp' : './visitka-540-poster.webp'}
+              preload={visitkaPreload ? 'auto' : 'none'}
               playsInline
               controls={isVisitkaPlaying}
               onPlay={() => setIsVisitkaPlaying(true)}
               onEnded={() => setIsVisitkaPlaying(false)}
             >
-              <source src="./visitka.mp4" type="video/mp4" />
+              <source src={isDesktop ? './visitka.mp4' : './visitka-540.mp4'} type="video/mp4" />
               Ваш браузер не поддерживает воспроизведение видео.
             </video>
             {!isDesktop && isVisitkaPlaying && (
