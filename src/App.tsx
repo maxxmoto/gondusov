@@ -1045,8 +1045,10 @@ function App() {
           </div>
 
           <div className="appointment-block" id="kontakty">
-            <h2 className="section-title fade-in">Запись на консультацию</h2>
-            <p className="fade-in">Записаться можно по телефону или через Telegram. Приём и исследования — в клинике.</p>
+            {/* <h2 className="section-title fade-in">Запись на консультацию</h2> */}
+            <h2 className="section-title fade-in">Написать врачу</h2>
+            {/* <p className="fade-in">Записаться можно по телефону или через Telegram. Приём и исследования — в клинике.</p> */}
+            <p className="fade-in">Написать врачу можно в Telegram или позвонить. Приём и исследования — в клинике.</p>
             <div className="appointment-buttons fade-in">
               <a href="tel:+79185680599" className="btn-primary">
                 <PhoneIcon />
@@ -1105,7 +1107,8 @@ function App() {
             <p><a href="#podhod">Комплексный подход</a></p>
             <p><a href="#kogda-obratitsya">Когда обратиться к врачу</a></p>
             <p><a href="#konsultaciya">Как проходит консультация</a></p>
-            <p><a href="#kontakty">Запись на консультацию</a></p>
+            {/* <p><a href="#kontakty">Запись на консультацию</a></p> */}
+            <p><a href="#kontakty">Написать врачу</a></p>
           </nav>
 
           <nav aria-label="Услуги врача">
@@ -1147,7 +1150,8 @@ function App() {
           <p><a href="#konsultaciya">Как проходит консультация</a></p>
           <p><a href="#rezultaty">Результаты</a></p>
           <p><a href="#faq">Частые вопросы</a></p>
-          <p><a href="#kontakty">Запись на консультацию</a></p>
+          {/* <p><a href="#kontakty">Запись на консультацию</a></p> */}
+          <p><a href="#kontakty">Написать врачу</a></p>
           <p><a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></p>
           <p><a href="./agreement.html" target="_blank" rel="noopener noreferrer">Согласие на обработку ПД</a></p>
         </nav>
@@ -1187,7 +1191,8 @@ function App() {
               </div>
             ) : (
               <>
-                <h3>Запись на консультацию</h3>
+                {/* <h3>Запись на консультацию</h3> */}
+                <h3>Написать врачу</h3>
                 <input type="text" placeholder="Ваше имя" id="modalName" />
                 <input
                   type="tel"
