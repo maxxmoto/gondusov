@@ -11,6 +11,11 @@
 - [Когда обратиться к врачу](https://drgondusov.ru/#kogda-obratitsya): симптомы, при которых стоит записаться к гастроэнтерологу.
 - [Связаться с врачом и контакты](https://drgondusov.ru/#kontakty): телефон для связи.
 
+## Статьи
+
+- [Почему обычная гастроскопия может не увидеть рак](https://drgondusov.ru/articles/nbi-endoskopiya.html): NBI и хромоэндоскопия, группы риска, точность диагностики.
+- [Вы доверите нейросети искать рак в кишечнике](https://drgondusov.ru/articles/iskusstvennyy-intellekt-v-endoskopii.html): ИИ в эндоскопии, CADe и CADx, опрос WEO 2026.
+
 ## Контакты
 
 - Телефон: +7 918 568-05-99

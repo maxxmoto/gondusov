@@ -503,6 +503,7 @@ function App() {
           <a href="#uslugi">Услуги</a>
           <a href="#podhod">Подход</a>
           <a href="#kogda-obratitsya">Когда обратиться</a>
+          <a href="#stati">Статьи</a>
           <a href="#kontakty">Контакты</a>
         </nav>
 
@@ -554,6 +555,7 @@ function App() {
           <a href="#uslugi" onClick={closeMobileMenu}>Услуги</a>
           <a href="#podhod" onClick={closeMobileMenu}>Подход</a>
           <a href="#kogda-obratitsya" onClick={closeMobileMenu}>Когда обратиться</a>
+          <a href="#stati" onClick={closeMobileMenu}>Статьи</a>
           <a href="#kontakty" onClick={closeMobileMenu}>Контакты</a>
           <a href="tel:+79185680599" className="mobile-menu-phone" onClick={closeMobileMenu}>
             +7 918 568-05-99
@@ -1067,6 +1069,50 @@ function App() {
         </div>
       </section>
 
+      {/* Articles */}
+      <section className="articles-section" id="stati">
+        <div className="articles-container">
+          <h2 className="section-title fade-in">Статьи</h2>
+          <p className="section-subtitle fade-in">Разбираю вопросы ЖКТ и эндоскопии простым языком.</p>
+          <div className="articles-grid">
+            <a className="article-card fade-in" href="./articles/nbi-endoskopiya.html">
+              <div className="article-card-media">
+                <img
+                  src="./articles/img/nbi-card.webp"
+                  alt="Эндоскопия желудка и кишечника"
+                  width={600}
+                  height={400}
+                  loading="lazy"
+                />
+              </div>
+              <div className="article-card-body">
+                <span className="article-card-tag">Эндоскопия</span>
+                <h3>Почему обычная гастроскопия может не увидеть рак?</h3>
+                <p>Как NBI и хромоэндоскопия повышают точность диагностики и кому нужно обследование в расширенном режиме.</p>
+                <span className="article-card-more">Читать статью →</span>
+              </div>
+            </a>
+            <a className="article-card fade-in" href="./articles/iskusstvennyy-intellekt-v-endoskopii.html">
+              <div className="article-card-media">
+                <img
+                  src="./articles/img/ai-card.webp"
+                  alt="Искусственный интеллект в эндоскопии"
+                  width={600}
+                  height={375}
+                  loading="lazy"
+                />
+              </div>
+              <div className="article-card-body">
+                <span className="article-card-tag">ИИ в медицине</span>
+                <h3>Вы доверите нейросети искать рак в кишечнике?</h3>
+                <p>Что показал опрос врачей и пациентов в 2026 году и почему финальное решение остаётся за врачом.</p>
+                <span className="article-card-more">Читать статью →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Useful Content + Appointment */}
       <section className="content-appointment-section">
         <div className="content-appointment-inner">
@@ -1138,6 +1184,7 @@ function App() {
             <p><a href="#podhod">Комплексный подход</a></p>
             <p><a href="#kogda-obratitsya">Когда обратиться к врачу</a></p>
             <p><a href="#konsultaciya">Как проходит консультация</a></p>
+            <p><a href="#stati">Статьи</a></p>
             {/* <p><a href="#kontakty">Запись на консультацию</a></p> */}
             <p><a href="#kontakty">Написать врачу</a></p>
           </nav>
@@ -1181,6 +1228,7 @@ function App() {
           <p><a href="#konsultaciya">Как проходит консультация</a></p>
           <p><a href="#rezultaty">Результаты</a></p>
           <p><a href="#faq">Частые вопросы</a></p>
+          <p><a href="#stati">Статьи</a></p>
           {/* <p><a href="#kontakty">Запись на консультацию</a></p> */}
           <p><a href="#kontakty">Написать врачу</a></p>
           <p><a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></p>
