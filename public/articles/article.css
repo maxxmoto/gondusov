@@ -172,6 +172,85 @@ h1 {
   margin-bottom: 26px;
 }
 
+.article-author {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 0 28px;
+  padding: 22px 24px 0 26px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #eef9f8 0%, #dceff0 100%);
+  box-shadow: 0 10px 30px rgba(10, 60, 60, 0.08);
+  overflow: hidden;
+}
+
+.article-author-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  align-self: center;
+  padding-bottom: 20px;
+}
+
+.article-author-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.article .article-author-name {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.25;
+  margin: 0 0 3px;
+}
+
+.article .article-author-roles {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #24383c;
+  margin: 0 0 6px;
+}
+
+.article .article-author-edu {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #5c6d6d;
+  margin: 0 0 10px;
+}
+
+.article-author-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.article-author-logos a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.article-author-logos img {
+  display: block;
+  width: auto;
+  height: 26px;
+  mix-blend-mode: multiply;
+}
+
+.article-author-photo {
+  flex: 0 0 auto;
+  width: 96px;
+  height: auto;
+  display: block;
+  align-self: flex-end;
+}
+
 .hero {
   width: 100%;
   height: auto;
@@ -993,6 +1072,38 @@ figcaption {
     margin: 16px 8px 32px;
     padding: 28px 20px;
     border-radius: 20px;
+  }
+  .article-author {
+    gap: 14px;
+    margin-bottom: 22px;
+    padding: 16px 16px 0 18px;
+    border-radius: 16px;
+  }
+  .article-author-text {
+    padding-bottom: 14px;
+  }
+  .article-author-label {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+  .article .article-author-name {
+    font-size: 16px;
+  }
+  .article .article-author-roles {
+    font-size: 12px;
+  }
+  .article .article-author-edu {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+  .article-author-logos {
+    gap: 10px;
+  }
+  .article-author-logos img {
+    height: 18px;
+  }
+  .article-author-photo {
+    width: 72px;
   }
   h1 {
     font-size: 30px;
