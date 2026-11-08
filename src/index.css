@@ -171,6 +171,7 @@ body {
   border: none;
   padding: 11px 20px;
   border-radius: 12px;
+  font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -1808,6 +1809,65 @@ a.workplace-item {
 }
 
 .modal h3 { font-size: 26px; font-weight: 800; margin-bottom: 24px; }
+
+.write-modal { max-width: 380px; }
+
+.write-modal-sub {
+  font-size: 15px;
+  color: #666;
+  margin: -12px 0 20px;
+}
+
+.write-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.write-choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 600;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.write-choice:hover {
+  border-color: #0ABAB5;
+  background: #f2fbfa;
+  transform: translateY(-1px);
+}
+
+.write-choice img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+}
+
+.write-choice-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #0ABAB5;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.write-choice-icon svg {
+  width: 18px;
+  height: 18px;
+}
 
 .modal input, .modal textarea {
   width: 100%;

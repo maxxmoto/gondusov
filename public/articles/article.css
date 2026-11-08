@@ -221,8 +221,9 @@ figcaption {
   margin: 40px 0 24px;
   padding: 28px 32px;
   border-radius: 22px;
-  background: var(--dark);
-  color: #fff;
+  background: linear-gradient(120deg, #eef9f8 0%, #dceff0 100%);
+  color: var(--text);
+  box-shadow: 0 10px 30px rgba(10, 60, 60, 0.08);
   overflow: hidden;
 }
 
@@ -253,7 +254,7 @@ figcaption {
 .cta-block p {
   font-size: 17px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.82);
+  color: #4a5a5a;
   margin-bottom: 18px;
 }
 

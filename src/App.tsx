@@ -209,6 +209,7 @@ function formatPhone(raw: string): string {
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tgPromptOpen, setTgPromptOpen] = useState(false);
+  const [writeModalOpen, setWriteModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [phoneValue, setPhoneValue] = useState('+7');
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
@@ -296,6 +297,15 @@ function App() {
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
   }, []);
+
+  useEffect(() => {
+    if (!writeModalOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setWriteModalOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [writeModalOpen]);
 
   useEffect(() => {
     const video = visitkaRef.current;
@@ -530,14 +540,13 @@ function App() {
             <img src="./dzen.svg" alt="" width={38} height={38} loading="eager" />
           </a>
 
-          <a
-            href={TG_CONTACT_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             className="btn-appointment"
+            onClick={() => setWriteModalOpen(true)}
           >
             Написать
-          </a>
+          </button>
 
           <button
             className={`burger-btn ${isMobileMenuOpen ? 'active' : ''}`}
@@ -1436,6 +1445,54 @@ function App() {
               <img src="./telegram.webp" className="btn-tg-icon" alt="" width={18} height={18} />
               Написать в Telegram
             </a>
+          </div>
+        </div>
+      )}
+
+      {/* Write / contact chooser modal */}
+      {writeModalOpen && (
+        <div
+          className="modal-overlay"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setWriteModalOpen(false);
+          }}
+        >
+          <div className="modal write-modal" role="dialog" aria-modal="true" aria-label="Куда написать врачу">
+            <button className="modal-close" onClick={() => setWriteModalOpen(false)} aria-label="Закрыть">
+              <CloseIcon />
+            </button>
+            <h3>Куда написать?</h3>
+            <p className="write-modal-sub">Выберите удобный способ связи.</p>
+            <div className="write-choices">
+              <a
+                className="write-choice"
+                href="https://web.max.ru/425256088"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setWriteModalOpen(false)}
+              >
+                <img src="./max.webp" alt="" width={36} height={36} />
+                <span>Max</span>
+              </a>
+              <a
+                className="write-choice"
+                href={TG_CONTACT_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setWriteModalOpen(false)}
+              >
+                <img src="./telegram.webp" alt="" width={36} height={36} />
+                <span>Telegram</span>
+              </a>
+              <a
+                className="write-choice"
+                href="tel:+79185680599"
+                onClick={() => setWriteModalOpen(false)}
+              >
+                <span className="write-choice-icon"><PhoneIcon /></span>
+                <span>Позвонить</span>
+              </a>
+            </div>
           </div>
         </div>
       )}
