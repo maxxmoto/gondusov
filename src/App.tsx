@@ -1146,7 +1146,7 @@ function App() {
             <a className="article-card fade-in" href="./articles/srk-simptomy-lechenie.html">
               <div className="article-card-media">
                 <img
-                  src="./articles/img/srk-card.webp"
+                  src="./articles/img/srk-card.webp?v=2"
                   alt="Синдром раздражённого кишечника"
                   width={600}
                   height={400}
@@ -1163,7 +1163,7 @@ function App() {
             <a className="article-card fade-in" href="./articles/probiotiki-shramm.html">
               <div className="article-card-media">
                 <img
-                  src="./articles/img/probiotic-card.webp"
+                  src="./articles/img/probiotic-card.webp?v=2"
                   alt="Пробиотики"
                   width={600}
                   height={400}
@@ -1180,7 +1180,7 @@ function App() {
             <a className="article-card fade-in" href="./articles/gastrit-ne-prohodit.html">
               <div className="article-card-media">
                 <img
-                  src="./articles/img/gastritis-card.webp"
+                  src="./articles/img/gastritis-card.webp?v=2"
                   alt="Гастрит"
                   width={600}
                   height={400}
@@ -1197,7 +1197,7 @@ function App() {
             <a className="article-card fade-in" href="./articles/vzdutie-lechenie.html">
               <div className="article-card-media">
                 <img
-                  src="./articles/img/bloating-card.webp"
+                  src="./articles/img/bloating-card.webp?v=2"
                   alt="Вздутие живота"
                   width={600}
                   height={400}

@@ -354,6 +354,13 @@ figcaption {
   color: var(--muted);
 }
 
+.signature {
+  margin: 24px 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
 .disclaimer {
   font-size: 13px;
   line-height: 1.6;
