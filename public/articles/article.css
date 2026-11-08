@@ -758,31 +758,41 @@ figcaption {
   flex-shrink: 0;
 }
 
+.site-header-wide {
+  max-width: 1600px;
+}
+
+.articles-page-wide {
+  max-width: 1600px;
+}
+
 .articles-layout {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
   gap: 20px;
-  align-items: start;
-  margin-top: 0;
+  align-items: flex-start;
+  margin-top: 18px;
 }
 
 .articles-main {
-  grid-column: span 3;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
 .articles-main h1 {
-  margin: 0 0 12px;
-  font-size: clamp(32px, 3.5vw, 42px);
+  margin: 0 0 18px;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.1;
 }
 
 .articles-layout .articles-list {
-  margin-top: 20px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0;
+  grid-template-columns: repeat(auto-fill, 243px);
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .collections-sidebar {
-  grid-column: span 1;
+  flex: 0 0 243px;
   position: sticky;
   top: 100px;
   min-width: 0;
@@ -790,13 +800,14 @@ figcaption {
 
 .collections-sidebar h2 {
   margin: 0 0 18px;
-  font-size: clamp(32px, 3.5vw, 42px);
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.1;
 }
 
 .collections-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 16px;
 }
 
 .collection-card {
@@ -1012,22 +1023,24 @@ figcaption {
     margin-top: 20px;
   }
   .articles-layout {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 24px;
-    margin-top: 0;
+    margin-top: 16px;
   }
   .articles-main {
-    grid-column: auto;
+    flex: 0 0 auto;
+    width: 100%;
   }
   .articles-layout .articles-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 16px;
+    gap: 12px;
   }
   .articles-main h1 {
     font-size: 28px;
   }
   .collections-sidebar {
-    grid-column: auto;
+    flex: 0 0 auto;
+    width: 100%;
     position: static;
   }
   .collections-sidebar h2 {
