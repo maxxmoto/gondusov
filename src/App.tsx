@@ -1149,7 +1149,7 @@ function App() {
                   src="./articles/img/srk-card.webp"
                   alt="Синдром раздражённого кишечника"
                   width={600}
-                  height={375}
+                  height={400}
                   loading="lazy"
                 />
               </div>
@@ -1166,7 +1166,7 @@ function App() {
                   src="./articles/img/probiotic-card.webp"
                   alt="Пробиотики"
                   width={600}
-                  height={375}
+                  height={400}
                   loading="lazy"
                 />
               </div>
@@ -1183,7 +1183,7 @@ function App() {
                   src="./articles/img/gastritis-card.webp"
                   alt="Гастрит"
                   width={600}
-                  height={375}
+                  height={400}
                   loading="lazy"
                 />
               </div>
@@ -1200,7 +1200,7 @@ function App() {
                   src="./articles/img/bloating-card.webp"
                   alt="Вздутие живота"
                   width={600}
-                  height={375}
+                  height={400}
                   loading="lazy"
                 />
               </div>
