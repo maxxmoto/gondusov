@@ -215,29 +215,33 @@ figcaption {
 
 .cta-block {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   gap: 28px;
   margin: 40px 0 24px;
-  padding: 36px 40px;
+  padding: 28px 32px;
   border-radius: 22px;
   background: var(--dark);
   color: #fff;
+  overflow: hidden;
 }
 
 .cta-content {
   flex: 1 1 auto;
   min-width: 0;
+  align-self: center;
 }
 
 .cta-image {
   flex: 0 0 auto;
-  width: 180px;
+  width: 170px;
   height: auto;
   display: block;
-  border-radius: 18px;
-  padding: 8px;
-  background: linear-gradient(160deg, #eef9f8, #dceff0);
+  align-self: flex-end;
+  margin-bottom: -28px;
+  border-radius: 0;
+  padding: 0;
+  background: none;
 }
 
 .cta-block h3 {
@@ -670,15 +674,17 @@ figcaption {
   .cta-block {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    padding: 24px 20px;
+    gap: 16px;
+    padding: 24px 20px 0;
   }
   .cta-content {
     width: 100%;
+    align-self: stretch;
   }
   .cta-image {
     width: 140px;
     align-self: center;
+    margin-bottom: 0;
   }
   .cta-block h3 {
     font-size: 22px;
