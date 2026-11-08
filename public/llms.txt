@@ -17,6 +17,10 @@
 - [Вы доверите нейросети искать рак в кишечнике](https://drgondusov.ru/articles/iskusstvennyy-intellekt-v-endoskopii.html): ИИ в эндоскопии, CADe и CADx, опрос WEO 2026.
 - [Сбросил 20 кг с баллоном, а вес вернулся](https://drgondusov.ru/articles/ballon-ves-vernulsya.html): почему вес возвращается и что помогает удержать результат.
 - [Баллон удалили, а вес вернулся: 4 причины](https://drgondusov.ru/articles/ballon-4-prichiny.html): физиология, гормоны, поведение, психология.
+- [Вздутие, боль, неустойчивый стул: что делать при СРК](https://drgondusov.ru/articles/srk-simptomy-lechenie.html): диагностика и лечение синдрома раздражённого кишечника.
+- [Почему пробиотик не работает](https://drgondusov.ru/articles/probiotiki-shramm.html): штаммы, доказательная база, когда пробиотики бесполезны.
+- [Гастрит не проходит: в чём ошибка](https://drgondusov.ru/articles/gastrit-ne-prohodit.html): гистологический диагноз, H. pylori, что маскируется под гастрит.
+- [Вздутие не проходит: почему лечение не работает](https://drgondusov.ru/articles/vzdutie-lechenie.html): механизмы вздутия и правильный алгоритм.
 
 ## Контакты
 

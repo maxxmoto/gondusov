@@ -1143,6 +1143,74 @@ function App() {
                 <span className="article-card-more">Читать статью →</span>
               </div>
             </a>
+            <a className="article-card fade-in" href="./articles/srk-simptomy-lechenie.html">
+              <div className="article-card-media">
+                <img
+                  src="./articles/img/srk-card.webp"
+                  alt="Синдром раздражённого кишечника"
+                  width={600}
+                  height={375}
+                  loading="lazy"
+                />
+              </div>
+              <div className="article-card-body">
+                <span className="article-card-tag">СРК</span>
+                <h3>Вздутие, боль, неустойчивый стул: что делать при СРК</h3>
+                <p>Почему таблетки не помогают, как ставится диагноз и что реально работает.</p>
+                <span className="article-card-more">Читать статью →</span>
+              </div>
+            </a>
+            <a className="article-card fade-in" href="./articles/probiotiki-shramm.html">
+              <div className="article-card-media">
+                <img
+                  src="./articles/img/probiotic-card.webp"
+                  alt="Пробиотики"
+                  width={600}
+                  height={375}
+                  loading="lazy"
+                />
+              </div>
+              <div className="article-card-body">
+                <span className="article-card-tag">Пробиотики</span>
+                <h3>Почему пробиотик не работает: дело в штамме</h3>
+                <p>Когда пробиотики действительно работают, а когда это трата денег.</p>
+                <span className="article-card-more">Читать статью →</span>
+              </div>
+            </a>
+            <a className="article-card fade-in" href="./articles/gastrit-ne-prohodit.html">
+              <div className="article-card-media">
+                <img
+                  src="./articles/img/gastritis-card.webp"
+                  alt="Гастрит"
+                  width={600}
+                  height={375}
+                  loading="lazy"
+                />
+              </div>
+              <div className="article-card-body">
+                <span className="article-card-tag">Гастрит</span>
+                <h3>Гастрит не проходит: в чём ошибка</h3>
+                <p>Почему диагноз «хронический гастрит» часто не объясняет симптомы.</p>
+                <span className="article-card-more">Читать статью →</span>
+              </div>
+            </a>
+            <a className="article-card fade-in" href="./articles/vzdutie-lechenie.html">
+              <div className="article-card-media">
+                <img
+                  src="./articles/img/bloating-card.webp"
+                  alt="Вздутие живота"
+                  width={600}
+                  height={375}
+                  loading="lazy"
+                />
+              </div>
+              <div className="article-card-body">
+                <span className="article-card-tag">Вздутие</span>
+                <h3>Вздутие не проходит: почему лечение не работает</h3>
+                <p>Вздутие — симптом, а не диагноз. Разбираем механизмы и алгоритм.</p>
+                <span className="article-card-more">Читать статью →</span>
+              </div>
+            </a>
           </div>
           <a className="articles-more fade-in" href="./articles/index.html">
             Читать другие статьи
