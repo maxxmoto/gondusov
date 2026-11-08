@@ -1073,7 +1073,7 @@ function App() {
       <section className="articles-section" id="stati">
         <div className="articles-container">
           <h2 className="section-title fade-in">Статьи</h2>
-          <p className="section-subtitle fade-in">Разбираю вопросы ЖКТ и эндоскопии простым языком.</p>
+          <p className="section-subtitle fade-in">Разбираю вопросы ЖКТ, эндоскопии и снижения веса простым языком.</p>
           <div className="articles-grid">
             <a className="article-card fade-in" href="./articles/nbi-endoskopiya.html">
               <div className="article-card-media">
@@ -1109,7 +1109,45 @@ function App() {
                 <span className="article-card-more">Читать статью →</span>
               </div>
             </a>
+            <a className="article-card fade-in" href="./articles/ballon-ves-vernulsya.html">
+              <div className="article-card-media">
+                <img
+                  src="./articles/img/balloon-return-card.webp"
+                  alt="Вес после удаления баллона"
+                  width={600}
+                  height={375}
+                  loading="lazy"
+                />
+              </div>
+              <div className="article-card-body">
+                <span className="article-card-tag">Снижение веса</span>
+                <h3>Поставил баллон, сбросил 20 кг — а вес вернулся. Почему?</h3>
+                <p>Разбираю, почему вес возвращается после удаления баллона и что помогает удержать результат.</p>
+                <span className="article-card-more">Читать статью →</span>
+              </div>
+            </a>
+            <a className="article-card fade-in" href="./articles/ballon-4-prichiny.html">
+              <div className="article-card-media">
+                <img
+                  src="./articles/img/balloon-reasons-card.webp"
+                  alt="Баллон в желудке"
+                  width={600}
+                  height={375}
+                  loading="lazy"
+                />
+              </div>
+              <div className="article-card-body">
+                <span className="article-card-tag">Снижение веса</span>
+                <h3>Баллон удалили, а вес вернулся: 4 причины</h3>
+                <p>Физиология, гормоны, поведение и психология — что стоит за возвратом веса.</p>
+                <span className="article-card-more">Читать статью →</span>
+              </div>
+            </a>
           </div>
+          <a className="articles-more fade-in" href="./articles/index.html">
+            Читать другие статьи
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
       </section>
 

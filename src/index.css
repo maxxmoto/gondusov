@@ -2398,8 +2398,35 @@ a.workplace-item {
 .articles-grid {
   margin-top: 32px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.articles-grid .article-card h3 {
+  font-size: 20px;
+}
+
+.articles-grid .article-card p {
+  font-size: 15px;
+}
+
+.articles-more {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 24px auto 0;
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: #16262e;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.articles-more:hover {
+  background: #0ABAB5;
 }
 
 .article-card {
@@ -2483,6 +2510,12 @@ a.workplace-item {
     grid-template-columns: 1fr;
     gap: 16px;
     margin-top: 24px;
+  }
+  .articles-grid .article-card:nth-child(n + 3) {
+    display: none;
+  }
+  .articles-more {
+    display: flex;
   }
   .article-card-body {
     padding: 20px;

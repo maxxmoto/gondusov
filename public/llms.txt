@@ -15,6 +15,8 @@
 
 - [Почему обычная гастроскопия может не увидеть рак](https://drgondusov.ru/articles/nbi-endoskopiya.html): NBI и хромоэндоскопия, группы риска, точность диагностики.
 - [Вы доверите нейросети искать рак в кишечнике](https://drgondusov.ru/articles/iskusstvennyy-intellekt-v-endoskopii.html): ИИ в эндоскопии, CADe и CADx, опрос WEO 2026.
+- [Сбросил 20 кг с баллоном, а вес вернулся](https://drgondusov.ru/articles/ballon-ves-vernulsya.html): почему вес возвращается и что помогает удержать результат.
+- [Баллон удалили, а вес вернулся: 4 причины](https://drgondusov.ru/articles/ballon-4-prichiny.html): физиология, гормоны, поведение, психология.
 
 ## Контакты
 
