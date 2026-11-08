@@ -47,4 +47,96 @@
     var overlay = document.querySelector('.modal-overlay');
     if (overlay) closeOverlay(overlay);
   });
+
+  var article = document.querySelector('.article');
+  if (!article) return;
+
+  var progress = document.createElement('div');
+  progress.className = 'reading-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  progress.innerHTML = '<span></span>';
+  document.body.appendChild(progress);
+  var progressFill = progress.firstChild;
+
+  function updateProgress() {
+    var doc = document.documentElement;
+    var scrollTop = window.pageYOffset || doc.scrollTop || 0;
+    var max = doc.scrollHeight - window.innerHeight;
+    var percent = max > 0 ? (scrollTop / max) * 100 : 0;
+    progressFill.style.width = Math.min(100, Math.max(0, percent)) + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  var heading = document.querySelector('h1');
+  var shareTitle = heading ? heading.textContent.trim() : document.title;
+
+  var share = document.createElement('div');
+  share.className = 'article-share';
+  share.innerHTML =
+    '<button type="button" class="share-btn" aria-label="Поделиться статьёй">' +
+    '  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+    '    <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"/>' +
+    '    <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/>' +
+    '    <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"/>' +
+    '    <path d="M8.6 10.7 15.4 6.3M8.6 13.3l6.8 4.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+    '  </svg>' +
+    '  <span>Поделиться</span>' +
+    '</button>' +
+    '<span class="share-status" aria-live="polite"></span>';
+
+  var cta = article.querySelector('.cta-block');
+  if (cta) {
+    cta.parentNode.insertBefore(share, cta);
+  } else {
+    article.appendChild(share);
+  }
+
+  var shareBtn = share.querySelector('.share-btn');
+  var shareStatus = share.querySelector('.share-status');
+  var statusTimer = null;
+
+  function showStatus(text) {
+    shareStatus.textContent = text;
+    shareStatus.classList.add('visible');
+    if (statusTimer) clearTimeout(statusTimer);
+    statusTimer = setTimeout(function () {
+      shareStatus.classList.remove('visible');
+    }, 2500);
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      var area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.position = 'fixed';
+      area.style.top = '-1000px';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      try {
+        document.execCommand('copy') ? resolve() : reject(new Error('copy failed'));
+      } catch (error) {
+        reject(error);
+      }
+      document.body.removeChild(area);
+    });
+  }
+
+  shareBtn.addEventListener('click', function () {
+    var url = window.location.href;
+    if (navigator.share) {
+      navigator.share({ title: shareTitle, text: shareTitle, url: url }).catch(function () {});
+      return;
+    }
+    copyText(url)
+      .then(function () { showStatus('Ссылка скопирована'); })
+      .catch(function () { showStatus('Не удалось скопировать ссылку'); });
+  });
 })();
