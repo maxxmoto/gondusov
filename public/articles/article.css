@@ -760,30 +760,48 @@ figcaption {
 
 .articles-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
-  gap: 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
   align-items: start;
-  margin-top: 28px;
+  margin-top: 0;
+}
+
+.articles-main {
+  grid-column: span 3;
+  min-width: 0;
+}
+
+.articles-main h1 {
+  margin: 0 0 12px;
+  font-size: clamp(32px, 3.5vw, 42px);
 }
 
 .articles-layout .articles-list {
-  margin-top: 0;
+  margin-top: 20px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .collections-sidebar {
+  grid-column: span 1;
   position: sticky;
   top: 100px;
+  min-width: 0;
 }
 
 .collections-sidebar h2 {
-  margin: 0 0 14px;
-  font-size: 22px;
+  margin: 0 0 18px;
+  font-size: clamp(32px, 3.5vw, 42px);
+}
+
+.collections-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 .collection-card {
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: 0;
   border: 1px solid #ececec;
   border-radius: 20px;
   overflow: hidden;
@@ -996,17 +1014,29 @@ figcaption {
   .articles-layout {
     grid-template-columns: 1fr;
     gap: 24px;
-    margin-top: 20px;
+    margin-top: 0;
+  }
+  .articles-main {
+    grid-column: auto;
   }
   .articles-layout .articles-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 0;
+    margin-top: 16px;
+  }
+  .articles-main h1 {
+    font-size: 28px;
   }
   .collections-sidebar {
+    grid-column: auto;
     position: static;
   }
   .collections-sidebar h2 {
-    font-size: 20px;
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+  .collections-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
   .article-card-body {
     padding: 12px;
