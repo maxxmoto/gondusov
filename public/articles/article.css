@@ -177,6 +177,12 @@ h1 {
   margin-bottom: 18px;
 }
 
+.article p,
+.article li,
+.article figcaption {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
 h2 {
   font-size: clamp(24px, 3vw, 32px);
   line-height: 1.2;

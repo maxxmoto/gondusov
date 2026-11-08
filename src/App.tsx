@@ -1221,8 +1221,9 @@ function App() {
               </div>
             </a>
           </div>
-          <a className="articles-more fade-in" href="./articles/index.html">
-            Читать другие статьи
+          <a className="articles-more fade-in" href="./articles/">
+            <span className="articles-more-desktop">Все статьи</span>
+            <span className="articles-more-mobile">Читать другие статьи</span>
             <span aria-hidden="true">→</span>
           </a>
         </div>

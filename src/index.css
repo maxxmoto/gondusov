@@ -2471,11 +2471,11 @@ a.workplace-item {
 }
 
 .articles-more {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 8px;
   width: fit-content;
-  margin: 24px auto 0;
+  margin: 28px auto 0;
   padding: 12px 20px;
   border-radius: 30px;
   background: #16262e;
@@ -2483,6 +2483,10 @@ a.workplace-item {
   text-decoration: none;
   font-size: 15px;
   font-weight: 600;
+}
+
+.articles-more-mobile {
+  display: none;
 }
 
 .articles-more:hover {
@@ -2576,6 +2580,12 @@ a.workplace-item {
   }
   .articles-more {
     display: flex;
+  }
+  .articles-more-desktop {
+    display: none;
+  }
+  .articles-more-mobile {
+    display: inline;
   }
   .article-card-body {
     padding: 20px;
