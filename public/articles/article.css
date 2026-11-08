@@ -183,6 +183,17 @@ h1 {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
+.article p,
+.article li {
+  font-weight: 500;
+}
+
+.article .meta,
+.article .disclaimer,
+.article figcaption {
+  font-weight: 400;
+}
+
 h2 {
   font-size: clamp(24px, 3vw, 32px);
   line-height: 1.2;
