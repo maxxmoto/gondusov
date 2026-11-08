@@ -185,6 +185,14 @@ function seoPlugin(siteUrl) {
         '    <changefreq>yearly</changefreq>',
         '    <priority>0.3</priority>',
         '  </url>',
+        ...['ballon-20-30-procentov', 'posle-balla-chto-rabotaet', 'diety-kishechnik-ne-luchshe', 'diety-ne-rabotayut', 'zhirnaya-pechen', 'kak-peresadit-mikrobiotu', 'fmt-pri-srk-i-ozhirenii', 'chto-takoe-fmt'].map(
+          (slug) =>
+            `  <url>\n    <loc>${siteUrl}articles/${slug}.html</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>`
+        ),
+        ...['ballon', 'pechen-ves', 'mikrobiota'].map(
+          (slug) =>
+            `  <url>\n    <loc>${siteUrl}articles/collections/${slug}.html</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`
+        ),
         '</urlset>',
         '',
       ].join('\n');

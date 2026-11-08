@@ -15,10 +15,10 @@
       '  <p class="write-modal-sub">Выберите удобный способ связи.</p>' +
       '  <div class="write-choices">' +
       '    <a class="write-choice" href="https://web.max.ru/425256088" target="_blank" rel="noopener noreferrer">' +
-      '      <img src="../max.webp" alt="" width="36" height="36" /><span>Max</span>' +
+      '      <img src="/max.webp" alt="" width="36" height="36" /><span>Max</span>' +
       '    </a>' +
       '    <a class="write-choice" href="' + telegramHref + '" target="_blank" rel="noopener noreferrer">' +
-      '      <img src="../telegram.webp" alt="" width="36" height="36" /><span>Telegram</span>' +
+      '      <img src="/telegram.webp" alt="" width="36" height="36" /><span>Telegram</span>' +
       '    </a>' +
       '    <a class="write-choice" href="tel:+79185680599">' +
       '      <span class="write-choice-icon">' +
