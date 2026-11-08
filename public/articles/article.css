@@ -268,6 +268,53 @@ figcaption {
   color: #fff;
 }
 
+.dzen-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+  padding: 20px 24px;
+  border-radius: 18px;
+  background: #f2f7f7;
+  border: 1px solid #e3eeee;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dzen-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(10, 60, 60, 0.08);
+}
+
+.dzen-icon {
+  flex-shrink: 0;
+}
+
+.dzen-icon img {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+.dzen-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dzen-text strong {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.dzen-text span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 .disclaimer {
   font-size: 13px;
   line-height: 1.6;
@@ -509,6 +556,20 @@ figcaption {
   .float-max img {
     width: 56px;
     height: 56px;
+  }
+  .dzen-block {
+    padding: 16px;
+    gap: 12px;
+  }
+  .dzen-icon img {
+    width: 38px;
+    height: 38px;
+  }
+  .dzen-text strong {
+    font-size: 15px;
+  }
+  .dzen-text span {
+    font-size: 13px;
   }
 }
 
