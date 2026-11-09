@@ -1303,7 +1303,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                     <img src={short.poster} alt="" width={540} height={959} loading="lazy" />
                     <span className="short-play" aria-hidden="true">
                       <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z" />
+                        <path d="M7 5v14l10-7z" />
                       </svg>
                     </span>
                   </button>
