@@ -77,6 +77,38 @@ const WORKPLACES: { label: string; src?: string; href?: string; size?: 'sm' | 'l
   { label: 'Doctu', src: './logos/doctu.svg', href: 'https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich', size: 'sm' },
 ];
 
+const SHORTS: {
+  id: string;
+  title: string;
+  poster: string;
+  embed: string;
+}[] = [
+  {
+    id: 'sleep-after-food',
+    title: 'Сонливость после еды — не норма',
+    poster: './roliki/rolik-1.webp',
+    embed: 'https://dzen.ru/embed/oNFuxaWMOAAA',
+  },
+  {
+    id: 'bloating-reasons',
+    title: 'Вздутие — не всегда про еду',
+    poster: './roliki/rolik-2.webp',
+    embed: 'https://dzen.ru/embed/oNFsB4mAOAAA',
+  },
+  {
+    id: 'gut-treatment',
+    title: 'Лечишь кишечник годами, а легче не становится?',
+    poster: './roliki/rolik-3.webp',
+    embed: 'https://dzen.ru/embed/oNFs3AGcOAAA',
+  },
+  {
+    id: 'alt-ast',
+    title: 'АЛТ и АСТ повышены — не всегда болезнь печени',
+    poster: './roliki/rolik-4.webp',
+    embed: 'https://dzen.ru/embed/oNFtAHnEOAAA',
+  },
+];
+
 const SERVICES: {
   title: string;
   desc: string;
@@ -235,7 +267,8 @@ function App() {
   const [isDesktop, setIsDesktop] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(min-width: 769px)').matches
   );
-  const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
+  const [activeShort, setActiveShort] = useState<string | null>(null);
+const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     try {
       return (localStorage.getItem(CONSENT_KEY) as CookieConsent) || null;
     } catch {
@@ -1226,6 +1259,58 @@ function App() {
             <span className="articles-more-mobile">Читать другие статьи</span>
             <span aria-hidden="true">→</span>
           </a>
+        </div>
+      </section>
+
+      {/* Shorts */}
+      <section className="shorts-section" id="roliki">
+        <div className="shorts-container">
+          <div className="shorts-head fade-in">
+            <div>
+              <h2 className="section-title">Ролики</h2>
+              <p className="section-subtitle">Короткие видео о ЖКТ, эндоскопии и снижении веса.</p>
+            </div>
+            <a
+              className="shorts-all"
+              href="https://dzen.ru/drgondusov"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Все ролики в Дзене <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div className="shorts-track">
+            {SHORTS.map((short) => (
+              <div
+                className={`short-card ${activeShort === short.id ? 'is-playing' : ''}`}
+                key={short.id}
+              >
+                {activeShort === short.id ? (
+                  <iframe
+                    className="short-iframe"
+                    src={`${short.embed}?autoplay=1`}
+                    title={short.title}
+                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                    allowFullScreen
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    className="short-card-button"
+                    onClick={() => setActiveShort(short.id)}
+                    aria-label={`Смотреть ролик: ${short.title}`}
+                  >
+                    <img src={short.poster} alt="" width={540} height={959} loading="lazy" />
+                    <span className="short-play" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
