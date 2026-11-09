@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import {
   StethoscopeIcon,
   EndoscopeIcon,
@@ -380,6 +380,14 @@ function App() {
   );
   const [activeShort, setActiveShort] = useState<string | null>(null);
 const [activeSummary, setActiveSummary] = useState<string | null>(null);
+const [summaryPhase, setSummaryPhase] = useState<'loading' | 'typing'>('loading');
+const summaryBodyRef = useRef<HTMLDivElement | null>(null);
+const typewriterNodesRef = useRef<{
+  el: HTMLElement;
+  nodes: { node: Text; full: string }[];
+  total: number;
+  start: number;
+}[]>([]);
 
 useEffect(() => {
   if (!activeShort || !window.matchMedia('(max-width: 768px)').matches) return;
@@ -404,6 +412,80 @@ useEffect(() => {
     document.body.style.overflow = previousOverflow;
   };
 }, [activeSummary]);
+
+useEffect(() => {
+  if (!activeSummary) return;
+  setSummaryPhase('loading');
+  const timer = window.setTimeout(() => setSummaryPhase('typing'), 1500);
+  return () => window.clearTimeout(timer);
+}, [activeSummary]);
+
+useLayoutEffect(() => {
+  if (summaryPhase !== 'typing' || !activeSummary) return;
+  const root = summaryBodyRef.current;
+  if (!root) return;
+
+  if (typewriterNodesRef.current.length === 0) {
+    const elements = [
+      root.querySelector<HTMLElement>('.summary-lead'),
+      ...Array.from(root.querySelectorAll<HTMLElement>('.summary-list li')),
+      root.querySelector<HTMLElement>('.summary-takeaway'),
+      root.querySelector<HTMLElement>('.summary-audience'),
+      root.querySelector<HTMLElement>('.summary-note'),
+    ].filter((element): element is HTMLElement => Boolean(element));
+
+    let start = 0;
+    typewriterNodesRef.current = elements.map((el) => {
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const nodes: { node: Text; full: string }[] = [];
+      let current = walker.nextNode();
+      while (current) {
+        const text = current.nodeValue || '';
+        if (text) nodes.push({ node: current as Text, full: text });
+        current = walker.nextNode();
+      }
+      const total = nodes.reduce((sum, item) => sum + item.full.length, 0);
+      const unit = { el, nodes, total, start };
+      start += total;
+      return unit;
+    });
+  }
+
+  const units = typewriterNodesRef.current;
+  let total = 0;
+  units.forEach((unit) => {
+    unit.nodes.forEach(({ node }) => {
+      node.nodeValue = '';
+    });
+    unit.el.style.visibility = 'hidden';
+    total += unit.total;
+  });
+  if (total === 0) return;
+
+  const duration = 2400;
+  const startedAt = performance.now();
+  let frame = 0;
+
+  const tick = (now: number) => {
+    const progress = Math.min(1, (now - startedAt) / duration);
+    const revealed = Math.floor(total * progress);
+
+    units.forEach((unit) => {
+      let inUnit = Math.max(0, Math.min(unit.total, revealed - unit.start));
+      if (revealed > unit.start) unit.el.style.visibility = 'visible';
+      unit.nodes.forEach((item) => {
+        const length = Math.min(item.full.length, inUnit);
+        item.node.nodeValue = item.full.slice(0, length);
+        inUnit -= length;
+      });
+    });
+
+    if (progress < 1) frame = requestAnimationFrame(tick);
+  };
+
+  frame = requestAnimationFrame(tick);
+  return () => cancelAnimationFrame(frame);
+}, [summaryPhase, activeSummary]);
 
 const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     try {
@@ -672,6 +754,12 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
 
   const activeSummaryShort = activeSummary ? SHORTS.find((short) => short.id === activeSummary) : null;
   const activeSummaryData = activeSummary ? SHORT_SUMMARIES[activeSummary] : null;
+
+  const openSummary = (id: string) => {
+    typewriterNodesRef.current = [];
+    setSummaryPhase('loading');
+    setActiveSummary(id);
+  };
 
   return (
     <div>
@@ -1452,7 +1540,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                   <button
                     type="button"
                     className="short-summary-btn"
-                    onClick={() => setActiveSummary(short.id)}
+                    onClick={() => openSummary(short.id)}
                     aria-label={`ИИ-выжимка: ${short.title}`}
                   >
                     <SparkleIcon />
@@ -1490,24 +1578,35 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
               <span className="summary-time">≈30 секунд</span>
             </div>
             <h2 id="summary-title" className="summary-title">{activeSummaryShort.title}</h2>
-            <p className="summary-lead">{activeSummaryData.lead}</p>
-            <ul className="summary-list">
-              {activeSummaryData.bullets.map((bullet, index) => (
-                <li key={index}>
-                  <strong>{bullet.title}</strong> {bullet.text}
-                </li>
-              ))}
-            </ul>
-            <div className="summary-takeaway">
-              <span>Главный вывод</span>
-              <p>{activeSummaryData.takeaway}</p>
+            <div className="summary-body" ref={summaryBodyRef}>
+              <div className={`summary-content ${summaryPhase === 'loading' ? 'is-loading' : ''}`}>
+                <p className="summary-lead">{activeSummaryData.lead}</p>
+                <ul className="summary-list">
+                  {activeSummaryData.bullets.map((bullet, index) => (
+                    <li key={index}>
+                      <strong>{bullet.title}</strong> {bullet.text}
+                    </li>
+                  ))}
+                </ul>
+                <div className="summary-takeaway">
+                  <span>Главный вывод</span>
+                  <p>{activeSummaryData.takeaway}</p>
+                </div>
+                <p className="summary-audience">
+                  <strong>Кому смотреть:</strong> {activeSummaryData.audience}
+                </p>
+                <p className="summary-note">
+                  Краткий пересказ ролика. Не заменяет консультацию врача.
+                </p>
+              </div>
+              {summaryPhase === 'loading' && (
+                <div className="summary-loading">
+                  <span className="summary-spinner" aria-hidden="true" />
+                  <p className="summary-loading-title">ИИ изучает ролик…</p>
+                  <p className="summary-loading-sub">Выделяю главное</p>
+                </div>
+              )}
             </div>
-            <p className="summary-audience">
-              <strong>Кому смотреть:</strong> {activeSummaryData.audience}
-            </p>
-            <p className="summary-note">
-              Краткий пересказ ролика. Не заменяет консультацию врача.
-            </p>
           </div>
         </div>
       )}
