@@ -109,6 +109,117 @@ const SHORTS: {
   },
 ];
 
+type ShortSummary = {
+  lead: string;
+  bullets: { title: string; text: React.ReactNode }[];
+  takeaway: string;
+  audience: string;
+};
+
+const SparkleIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 2.5l1.7 5.8L19.5 10l-5.8 1.7L12 17.5l-1.7-5.8L4.5 10l5.8-1.7L12 2.5z" />
+    <path d="M18.5 14.5l.8 2.7 2.7.8-2.7.8-.8 2.7-.8-2.7-2.7-.8 2.7-.8.8-2.7z" />
+  </svg>
+);
+
+const SHORT_SUMMARIES: Record<string, ShortSummary> = {
+  'sleep-after-food': {
+    lead: 'Если после каждого обеда тянет в сон — это не просто «тяжёлый день». У этого есть три частые причины, которые стоит проверить.',
+    bullets: [
+      {
+        title: 'Инсулинорезистентность.',
+        text: (
+          <>
+            После еды сахар растёт, инсулина выбрасывается всё больше, а затем уровень глюкозы резко падает. <em>Этот провал и ощущается как внезапная сонливость.</em> Проблема может годами маскироваться под обычную усталость.
+          </>
+        ),
+      },
+      {
+        title: 'Гипотиреоз.',
+        text: (
+          <>
+            Если щитовидная железа вырабатывает мало гормонов, замедляется обмен веществ и пищеварение. После еды организм тратит последние силы — отсюда вялость. Иногда это <em>единственный заметный симптом</em>.
+          </>
+        ),
+      },
+      {
+        title: 'Переедание и тяжёлая пища.',
+        text: (
+          <>
+            Большая порция углеводов и жиров направляет кровоток к желудку и кишечнику. Чем больше жареного, мучного и сладкого, тем сильнее клонит в сон.
+          </>
+        ),
+      },
+      {
+        title: 'Что проверить.',
+        text: (
+          <>
+            Глюкоза натощак, инсулин, ТТГ и ферритин. С результатами — к терапевту или эндокринологу, а не на форум.
+          </>
+        ),
+      },
+      {
+        title: 'Что помогает уже завтра.',
+        text: (
+          <>
+            Белок и клетчатка в каждый приём пищи, умеренные порции и <em>10–15 минут ходьбы после еды</em>. Кофе — маскировка, а не решение.
+          </>
+        ),
+      },
+    ],
+    takeaway: 'Сонливость после еды — не характер и не лень, а сигнал организма. Начните с анализов и простых изменений, а не с очередной чашки кофе.',
+    audience: 'Тем, кто регулярно «выключается» после обеда и списывает это на усталость, стресс или возраст.',
+  },
+  'bloating-reasons': {
+    lead: 'Вздутие — не всегда «много газа» и не всегда «плохая микрофлора». За одним симптомом стоят разные механизмы, и лечение зависит от причины.',
+    bullets: [
+      {
+        title: 'Газ и FODMAP.',
+        text: (
+          <>
+            Бактерии ферментируют непереваренные углеводы: пшеницу, лук, бобовые, яблоки, молоко, сахарозаменители. Газ образуется при СИБР и нарушении всасывания углеводов.
+          </>
+        ),
+      },
+      {
+        title: 'Нарушение моторики.',
+        text: (
+          <>
+            Газа может быть нормально, но кишечник не продвигает его. Стенки растягиваются — появляется распирание и боль. Часто так бывает при СРК.
+          </>
+        ),
+      },
+      {
+        title: 'Висцеральная чувствительность.',
+        text: (
+          <>
+            Газ и моторика в норме, но нервная система воспринимает обычное растяжение как боль. Это проблема оси <em>«кишечник — мозг»</em>, и стресс её усиливает.
+          </>
+        ),
+      },
+      {
+        title: 'Желчь и жирная еда.',
+        text: (
+          <>
+            Если желчеотделение нарушено, жиры перевариваются хуже — появляется тяжесть и вздутие, особенно после жирной пищи.
+          </>
+        ),
+      },
+      {
+        title: 'Что делать.',
+        text: (
+          <>
+            Исключить органику, сделать дыхательные тесты, вести дневник питания 2–4 недели, попробовать низко-FODMAP диету. Пробиотики — только по показаниям, а не «на всякий случай».
+          </>
+        ),
+      },
+    ],
+    takeaway: 'Вздутие — симптом, а не диагноз. Лечить нужно не газ, а механизм, который его вызывает.',
+    audience: 'Тем, у кого вздутие возвращается после «таблеток от живота» и диет.',
+  },
+};
+
 const SERVICES: {
   title: string;
   desc: string;
@@ -268,6 +379,32 @@ function App() {
     () => typeof window !== 'undefined' && window.matchMedia('(min-width: 769px)').matches
   );
   const [activeShort, setActiveShort] = useState<string | null>(null);
+const [activeSummary, setActiveSummary] = useState<string | null>(null);
+
+useEffect(() => {
+  if (!activeShort || !window.matchMedia('(max-width: 768px)').matches) return;
+  const card = document.querySelector<HTMLElement>(`.short-card[data-short-id="${activeShort}"]`);
+  if (!card) return;
+  const timer = window.setTimeout(() => {
+    card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }, 60);
+  return () => window.clearTimeout(timer);
+}, [activeShort]);
+
+useEffect(() => {
+  if (!activeSummary) return;
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') setActiveSummary(null);
+  };
+  document.addEventListener('keydown', onKeyDown);
+  const previousOverflow = document.body.style.overflow;
+  document.body.style.overflow = 'hidden';
+  return () => {
+    document.removeEventListener('keydown', onKeyDown);
+    document.body.style.overflow = previousOverflow;
+  };
+}, [activeSummary]);
+
 const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     try {
       return (localStorage.getItem(CONSENT_KEY) as CookieConsent) || null;
@@ -532,6 +669,9 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
+
+  const activeSummaryShort = activeSummary ? SHORTS.find((short) => short.id === activeSummary) : null;
+  const activeSummaryData = activeSummary ? SHORT_SUMMARIES[activeSummary] : null;
 
   return (
     <div>
@@ -1283,6 +1423,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
             {SHORTS.map((short) => (
               <div
                 className={`short-card ${activeShort === short.id ? 'is-playing' : ''}`}
+                data-short-id={short.id}
                 key={short.id}
               >
                 {activeShort === short.id ? (
@@ -1290,8 +1431,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                     className="short-iframe"
                     src={`${short.embed}?autoplay=1`}
                     title={short.title}
-                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-                    allowFullScreen
+                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; screen-wake-lock"
                   />
                 ) : (
                   <button
@@ -1308,11 +1448,69 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                     </span>
                   </button>
                 )}
+                {SHORT_SUMMARIES[short.id] && (
+                  <button
+                    type="button"
+                    className="short-summary-btn"
+                    onClick={() => setActiveSummary(short.id)}
+                    aria-label={`ИИ-выжимка: ${short.title}`}
+                  >
+                    <SparkleIcon />
+                    <span>ИИ-выжимка</span>
+                  </button>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {activeSummaryData && activeSummaryShort && (
+        <div className="summary-overlay" onClick={() => setActiveSummary(null)}>
+          <div
+            className="summary-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="summary-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="summary-handle" aria-hidden="true" />
+            <button
+              type="button"
+              className="summary-close"
+              onClick={() => setActiveSummary(null)}
+              aria-label="Закрыть выжимку"
+              autoFocus
+            >
+              <CloseIcon />
+            </button>
+            <div className="summary-badge">
+              <SparkleIcon />
+              <span>ИИ-выжимка</span>
+              <span className="summary-time">≈30 секунд</span>
+            </div>
+            <h2 id="summary-title" className="summary-title">{activeSummaryShort.title}</h2>
+            <p className="summary-lead">{activeSummaryData.lead}</p>
+            <ul className="summary-list">
+              {activeSummaryData.bullets.map((bullet, index) => (
+                <li key={index}>
+                  <strong>{bullet.title}</strong> {bullet.text}
+                </li>
+              ))}
+            </ul>
+            <div className="summary-takeaway">
+              <span>Главный вывод</span>
+              <p>{activeSummaryData.takeaway}</p>
+            </div>
+            <p className="summary-audience">
+              <strong>Кому смотреть:</strong> {activeSummaryData.audience}
+            </p>
+            <p className="summary-note">
+              Краткий пересказ ролика. Не заменяет консультацию врача.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Useful Content + Appointment */}
       <section className="content-appointment-section">
