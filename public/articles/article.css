@@ -323,13 +323,6 @@ h1 {
   margin: 0 0 6px;
 }
 
-.article .article-author-edu {
-  font-size: 13px;
-  line-height: 1.45;
-  color: #5c6d6d;
-  margin: 0;
-}
-
 .article-author-logos {
   grid-column: 1;
   grid-row: 2;
@@ -359,6 +352,10 @@ h1 {
   transition: filter 0.3s, opacity 0.3s;
 }
 
+.article-author-logos a:last-child img {
+  height: 24px;
+}
+
 .article-author-logos a:hover img {
   filter: grayscale(0);
   opacity: 1;
@@ -368,7 +365,7 @@ h1 {
   grid-column: 2;
   grid-row: 1 / span 2;
   align-self: end;
-  width: 96px;
+  width: 134px;
   height: auto;
   display: block;
 }
@@ -1217,9 +1214,6 @@ figcaption {
   .article .article-author-roles {
     font-size: 13px;
   }
-  .article .article-author-edu {
-    font-size: 12px;
-  }
   .article-author-logos {
     grid-column: 1;
     grid-row: 2;
@@ -1236,11 +1230,14 @@ figcaption {
     height: 22px;
     max-width: none;
   }
+  .article-author-logos a:last-child img {
+    height: 18px;
+  }
   .article-author-photo {
     grid-column: 2;
     grid-row: 2;
     align-self: end;
-    width: 72px;
+    width: 100px;
   }
   .breadcrumbs {
     margin-bottom: 14px;
