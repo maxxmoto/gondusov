@@ -3234,13 +3234,17 @@ a.workplace-item {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  width: 100%;
+  border: 0;
   background: #0088cc;
   color: #fff;
   border-radius: 30px;
   padding: 12px 18px;
+  font-family: inherit;
   font-weight: 700;
   font-size: 14px;
   text-decoration: none;
+  cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
 .chat-cta:hover {

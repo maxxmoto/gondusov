@@ -1379,40 +1379,6 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                 <span className="article-card-more">Читать статью →</span>
               </div>
             </a>
-            <a className="article-card fade-in" href="./articles/ballon-ves-vernulsya.html">
-              <div className="article-card-media">
-                <img
-                  src="./articles/img/balloon-return-card.webp"
-                  alt="Вес после удаления баллона"
-                  width={600}
-                  height={375}
-                  loading="lazy"
-                />
-              </div>
-              <div className="article-card-body">
-                <span className="article-card-tag">Снижение веса</span>
-                <h3>Поставил баллон, сбросил 20 кг — а вес вернулся. Почему?</h3>
-                <p>Разбираю, почему вес возвращается после удаления баллона и что помогает удержать результат.</p>
-                <span className="article-card-more">Читать статью →</span>
-              </div>
-            </a>
-            <a className="article-card fade-in" href="./articles/ballon-4-prichiny.html">
-              <div className="article-card-media">
-                <img
-                  src="./articles/img/balloon-reasons-card.webp"
-                  alt="Баллон в желудке"
-                  width={600}
-                  height={375}
-                  loading="lazy"
-                />
-              </div>
-              <div className="article-card-body">
-                <span className="article-card-tag">Снижение веса</span>
-                <h3>Баллон удалили, а вес вернулся: 4 причины</h3>
-                <p>Физиология, гормоны, поведение и психология — что стоит за возвратом веса.</p>
-                <span className="article-card-more">Читать статью →</span>
-              </div>
-            </a>
             <a className="article-card fade-in" href="./articles/srk-simptomy-lechenie.html">
               <div className="article-card-media">
                 <img
@@ -1690,6 +1656,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
             <p><a href="#kogda-obratitsya">Когда обратиться к врачу</a></p>
             <p><a href="#konsultaciya">Как проходит консультация</a></p>
             <p><a href="#stati">Статьи</a></p>
+            <p><a href="./roliki/">Ролики</a></p>
             {/* <p><a href="#kontakty">Запись на консультацию</a></p> */}
             <p><a href="#kontakty">Написать врачу</a></p>
           </nav>
@@ -1715,6 +1682,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <nav aria-label="Профили врача и соцсети">
             <h4>Профили и соцсети</h4>
             <p><a href="https://t.me/Dr_161" target="_blank" rel="noopener noreferrer">Telegram</a></p>
+            <p><a href="https://max.ru/u/f9LHodD0cOJ6Wuc1B1I1zpOqAY2QRnkXkD8DKaQuWvtWCRcO91v-DPp2YI8" target="_blank" rel="noopener noreferrer">Max</a></p>
             <p><a href="https://dzen.ru/drgondusov" target="_blank" rel="noopener noreferrer">Дзен</a></p>
             <p><a href="https://prodoctorov.ru/azov/vrach/1139434-gondusov/" target="_blank" rel="noopener noreferrer">ПроДокторов</a></p>
             <p><a href="https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997" target="_blank" rel="noopener noreferrer">СберЗдоровье</a></p>
@@ -1734,6 +1702,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <p><a href="#rezultaty">Результаты</a></p>
           <p><a href="#faq">Частые вопросы</a></p>
           <p><a href="#stati">Статьи</a></p>
+          <p><a href="./roliki/">Ролики</a></p>
           {/* <p><a href="#kontakty">Запись на консультацию</a></p> */}
           <p><a href="#kontakty">Написать врачу</a></p>
           <p><a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></p>
@@ -1925,19 +1894,18 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           </div>
           <div className="chat-body">
             <div className="chat-bubble">
-              <p>Здравствуйте! Я — врач Денис Вадимович Гондусов. Задайте свой вопрос — отвечу лично в Телеграм.</p>
+              <p>Здравствуйте! Я — врач Денис Вадимович Гондусов. Задайте свой вопрос — отвечу лично.</p>
             </div>
-            <a
-              href={TG_CONTACT_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
               className="chat-cta"
+              onClick={() => setWriteModalOpen(true)}
             >
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
               </svg>
-              Написать в Telegram
-            </a>
+              Написать
+            </button>
           </div>
         </div>
       )}

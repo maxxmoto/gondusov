@@ -271,9 +271,18 @@ h1 {
 }
 
 .meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 14px;
   color: var(--muted);
   margin-bottom: 26px;
+}
+
+.meta svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .article-author {
