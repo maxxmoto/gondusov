@@ -48,6 +48,25 @@
     if (overlay) closeOverlay(overlay);
   });
 
+  var toTop = document.createElement('button');
+  toTop.type = 'button';
+  toTop.className = 'to-top';
+  toTop.setAttribute('aria-label', 'Наверх');
+  toTop.setAttribute('title', 'Наверх');
+  toTop.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  if (document.querySelector('.float-max')) toTop.classList.add('with-float');
+  document.body.appendChild(toTop);
+
+  function updateToTop() {
+    toTop.classList.toggle('visible', window.scrollY > 500);
+  }
+
+  window.addEventListener('scroll', updateToTop, { passive: true });
+  updateToTop();
+  toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
   var article = document.querySelector('.article');
   if (!article) return;
 

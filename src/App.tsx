@@ -355,8 +355,9 @@ function App() {
   const [writeModalOpen, setWriteModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [phoneValue, setPhoneValue] = useState('+7');
-  const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
-  const [showFloat, setShowFloat] = useState(false);
+const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
+const [showFloat, setShowFloat] = useState(false);
+const [showToTop, setShowToTop] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedSymptoms, setSelectedSymptoms] = useState<number[]>([]);
@@ -536,6 +537,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     const handleScroll = () => {
       setIsHeaderScrolled(window.scrollY > 50);
       setShowFloat(window.scrollY > window.innerHeight * 0.6);
+      setShowToTop(window.scrollY > 500);
     };
     handleScroll();
     window.addEventListener('scroll', handleScroll);
@@ -1908,6 +1910,20 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
             </button>
           </div>
         </div>
+      )}
+
+      {showToTop && !chatOpen && (
+        <button
+          type="button"
+          className="to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Наверх"
+          title="Наверх"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+          </svg>
+        </button>
       )}
 
       {/* Floating Telegram */}

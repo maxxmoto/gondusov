@@ -860,6 +860,44 @@ figcaption {
   height: 18px;
 }
 
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--dark);
+  box-shadow: 0 8px 24px rgba(10, 60, 60, 0.2);
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.to-top.visible {
+  display: flex;
+}
+
+.to-top.with-float {
+  bottom: 96px;
+}
+
+.to-top:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(10, 60, 60, 0.25);
+}
+
+.to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
 .float-max {
   position: fixed;
   right: 24px;
@@ -1394,6 +1432,15 @@ figcaption {
   }
   .article-card-more {
     font-size: 12px;
+  }
+  .to-top {
+    right: 14px;
+    bottom: 14px;
+    width: 44px;
+    height: 44px;
+  }
+  .to-top.with-float {
+    bottom: 82px;
   }
   .float-max {
     right: 14px;
