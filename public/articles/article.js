@@ -14,7 +14,7 @@
       '  <h3>Куда написать?</h3>' +
       '  <p class="write-modal-sub">Выберите удобный способ связи.</p>' +
       '  <div class="write-choices">' +
-      '    <a class="write-choice" href="https://web.max.ru/425256088" target="_blank" rel="noopener noreferrer">' +
+      '    <a class="write-choice" href="https://max.ru/u/f9LHodD0cOJ6Wuc1B1I1zpOqAY2QRnkXkD8DKaQuWvtWCRcO91v-DPp2YI8" target="_blank" rel="noopener noreferrer">' +
       '      <img src="/max.webp" alt="" width="36" height="36" /><span>Max</span>' +
       '    </a>' +
       '    <a class="write-choice" href="' + telegramHref + '" target="_blank" rel="noopener noreferrer">' +

@@ -1562,22 +1562,24 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
             aria-labelledby="summary-title"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="summary-handle" aria-hidden="true" />
-            <button
-              type="button"
-              className="summary-close"
-              onClick={() => setActiveSummary(null)}
-              aria-label="Закрыть выжимку"
-              autoFocus
-            >
-              <CloseIcon />
-            </button>
-            <div className="summary-badge">
-              <SparkleIcon />
-              <span>ИИ-выжимка</span>
-              <span className="summary-time">≈30 секунд</span>
+            <div className="summary-head">
+              <div className="summary-handle" aria-hidden="true" />
+              <button
+                type="button"
+                className="summary-close"
+                onClick={() => setActiveSummary(null)}
+                aria-label="Закрыть выжимку"
+                autoFocus
+              >
+                <CloseIcon />
+              </button>
+              <div className="summary-badge">
+                <SparkleIcon />
+                <span>ИИ-выжимка</span>
+                <span className="summary-time">≈30 секунд</span>
+              </div>
+              <h2 id="summary-title" className="summary-title">{activeSummaryShort.title}</h2>
             </div>
-            <h2 id="summary-title" className="summary-title">{activeSummaryShort.title}</h2>
             <div className="summary-body" ref={summaryBodyRef}>
               <div className={`summary-content ${summaryPhase === 'loading' ? 'is-loading' : ''}`}>
                 <p className="summary-lead">{activeSummaryData.lead}</p>
@@ -1849,7 +1851,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
             <div className="write-choices">
               <a
                 className="write-choice"
-                href="https://web.max.ru/425256088"
+                href="https://max.ru/u/f9LHodD0cOJ6Wuc1B1I1zpOqAY2QRnkXkD8DKaQuWvtWCRcO91v-DPp2YI8"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setWriteModalOpen(false)}
