@@ -1,0 +1,180 @@
+.roliki-page {
+  max-width: 1200px;
+  margin: 28px auto 48px;
+  padding: 0 20px;
+}
+
+.roliki-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.roliki-sub {
+  max-width: 640px;
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.roliki-dzen {
+  flex-shrink: 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(22, 38, 46, 0.2);
+  font-size: 15px;
+  font-weight: 600;
+  color: #16262e;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.roliki-dzen:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.roliki-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.roliki-card {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #0d1b1b;
+  box-shadow: 0 14px 34px rgba(10, 60, 60, 0.12);
+}
+
+.roliki-card-button {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: #fff;
+}
+
+.roliki-card-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.roliki-card-button:hover img {
+  transform: scale(1.03);
+}
+
+.roliki-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #16262e;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.roliki-play svg {
+  width: 26px;
+  height: 26px;
+}
+
+.roliki-card-button:hover .roliki-play {
+  transform: translate(-50%, -50%) scale(1.07);
+}
+
+.roliki-iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+.roliki-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.roliki-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.roliki-footer a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .roliki-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .roliki-page {
+    margin: 18px auto 32px;
+    padding: 0 16px;
+  }
+  .roliki-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .roliki-sub {
+    font-size: 15px;
+  }
+  .roliki-dzen {
+    font-size: 14px;
+  }
+  .roliki-grid {
+    gap: 12px;
+  }
+  .roliki-card {
+    border-radius: 18px;
+  }
+  .roliki-play {
+    width: 48px;
+    height: 48px;
+  }
+  .roliki-play svg {
+    width: 20px;
+    height: 20px;
+  }
+  .roliki-footer {
+    flex-direction: column;
+    padding: 0 16px 24px;
+  }
+}

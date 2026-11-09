@@ -1550,6 +1550,11 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
               </div>
             ))}
           </div>
+          <a className="articles-more fade-in" href="./roliki/">
+            <span className="articles-more-desktop">Все ролики</span>
+            <span className="articles-more-mobile">Смотреть все ролики</span>
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
       </section>
 
