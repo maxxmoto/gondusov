@@ -1347,7 +1347,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <h2 className="section-title fade-in">Статьи</h2>
           <p className="section-subtitle fade-in">Разбираю вопросы ЖКТ, эндоскопии и снижения веса простым языком.</p>
           <div className="articles-grid">
-            <a className="article-card fade-in" href="./articles/nbi-endoskopiya.html">
+            <a className="article-card fade-in" href="./articles/nbi-endoskopiya">
               <div className="article-card-media">
                 <img
                   src="./articles/img/nbi-card.webp"
@@ -1364,7 +1364,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                 <span className="article-card-more">Читать статью →</span>
               </div>
             </a>
-            <a className="article-card fade-in" href="./articles/iskusstvennyy-intellekt-v-endoskopii.html">
+            <a className="article-card fade-in" href="./articles/iskusstvennyy-intellekt-v-endoskopii">
               <div className="article-card-media">
                 <img
                   src="./articles/img/ai-card.webp"
@@ -1381,7 +1381,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                 <span className="article-card-more">Читать статью →</span>
               </div>
             </a>
-            <a className="article-card fade-in" href="./articles/srk-simptomy-lechenie.html">
+            <a className="article-card fade-in" href="./articles/srk-simptomy-lechenie">
               <div className="article-card-media">
                 <img
                   src="./articles/img/srk-card.webp?v=2"
@@ -1398,7 +1398,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                 <span className="article-card-more">Читать статью →</span>
               </div>
             </a>
-            <a className="article-card fade-in" href="./articles/probiotiki-shramm.html">
+            <a className="article-card fade-in" href="./articles/probiotiki-shramm">
               <div className="article-card-media">
                 <img
                   src="./articles/img/probiotic-card.webp?v=2"
@@ -1415,7 +1415,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                 <span className="article-card-more">Читать статью →</span>
               </div>
             </a>
-            <a className="article-card fade-in" href="./articles/gastrit-ne-prohodit.html">
+            <a className="article-card fade-in" href="./articles/gastrit-ne-prohodit">
               <div className="article-card-media">
                 <img
                   src="./articles/img/gastritis-card.webp?v=2"
@@ -1432,7 +1432,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                 <span className="article-card-more">Читать статью →</span>
               </div>
             </a>
-            <a className="article-card fade-in" href="./articles/vzdutie-lechenie.html">
+            <a className="article-card fade-in" href="./articles/vzdutie-lechenie">
               <div className="article-card-media">
                 <img
                   src="./articles/img/bloating-card.webp?v=2"

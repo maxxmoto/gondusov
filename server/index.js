@@ -94,6 +94,14 @@ function sendJson(res, status, payload) {
   res.end(JSON.stringify(payload));
 }
 
+function redirect301(res, location) {
+  res.writeHead(301, {
+    Location: location,
+    'Cache-Control': 'public, max-age=3600',
+  });
+  res.end();
+}
+
 async function serveStatic(req, res, pathname) {
   let safePath = '/';
   try {
@@ -105,7 +113,17 @@ async function serveStatic(req, res, pathname) {
 
   try {
     let target = filePath;
-    const info = await stat(target);
+    let info;
+    try {
+      info = await stat(target);
+    } catch (statError) {
+      if (!extname(target) && /^\/articles\/[^/]+$/.test(pathname)) {
+        target = `${target}.html`;
+        info = await stat(target);
+      } else {
+        throw statError;
+      }
+    }
     if (info.isDirectory()) target = join(target, 'index.html');
     const ext = extname(target).toLowerCase();
     const headers = {
@@ -231,6 +249,33 @@ const server = createServer(async (req, res) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') {
       res.writeHead(405);
       res.end();
+      return;
+    }
+
+    if (url.pathname === '/articles') {
+      redirect301(res, `/articles/${url.search}`);
+      return;
+    }
+
+    if (url.pathname === '/articles/index.html') {
+      redirect301(res, `/articles/${url.search}`);
+      return;
+    }
+
+    const articleHtml = url.pathname.match(/^\/articles\/([^/]+)\.html$/);
+    if (articleHtml && articleHtml[1] !== 'index' && articleHtml[1] !== 'collections') {
+      redirect301(res, `/articles/${articleHtml[1]}${url.search}`);
+      return;
+    }
+
+    const articleSlash = url.pathname.match(/^\/articles\/([^/]+)\/$/);
+    if (articleSlash && articleSlash[1] !== 'collections') {
+      redirect301(res, `/articles/${articleSlash[1]}${url.search}`);
+      return;
+    }
+
+    if (url.pathname === '/roliki') {
+      redirect301(res, `/roliki/${url.search}`);
       return;
     }
 
