@@ -602,7 +602,7 @@ figcaption {
 }
 
 .article mark.hl {
-  background: linear-gradient(180deg, transparent 52%, rgba(255, 224, 96, 0.75) 52%);
+  background: rgba(255, 224, 96, 0.6);
   color: inherit;
   padding: 0 2px;
   -webkit-box-decoration-break: clone;
