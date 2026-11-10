@@ -3072,6 +3072,31 @@ a.workplace-item {
   color: #8a9a9a;
 }
 
+.summary-write-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: #16262e;
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.summary-write-btn:hover {
+  background: #0ABAB5;
+}
+
+.summary-write-btn span {
+  font-size: 17px;
+}
+
 @keyframes summaryFade {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -3124,6 +3149,10 @@ a.workplace-item {
   }
   .summary-takeaway p {
     font-size: 14.5px;
+  }
+  .summary-write-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 

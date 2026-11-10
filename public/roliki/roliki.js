@@ -31,7 +31,8 @@
         '</ul>' +
         '<div class="summary-takeaway"><span>Главный вывод</span><p>Сонливость после еды — не характер и не лень, а сигнал организма. Начните с анализов и простых изменений, а не с очередной чашки кофе.</p></div>' +
         '<p class="summary-audience"><strong>Кому смотреть:</strong> тем, кто регулярно «выключается» после обеда и списывает это на усталость, стресс или возраст.</p>' +
-        '<p class="summary-note">Краткий пересказ ролика. Не заменяет консультацию врача.</p>',
+        '<p class="summary-note">Краткий пересказ ролика. Не заменяет консультацию врача.</p>' +
+        '<button type="button" class="summary-write-btn">Написать врачу <span aria-hidden="true">→</span></button>',
     },
     'bloating-reasons': {
       title: 'Вздутие — не всегда про еду',
@@ -46,7 +47,8 @@
         '</ul>' +
         '<div class="summary-takeaway"><span>Главный вывод</span><p>Вздутие — симптом, а не диагноз. Лечить нужно не газ, а механизм, который его вызывает.</p></div>' +
         '<p class="summary-audience"><strong>Кому смотреть:</strong> тем, у кого вздутие возвращается после «таблеток от живота» и диет.</p>' +
-        '<p class="summary-note">Краткий пересказ ролика. Не заменяет консультацию врача.</p>',
+        '<p class="summary-note">Краткий пересказ ролика. Не заменяет консультацию врача.</p>' +
+        '<button type="button" class="summary-write-btn">Написать врачу <span aria-hidden="true">→</span></button>',
     },
   };
 
@@ -161,6 +163,14 @@
     button.addEventListener('click', function () {
       openSummary(button.getAttribute('data-summary'));
     });
+  });
+
+  document.addEventListener('click', function (event) {
+    var writeButton = event.target.closest ? event.target.closest('.summary-write-btn') : null;
+    if (!writeButton) return;
+    closeSummary();
+    var headerCta = document.querySelector('.header-cta');
+    if (headerCta) headerCta.click();
   });
 
   closeBtn.addEventListener('click', closeSummary);

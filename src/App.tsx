@@ -1573,6 +1573,17 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                 <p className="summary-note">
                   Краткий пересказ ролика. Не заменяет консультацию врача.
                 </p>
+                <button
+                  type="button"
+                  className="summary-write-btn"
+                  onClick={() => {
+                    setActiveSummary(null);
+                    setWriteModalOpen(true);
+                  }}
+                >
+                  Написать врачу
+                  <span aria-hidden="true">→</span>
+                </button>
               </div>
               {summaryPhase === 'loading' && (
                 <div className="summary-loading">
