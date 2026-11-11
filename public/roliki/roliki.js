@@ -4,6 +4,24 @@
 
   document.querySelectorAll('.roliki-card-button').forEach(function (button) {
     button.addEventListener('click', function () {
+      var videoSrc = button.getAttribute('data-video');
+      if (videoSrc) {
+        var poster = button.querySelector('img');
+        var video = document.createElement('video');
+        video.className = 'roliki-video';
+        video.src = videoSrc;
+        video.poster = poster ? poster.src : '';
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.muted = false;
+        video.setAttribute('playsinline', '');
+        video.setAttribute('preload', 'auto');
+        button.replaceWith(video);
+        video.play().catch(function () {});
+        return;
+      }
+
       var embed = button.getAttribute('data-embed');
       if (!embed) return;
 

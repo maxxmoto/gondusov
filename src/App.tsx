@@ -82,30 +82,35 @@ const SHORTS: {
   title: string;
   poster: string;
   embed: string;
+  video: string;
 }[] = [
   {
     id: 'sleep-after-food',
     title: 'Сонливость после еды — не норма',
     poster: './roliki/rolik-1.webp',
     embed: 'https://dzen.ru/embed/oNFuxaWMOAAA',
+    video: './roliki/short-sleep.mp4',
   },
   {
     id: 'bloating-reasons',
     title: 'Вздутие — не всегда про еду',
     poster: './roliki/rolik-2.webp',
     embed: 'https://dzen.ru/embed/oNFsB4mAOAAA',
+    video: './roliki/short-bloating.mp4',
   },
   {
     id: 'gut-treatment',
     title: 'Лечишь кишечник годами, а легче не становится?',
     poster: './roliki/rolik-3.webp',
     embed: 'https://dzen.ru/embed/oNFs3AGcOAAA',
+    video: './roliki/short-gut.mp4',
   },
   {
     id: 'alt-ast',
     title: 'АЛТ и АСТ повышены — не всегда болезнь печени',
     poster: './roliki/rolik-4.webp',
     embed: 'https://dzen.ru/embed/oNFtAHnEOAAA',
+    video: './roliki/short-alt.mp4',
   },
 ];
 
@@ -1483,11 +1488,14 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                 key={short.id}
               >
                 {activeShort === short.id ? (
-                  <iframe
-                    className="short-iframe"
-                    src={`${short.embed}?autoplay=1`}
-                    title={short.title}
-                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; screen-wake-lock"
+                  <video
+                    className="short-video"
+                    src={short.video}
+                    poster={short.poster}
+                    controls
+                    autoPlay
+                    playsInline
+                    preload="auto"
                   />
                 ) : (
                   <button

@@ -2771,6 +2771,17 @@ a.workplace-item {
   background: #000;
 }
 
+.short-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #000;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .shorts-section {
     padding: 48px 16px;
@@ -3355,7 +3366,7 @@ a.workplace-item {
   .float-telegram-icon { width: 36px; height: 36px; }
 }
 
-/* ===== TG CONTACT BUTTONS (С„РѕСЂРјР° РІСЂРµРјРµРЅРЅРѕ РѕС‚РєР»СЋС‡РµРЅР°) ===== */
+/* ===== TG CONTACT BUTTONS (РЎвЂћР С•РЎР‚Р СР В° Р Р†РЎР‚Р ВµР СР ВµР Р…Р Р…Р С• Р С•РЎвЂљР С”Р В»РЎР‹РЎвЂЎР ВµР Р…Р В°) ===== */
 .btn-appointment,
 .btn-secondary {
   display: inline-flex;
