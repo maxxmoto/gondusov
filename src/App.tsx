@@ -10,7 +10,6 @@ import {
   CheckIcon,
   ArrowIcon,
   CloseIcon,
-  TimelineArrowIcon,
   RotateIcon,
 } from './components/Icons';
 import { LogoIcon } from './components/Logo';
@@ -631,16 +630,6 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (window.innerWidth <= 768) {
-        setCurrentSlide((prev) => (prev + 1) % totalSlides);
-      }
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
     const whenVisitSection = document.getElementById('when-visit');
     if (!whenVisitSection) return;
 
@@ -924,134 +913,86 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
       {/* About Section */}
       <section className="about-section" id="obo-mne">
         <div className="about-container">
-          <h2 className="section-title fade-in">О враче</h2>
-          <p className="about-intro fade-in">Врач-гастроэнтеролог и эндоскопист, диетолог, нутрициолог. Стаж работы — 8 лет. Врач высшей категории.</p>
-
-          {/* Timeline */}
-          <div className="timeline fade-in">
-            <div className="timeline-track" style={{ transform: `translateX(-${currentSlide * (100 / totalSlides)}%)` }}>
-              <div className="timeline-card">
-                <div className="timeline-card-image">
-                  <Picture src={RGMU_PHOTO} alt="Ростовский государственный медицинский университет" loading="lazy" />
-                </div>
-                <div className="timeline-card-body">
-                  <span className="timeline-year">2018</span>
-                  <h3>Окончил РостГМУ</h3>
-                  <p>Ростовский государственный медицинский университет, лечебный факультет</p>
-                </div>
-              </div>
-
-              <div className="timeline-arrow">
-                <TimelineArrowIcon />
-                <TimelineArrowIcon />
-                <TimelineArrowIcon />
-              </div>
-
-              <div className="timeline-card">
-                <div className="timeline-card-image">
-                  <Picture src={RESIDENCY_PHOTO} alt="Ординатура по гастроэнтерологии" loading="lazy" />
-                </div>
-                <div className="timeline-card-body">
-                  <span className="timeline-year">2020</span>
-                  <h3>Ординатура</h3>
-                  <p>Завершил ординатуру по специальности «Гастроэнтерология» в РостГМУ</p>
-                </div>
-              </div>
-
-              <div className="timeline-arrow">
-                <TimelineArrowIcon />
-                <TimelineArrowIcon />
-                <TimelineArrowIcon />
-              </div>
-
-              <div className="timeline-card">
-                <div className="timeline-card-image">
-                  <Picture src={ENDOSCOPY_PHOTO} alt="Профессиональная переподготовка по эндоскопии" loading="lazy" />
-                </div>
-                <div className="timeline-card-body">
-                  <span className="timeline-year">2021</span>
-                  <h3>Эндоскопия</h3>
-                  <p>Профессиональная переподготовка по эндоскопии в РостГМУ</p>
-                </div>
-              </div>
-
-              <div className="timeline-arrow">
-                <TimelineArrowIcon />
-                <TimelineArrowIcon />
-                <TimelineArrowIcon />
-              </div>
-
-              <div className="timeline-card">
-                <div className="timeline-card-image">
-                  <Picture src={ONCO_PHOTO} alt="ФГБУ НМИЦ Онкологии" loading="lazy" />
-                </div>
-                <div className="timeline-card-body">
-                  <span className="timeline-year">2023</span>
-                  <h3>НМИЦ Онкологии</h3>
-                  <p>Врач-эндоскопист в ФГБУ «НМИЦ Онкологии» Минздрава России, Ростов-на-Дону</p>
-                </div>
-              </div>
+          <div className="career-head fade-in">
+            <div className="career-head-text">
+              <h2 className="section-title">Путь в профессию</h2>
+              <p className="about-intro">Врач-гастроэнтеролог и эндоскопист, диетолог, нутрициолог. Стаж работы — 8 лет. Врач высшей категории.</p>
             </div>
-            <div className="timeline-dots">
-              {[0, 1, 2, 3].map((i) => (
-                <button
-                  key={i}
-                  className={`timeline-dot ${currentSlide === i ? 'active' : ''}`}
-                  onClick={() => setCurrentSlide(i)}
-                  aria-label={`Слайд ${i + 1}`}
-                />
-              ))}
+            <a
+              className="career-profile-link"
+              href="https://prodoctorov.ru/azov/vrach/1139434-gondusov/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Профиль на ПроДокторов <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div className="career-grid fade-in">
+            <article className="career-card">
+              <div className="career-card-media">
+                <Picture src={RGMU_PHOTO} alt="Ростовский государственный медицинский университет" loading="lazy" />
+              </div>
+              <div className="career-card-body">
+                <span className="career-year">2018</span>
+                <h3>Окончил РостГМУ</h3>
+                <p>Ростовский государственный медицинский университет, лечебный факультет</p>
+              </div>
+            </article>
+
+            <article className="career-card">
+              <div className="career-card-media">
+                <Picture src={RESIDENCY_PHOTO} alt="Ординатура по гастроэнтерологии" loading="lazy" />
+              </div>
+              <div className="career-card-body">
+                <span className="career-year">2020</span>
+                <h3>Ординатура</h3>
+                <p>Завершил ординатуру по специальности «Гастроэнтерология» в РостГМУ</p>
+              </div>
+            </article>
+
+            <article className="career-card">
+              <div className="career-card-media">
+                <Picture src={ENDOSCOPY_PHOTO} alt="Профессиональная переподготовка по эндоскопии" loading="lazy" />
+              </div>
+              <div className="career-card-body">
+                <span className="career-year">2021</span>
+                <h3>Эндоскопия</h3>
+                <p>Профессиональная переподготовка по эндоскопии в РостГМУ</p>
+              </div>
+            </article>
+
+            <article className="career-card">
+              <div className="career-card-media">
+                <Picture src={ONCO_PHOTO} alt="ФГБУ НМИЦ Онкологии" loading="lazy" />
+              </div>
+              <div className="career-card-body">
+                <span className="career-year">2023</span>
+                <h3>НМИЦ Онкологии</h3>
+                <p>Врач-эндоскопист в ФГБУ «НМИЦ Онкологии» Минздрава России, Ростов-на-Дону</p>
+              </div>
+            </article>
+          </div>
+
+          <div className="about-facts fade-in">
+            <div className="about-fact">
+              <span className="about-fact-number">8</span>
+              <span className="about-fact-label">лет стажа работы</span>
+            </div>
+            <div className="about-fact">
+              <span className="about-fact-number">Высшая</span>
+              <span className="about-fact-label">врачебная категория</span>
+            </div>
+            <div className="about-fact">
+              <span className="about-fact-number">5000+</span>
+              <span className="about-fact-label">пациентов</span>
             </div>
           </div>
 
-          {/* Description under timeline */}
-          <div className="about-details fade-in">
-            <div className="about-details-text">
-              <p>Действующий сотрудник НМИЦ Онкологии г. Ростова-на-Дону, веду приём пациентов в МЦ «Семья».</p>
-              <p>Регулярно прохожу повышение квалификации и участвую в медицинских конференциях. Это позволяет использовать современные методы обследования, лечения и профилактики заболеваний желудочно-кишечного тракта.</p>
-            </div>
-            <div className="about-stats">
-              <div className="stats-marquee">
-                <div className="stats-marquee-track">
-                  <div className="stat-card">
-                    <div className="number">8</div>
-                    <div className="label">лет стажа работы</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="number">Высшая</div>
-                    <div className="label">врачебная категория</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="number">5000+</div>
-                    <div className="label">Пациентов</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="number">8</div>
-                    <div className="label">лет стажа работы</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="number">Высшая</div>
-                    <div className="label">врачебная категория</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="number">5000+</div>
-                    <div className="label">Пациентов</div>
-                  </div>
-                </div>
-              </div>
-              <div className="stat-card">
-                <div className="number">8</div>
-                <div className="label">лет стажа работы</div>
-              </div>
-              <div className="stat-card">
-                <div className="number">Высшая</div>
-                <div className="label">врачебная категория</div>
-              </div>
-              <div className="stat-card">
-                <div className="number">5000+</div>
-                <div className="label">Пациентов</div>
-              </div>
-            </div>
+          <div className="about-experience fade-in">
+            <h3>Опыт работы и повышение квалификации</h3>
+            <p>Действующий сотрудник НМИЦ Онкологии г. Ростова-на-Дону, веду приём пациентов в МЦ «Семья».</p>
+            <p>Регулярно прохожу повышение квалификации и участвую в медицинских конференциях. Это позволяет использовать современные методы обследования, лечения и профилактики заболеваний желудочно-кишечного тракта.</p>
           </div>
         </div>
       </section>
