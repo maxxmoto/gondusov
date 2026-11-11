@@ -924,7 +924,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Профиль на ПроДокторов <span aria-hidden="true">→</span>
+              <img src="./logos/prodoctorov.webp" alt="Профиль на ПроДокторов" width={1890} height={209} loading="lazy" />
             </a>
           </div>
 
