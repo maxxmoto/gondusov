@@ -191,7 +191,7 @@ function seoPlugin(siteUrl) {
         '    <changefreq>yearly</changefreq>',
         '    <priority>0.3</priority>',
         '  </url>',
-        ...['ballon-20-30-procentov', 'posle-balla-chto-rabotaet', 'diety-kishechnik-ne-luchshe', 'diety-ne-rabotayut', 'zhirnaya-pechen', 'kak-peresadit-mikrobiotu', 'fmt-pri-srk-i-ozhirenii', 'chto-takoe-fmt', 'saharozameniteli', 'zapah-iz-rta', 'udalenie-zhelchnogo-puzyrya', 'helicobacter-pylori'].map(
+        ...['ballon-20-30-procentov', 'posle-balla-chto-rabotaet', 'diety-kishechnik-ne-luchshe', 'diety-ne-rabotayut', 'zhirnaya-pechen', 'kak-peresadit-mikrobiotu', 'fmt-pri-srk-i-ozhirenii', 'chto-takoe-fmt', 'saharozameniteli', 'zapah-iz-rta', 'udalenie-zhelchnogo-puzyrya', 'helicobacter-pylori', 'zapor-oporozhnenie', 'sindrom-vecherney-beremennosti', 'kofe-slabit-ili-krepit', 'skrytyy-sahar'].map(
           (slug) =>
             `  <url>\n    <loc>${siteUrl}articles/${slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>`
         ),
