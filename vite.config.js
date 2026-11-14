@@ -133,7 +133,7 @@ function seoPlugin(siteUrl) {
         '    <changefreq>weekly</changefreq>',
         '    <priority>0.8</priority>',
         '  </url>',
-        ...['posle-edy-khochetsya-spat', 'vzdutie-ne-v-ede'].map(
+        ...['posle-edy-khochetsya-spat', 'vzdutie-ne-v-ede', 'obsledovaniya-chistye', 'izhoga-pochemu-tabletki-ne-reshayut', 'lechish-kishechnik-godami', 'alt-ast-povysheny', 'helicobacter-pylori-chto-delat', 'pp-a-zhivot-razdulo', 'uzi-chistoe-a-zhivot-bolit', 'pochemu-probiotik-ne-rabotaet'].map(
           (slug) =>
             `  <url>\n    <loc>${siteUrl}roliki/${slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`
         ),

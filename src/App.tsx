@@ -778,11 +778,11 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <a href="tel:+79185680599" className="header-phone">+7 918 568-05-99</a>
 
           <a
-            href="https://t.me/DrGondusov"
+            href={TG_CONTACT_HREF}
             target="_blank"
             rel="noopener noreferrer"
             className="header-social header-social-tg"
-            aria-label="Телеграм-канал"
+            aria-label="Написать врачу в Telegram"
           >
             <img src="./telegram.webp" alt="" width={38} height={38} loading="eager" />
           </a>
