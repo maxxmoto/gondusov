@@ -1479,24 +1479,6 @@ a.workplace-item {
   display: none;
 }
 
-.approach-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.approach-video-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(90deg, rgba(3, 33, 37, 0.68) 0%, rgba(3, 33, 37, 0.42) 55%, rgba(3, 33, 37, 0.22) 100%);
-  pointer-events: none;
-}
-
 .approach-section .section-title { color: #fff; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45); }
 
 .approach-section p {
@@ -2372,7 +2354,6 @@ a.workplace-item {
   .workplace-item-text { font-size: 17px; padding: 10px 20px; }
 
   .approach-section { margin: 0 8px; padding: 40px 20px; border-radius: 24px; }
-  .approach-video-overlay { background: rgba(3, 33, 37, 0.6); }
   .approach-section p { font-size: 16px; line-height: 1.6; }
   .approach-photo {
     position: static;
@@ -2916,6 +2897,40 @@ a.workplace-item {
   margin-top: 32px;
 }
 
+.short-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 10px;
+}
+
+.short-item .short-card {
+  width: 100%;
+}
+
+.short-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid #d8e7e6;
+  border-radius: 12px;
+  background: #fff;
+  color: #16262e;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.short-more:hover {
+  color: #0ABAB5;
+  border-color: #0ABAB5;
+  background: #f2fbfa;
+}
+
 .short-card {
   position: relative;
   aspect-ratio: 9 / 16;
@@ -3075,11 +3090,18 @@ a.workplace-item {
   .shorts-track::-webkit-scrollbar {
     display: none;
   }
-  .short-card {
+  .short-item {
     flex: 0 0 var(--short-card-width);
-    max-width: none;
     scroll-snap-align: center;
+  }
+  .short-card {
+    flex: none;
+    max-width: none;
     border-radius: 20px;
+  }
+  .short-more {
+    min-height: 38px;
+    font-size: 13px;
   }
   .short-summary-btn {
     top: 10px;

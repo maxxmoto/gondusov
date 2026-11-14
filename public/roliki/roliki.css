@@ -401,7 +401,7 @@
 
 .rolik-doctor {
   display: grid;
-  grid-template-columns: 60px minmax(0, 1fr) auto;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
   align-items: center;
   gap: 14px;
   margin: 34px 0 20px;
@@ -412,11 +412,13 @@
 }
 
 .rolik-doctor img {
-  width: 60px;
-  height: 66px;
-  border-radius: 12px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid #fff;
   object-fit: cover;
   object-position: center top;
+  box-shadow: 0 0 0 2px rgba(10, 186, 181, 0.35);
 }
 
 .rolik-doctor-label {
@@ -571,7 +573,8 @@
   }
   .rolik-doctor img {
     width: 52px;
-    height: 58px;
+    height: 52px;
+    border-width: 2px;
   }
   .rolik-doctor .rolik-write-btn {
     grid-column: 1 / -1;

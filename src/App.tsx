@@ -82,6 +82,7 @@ const SHORTS: {
   poster: string;
   embed: string;
   video: string;
+  details: string;
 }[] = [
   {
     id: 'sleep-after-food',
@@ -89,6 +90,7 @@ const SHORTS: {
     poster: './roliki/rolik-1.webp',
     embed: 'https://dzen.ru/embed/oNFuxaWMOAAA',
     video: './roliki/short-sleep.mp4',
+    details: './roliki/posle-edy-khochetsya-spat',
   },
   {
     id: 'bloating-reasons',
@@ -96,6 +98,7 @@ const SHORTS: {
     poster: './roliki/rolik-2.webp',
     embed: 'https://dzen.ru/embed/oNFsB4mAOAAA',
     video: './roliki/short-bloating.mp4',
+    details: './roliki/vzdutie-ne-v-ede',
   },
   {
     id: 'gut-treatment',
@@ -103,6 +106,7 @@ const SHORTS: {
     poster: './roliki/rolik-3.webp',
     embed: 'https://dzen.ru/embed/oNFs3AGcOAAA',
     video: './roliki/short-gut.mp4',
+    details: './roliki/lechish-kishechnik-godami',
   },
   {
     id: 'alt-ast',
@@ -110,6 +114,7 @@ const SHORTS: {
     poster: './roliki/rolik-4.webp',
     embed: 'https://dzen.ru/embed/oNFtAHnEOAAA',
     video: './roliki/short-alt.mp4',
+    details: './roliki/alt-ast-povysheny',
   },
 ];
 
@@ -374,12 +379,9 @@ const [showToTop, setShowToTop] = useState(false);
   const [flippedServices, setFlippedServices] = useState<Record<number, boolean>>({});
   const [showBack, setShowBack] = useState<Record<number, boolean>>({});
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [movieDone, setMovieDone] = useState(false);
   const [isVisitkaPlaying, setIsVisitkaPlaying] = useState(false);
-  const [visitkaPreload, setVisitkaPreload] = useState(false);
   const [visitkaThesis, setVisitkaThesis] = useState(0);
   const visitkaRef = useRef<HTMLVideoElement | null>(null);
-  const visitkaSectionRef = useRef<HTMLElement | null>(null);
   const [isDesktop, setIsDesktop] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(min-width: 769px)').matches
   );
@@ -579,34 +581,6 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
     sync();
     return () => video.removeEventListener('timeupdate', sync);
   }, [isVisitkaPlaying]);
-
-  useEffect(() => {
-    if (visitkaPreload) return;
-    const el = visitkaSectionRef.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === 'undefined') {
-      setVisitkaPreload(true);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setVisitkaPreload(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '300px 0px' }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [visitkaPreload]);
-
-  useEffect(() => {
-    const video = visitkaRef.current;
-    if (!video || !visitkaPreload || isVisitkaPlaying) return;
-    if (video.preload !== 'auto') video.preload = 'auto';
-    if (video.readyState === 0) video.load();
-  }, [visitkaPreload, isVisitkaPlaying]);
 
   useEffect(() => {
     if (document.querySelector('script[data-pd-widget]')) return;
@@ -858,7 +832,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
       </div>
 
       {/* Video Introduction */}
-      <section className="visitka-section" id="video" ref={visitkaSectionRef}>
+      <section className="visitka-section" id="video">
         <div className="visitka-inner">
           <div className="visitka-text">
             <h2 className="section-title visitka-title fade-in">Видео-визитка</h2>
@@ -878,7 +852,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
               ref={visitkaRef}
               className="visitka-video"
               poster={isDesktop ? './visitka-poster.webp' : './visitka-540-poster.webp'}
-              preload={visitkaPreload ? 'auto' : 'none'}
+              preload="none"
               playsInline
               controls={isVisitkaPlaying}
               onPlay={() => setIsVisitkaPlaying(true)}
@@ -1096,21 +1070,6 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <Picture src="./фото2.webp" alt="Гондусов Денис надевает медицинские перчатки перед приёмом" className="approach-photo-right" loading="lazy" />
           <div className="approach-photo-overlay"></div>
         </div>
-        {!movieDone && isDesktop && (
-          <>
-            <video
-              className="approach-video"
-              src="./komplex.mp4"
-              autoPlay
-              muted
-              playsInline
-              preload="auto"
-              onEnded={() => setMovieDone(true)}
-              onError={() => setMovieDone(true)}
-            />
-            <div className="approach-video-overlay" aria-hidden="true"></div>
-          </>
-        )}
       </div>
 
       {/* When to Visit Section */}
@@ -1423,47 +1382,51 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           </div>
           <div className="shorts-track">
             {SHORTS.map((short) => (
-              <div
-                className={`short-card ${activeShort === short.id ? 'is-playing' : ''}`}
-                data-short-id={short.id}
-                key={short.id}
-              >
-                {activeShort === short.id ? (
-                  <video
-                    className="short-video"
-                    src={short.video}
-                    poster={short.poster}
-                    controls
-                    autoPlay
-                    playsInline
-                    preload="auto"
-                  />
-                ) : (
-                  <button
-                    type="button"
-                    className="short-card-button"
-                    onClick={() => setActiveShort(short.id)}
-                    aria-label={`Смотреть ролик: ${short.title}`}
-                  >
-                    <img src={short.poster} alt="" width={540} height={959} loading="lazy" />
-                    <span className="short-play" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M7 5v14l10-7z" />
-                      </svg>
-                    </span>
-                  </button>
-                )}
-                {SHORT_SUMMARIES[short.id] && (
-                  <button
-                    type="button"
-                    className="short-summary-btn"
-                    onClick={() => openSummary(short.id)}
-                    aria-label={`ИИ-выжимка: ${short.title}`}
-                  >
-                    <SparkleIcon />
-                    <span>ИИ-выжимка</span>
-                  </button>
-                )}
+              <div className="short-item" key={short.id}>
+                <div
+                  className={`short-card ${activeShort === short.id ? 'is-playing' : ''}`}
+                  data-short-id={short.id}
+                >
+                  {activeShort === short.id ? (
+                    <video
+                      className="short-video"
+                      src={short.video}
+                      poster={short.poster}
+                      controls
+                      autoPlay
+                      playsInline
+                      preload="auto"
+                    />
+                  ) : (
+                    <button
+                      type="button"
+                      className="short-card-button"
+                      onClick={() => setActiveShort(short.id)}
+                      aria-label={`Смотреть ролик: ${short.title}`}
+                    >
+                      <img src={short.poster} alt="" width={540} height={959} loading="lazy" />
+                      <span className="short-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M7 5v14l10-7z" />
+                        </svg>
+                      </span>
+                    </button>
+                  )}
+                  {SHORT_SUMMARIES[short.id] && (
+                    <button
+                      type="button"
+                      className="short-summary-btn"
+                      onClick={() => openSummary(short.id)}
+                      aria-label={`ИИ-выжимка: ${short.title}`}
+                    >
+                      <SparkleIcon />
+                      <span>ИИ-выжимка</span>
+                    </button>
+                  )}
+                </div>
+                <a className="short-more" href={short.details}>
+                  Подробнее <span aria-hidden="true">→</span>
+                </a>
               </div>
             ))}
           </div>
