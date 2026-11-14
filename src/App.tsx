@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import {
   StethoscopeIcon,
   EndoscopeIcon,
@@ -1006,6 +1006,34 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
             <p>Действующий сотрудник НМИЦ Онкологии г. Ростова-на-Дону, веду приём пациентов в МЦ «Семья».</p>
             <p>Регулярно прохожу повышение квалификации и участвую в медицинских конференциях. Это позволяет использовать современные методы обследования, лечения и профилактики заболеваний желудочно-кишечного тракта.</p>
           </div>
+
+          <div className="diplomas fade-in" id="dokumenty">
+            <div className="diplomas-head">
+              <span className="diplomas-kicker">Документы</span>
+              <h3>Дипломы и образование</h3>
+              <p>Документы, подтверждающие профильное образование и подготовку по гастроэнтерологии и эндоскопии.</p>
+            </div>
+            <div className="diplomas-grid">
+              <a className="diploma-card" href="./diplomy/diplom-ordinatura.webp" target="_blank" rel="noopener noreferrer">
+                <div className="diploma-media">
+                  <img src="./diplomy/diplom-ordinatura.webp" alt="Диплом об окончании ординатуры по специальности «Гастроэнтерология», РостГМУ, 2020 год" width="1200" height="824" loading="lazy" decoding="async" />
+                </div>
+                <span className="diploma-caption">
+                  <strong>Ординатура по гастроэнтерологии</strong>
+                  <span>РостГМУ · 2020</span>
+                </span>
+              </a>
+              <a className="diploma-card" href="./diplomy/diplom-endoskopiya.webp" target="_blank" rel="noopener noreferrer">
+                <div className="diploma-media">
+                  <img src="./diplomy/diplom-endoskopiya.webp" alt="Диплом о профессиональной переподготовке по эндоскопии, РостГМУ, 2021 год" width="1200" height="848" loading="lazy" decoding="async" />
+                </div>
+                <span className="diploma-caption">
+                  <strong>Профессиональная переподготовка по эндоскопии</strong>
+                  <span>РостГМУ · 2021</span>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1664,6 +1692,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <p><a href="#kogda-obratitsya">Когда обратиться к врачу</a></p>
           <p><a href="#konsultaciya">Как проходит консультация</a></p>
           <p><a href="#rezultaty">Результаты</a></p>
+          <p><a href="#dokumenty">Документы</a></p>
           <p><a href="#faq">Частые вопросы</a></p>
           <p><a href="#stati">Статьи</a></p>
           <p><a href="./roliki/">Ролики</a></p>
