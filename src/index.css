@@ -2292,6 +2292,56 @@ a.workplace-item {
 
 .modal-close:hover { background: #e0e0e0; }
 
+.diploma-overlay {
+  z-index: 4500;
+  padding: 24px;
+  background: rgba(4, 20, 23, 0.78);
+  backdrop-filter: blur(4px);
+}
+
+.diploma-lightbox {
+  position: relative;
+  max-width: min(1180px, 96vw);
+  max-height: 92vh;
+  padding: 12px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.diploma-lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(92vh - 24px);
+  margin: 0 auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.diploma-lightbox .modal-close {
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+@media (max-width: 600px) {
+  .diploma-overlay {
+    padding: 10px;
+  }
+  .diploma-lightbox {
+    padding: 6px;
+    border-radius: 14px;
+  }
+  .diploma-lightbox img {
+    max-height: calc(92vh - 12px);
+    border-radius: 10px;
+  }
+}
+
 .modal-submit {
   width: 100%;
   background: #0ABAB5;

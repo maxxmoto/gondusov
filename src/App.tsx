@@ -425,6 +425,7 @@ const [showToTop, setShowToTop] = useState(false);
   );
   const [activeShort, setActiveShort] = useState<string | null>(null);
 const [activeSummary, setActiveSummary] = useState<string | null>(null);
+const [activeDiploma, setActiveDiploma] = useState<{ src: string; alt: string } | null>(null);
 const [summaryPhase, setSummaryPhase] = useState<'loading' | 'typing'>('loading');
 const summaryBodyRef = useRef<HTMLDivElement | null>(null);
 const typewriterNodesRef = useRef<{
@@ -457,6 +458,20 @@ useEffect(() => {
     document.body.style.overflow = previousOverflow;
   };
 }, [activeSummary]);
+
+useEffect(() => {
+  if (!activeDiploma) return;
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') setActiveDiploma(null);
+  };
+  document.addEventListener('keydown', onKeyDown);
+  const previousOverflow = document.body.style.overflow;
+  document.body.style.overflow = 'hidden';
+  return () => {
+    document.removeEventListener('keydown', onKeyDown);
+    document.body.style.overflow = previousOverflow;
+  };
+}, [activeDiploma]);
 
 useEffect(() => {
   if (!activeSummary) return;
@@ -1014,7 +1029,18 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
               <p>Документы, подтверждающие профильное образование и подготовку по гастроэнтерологии и эндоскопии.</p>
             </div>
             <div className="diplomas-grid">
-              <a className="diploma-card" href="./diplomy/diplom-ordinatura.webp" target="_blank" rel="noopener noreferrer">
+              <a
+                className="diploma-card"
+                href="./diplomy/diplom-ordinatura.webp"
+                aria-haspopup="dialog"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setActiveDiploma({
+                    src: './diplomy/diplom-ordinatura.webp',
+                    alt: 'Диплом об окончании ординатуры по специальности «Гастроэнтерология», РостГМУ, 2020 год',
+                  });
+                }}
+              >
                 <div className="diploma-media">
                   <img src="./diplomy/diplom-ordinatura.webp" alt="Диплом об окончании ординатуры по специальности «Гастроэнтерология», РостГМУ, 2020 год" width="1200" height="824" loading="lazy" decoding="async" />
                 </div>
@@ -1023,7 +1049,18 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
                   <span>РостГМУ · 2020</span>
                 </span>
               </a>
-              <a className="diploma-card" href="./diplomy/diplom-endoskopiya.webp" target="_blank" rel="noopener noreferrer">
+              <a
+                className="diploma-card"
+                href="./diplomy/diplom-endoskopiya.webp"
+                aria-haspopup="dialog"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setActiveDiploma({
+                    src: './diplomy/diplom-endoskopiya.webp',
+                    alt: 'Диплом о профессиональной переподготовке по эндоскопии, РостГМУ, 2021 год',
+                  });
+                }}
+              >
                 <div className="diploma-media">
                   <img src="./diplomy/diplom-endoskopiya.webp" alt="Диплом о профессиональной переподготовке по эндоскопии, РостГМУ, 2021 год" width="1200" height="848" loading="lazy" decoding="async" />
                 </div>
@@ -1711,6 +1748,29 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           © 2026 Гондусов Денис. Все права защищены. · <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a> · <a href="./agreement.html" target="_blank" rel="noopener noreferrer">Согласие на обработку ПД</a> · <button type="button" className="footer-cookie-btn" onClick={() => setCookieConsent(null)}>Настройки cookie</button>
         </div>
       </footer>
+
+      {activeDiploma && (
+        <div className="modal-overlay diploma-overlay" onClick={() => setActiveDiploma(null)}>
+          <div
+            className="diploma-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Просмотр документа"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="modal-close"
+              onClick={() => setActiveDiploma(null)}
+              aria-label="Закрыть"
+              autoFocus
+            >
+              <CloseIcon />
+            </button>
+            <img src={activeDiploma.src} alt={activeDiploma.alt} />
+          </div>
+        </div>
+      )}
 
       {/* Modal (форма временно отключена — FORM_ENABLED = false) */}
       {FORM_ENABLED && isModalOpen && (
