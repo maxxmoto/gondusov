@@ -130,6 +130,10 @@ async function serveStatic(req, res, pathname) {
       'Content-Type': MIME[ext] || 'application/octet-stream',
       'Cache-Control': cacheControlFor(pathname),
     };
+    if (pathname === '/llms.txt') {
+      headers['X-Robots-Tag'] = 'noindex';
+      headers['Cache-Control'] = 'no-cache';
+    }
 
     if (COMPRESSIBLE.has(ext)) {
       const accept = String(req.headers['accept-encoding'] || '');
