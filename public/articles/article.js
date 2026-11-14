@@ -36,7 +36,7 @@
   }
 
   document.addEventListener('click', function (event) {
-    var cta = event.target.closest ? event.target.closest('.header-cta') : null;
+    var cta = event.target.closest ? event.target.closest('.header-cta, [data-write]') : null;
     if (!cta) return;
     event.preventDefault();
     openChooser(cta.getAttribute('href') || 'https://t.me/Dr_161');

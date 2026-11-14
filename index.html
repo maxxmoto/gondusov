@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -67,7 +67,7 @@
           "url": "__SITE_URL__",
           "image": "__SITE_URL__og-image.jpg",
           "jobTitle": "Врач-гастроэнтеролог, эндоскопист, диетолог-нутрициолог",
-          "description": "Врач-гастроэнтеролог и эндоскопист, диетолог-нутрициолог. Стаж 8 лет, врач высшей категории. Приём в Ростове-на-Дону.",
+          "description": "Врач-гастроэнтеролог и эндоскопист, диетолог-нутрициолог. Стаж 8 лет, врач высшей категории. Приём в Ростове-на-Дону и Азове.",
           "medicalSpecialty": ["https://schema.org/Gastroenterology", "https://schema.org/PreventiveMedicine"],
           "alumniOf": [
             { "@type": "CollegeOrUniversity", "name": "Ростовский государственный медицинский университет" },
@@ -81,27 +81,35 @@
             "addressRegion": "Ростовская область",
             "addressCountry": "RU"
           },
-          "areaServed": {
-            "@type": "City",
-            "name": "Ростов-на-Дону"
-          },
+          "areaServed": [
+            { "@type": "City", "name": "Ростов-на-Дону" },
+            { "@type": "City", "name": "Азов" }
+          ],
           "telephone": "+7 918 568-05-99",
           "sameAs": [
             "https://t.me/Dr_161",
             "https://dzen.ru/drgondusov",
             "https://prodoctorov.ru/rostov-na-donu/vrach/873904-gondusov/",
-            "https://prodoctorov.ru/azov/vrach/1139434-gondusov/"
+            "https://prodoctorov.ru/azov/vrach/1139434-gondusov/",
+            "https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/",
+            "https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997",
+            "https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/",
+            "https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich",
+            "https://smart-azov.ru/company/staff/otdel-gastroenterologii/gondusov-denis-vadimovich/",
+            "https://zoon.ru/rostov/p-doctor/denis_vadimovich_gondusov/"
           ],
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "5.0",
             "bestRating": "5",
             "worstRating": "1",
-            "reviewCount": "43"
+            "reviewCount": "44"
           },
           "workLocation": [
+            { "@id": "__SITE_URL__#clinic-smart-moskovskaya" },
+            { "@id": "__SITE_URL__#clinic-smart-vasilyeva" },
             { "@id": "__SITE_URL__#clinic-semya" },
-            { "@id": "__SITE_URL__#clinic-gippokrat" }
+            { "@id": "__SITE_URL__#clinic-rnioi" }
           ],
           "availableService": [
             { "@type": "MedicalProcedure", "name": "Консультация гастроэнтеролога" },
@@ -130,27 +138,60 @@
         },
         {
           "@type": "MedicalClinic",
-          "@id": "__SITE_URL__#clinic-semya",
-          "name": "Медицинский центр «Семья»",
-          "url": "https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/",
+          "@id": "__SITE_URL__#clinic-smart-moskovskaya",
+          "name": "Смартклиник на Московской",
+          "telephone": "+7 961 300-98-60",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Ростов-на-Дону",
+            "streetAddress": "ул. Московская, д. 292В",
+            "addressLocality": "Азов",
             "addressRegion": "Ростовская область",
             "addressCountry": "RU"
-          }
+          },
+          "hasMap": "https://yandex.ru/maps/?text=Смартклиник%20на%20Московской%2C%20Азов%2C%20ул.%20Московская%2C%20292В"
         },
         {
           "@type": "MedicalClinic",
-          "@id": "__SITE_URL__#clinic-gippokrat",
-          "name": "Клиника «Гиппократ 21 век»",
+          "@id": "__SITE_URL__#clinic-smart-vasilyeva",
+          "name": "Смартклиник на Васильева",
+          "telephone": "+7 961 300-98-60",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "ул. 13-я Линия, д. 8",
+            "streetAddress": "ул. Васильева, д. 89",
+            "addressLocality": "Азов",
+            "addressRegion": "Ростовская область",
+            "addressCountry": "RU"
+          },
+          "hasMap": "https://yandex.ru/maps/?text=Смартклиник%20на%20Васильева%2C%20Азов%2C%20ул.%20Васильева%2C%2089"
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "__SITE_URL__#clinic-semya",
+          "name": "Медицинский центр «Семья» на Дачной",
+          "url": "https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/",
+          "telephone": "+7 863 307-71-80",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Дачная, д. 8",
             "addressLocality": "Ростов-на-Дону",
             "addressRegion": "Ростовская область",
             "addressCountry": "RU"
-          }
+          },
+          "hasMap": "https://yandex.ru/maps/?text=МЦ%20Семья%20на%20Дачной%2C%20Ростов-на-Дону%2C%20ул.%20Дачная%2C%208"
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "__SITE_URL__#clinic-rnioi",
+          "name": "НМИЦ онкологии (РНИОИ)",
+          "url": "https://www.rnioi.ru/",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. 14-я линия, д. 63",
+            "addressLocality": "Ростов-на-Дону",
+            "addressRegion": "Ростовская область",
+            "addressCountry": "RU"
+          },
+          "hasMap": "https://yandex.ru/maps/?text=НМИЦ%20онкологии%2C%20Ростов-на-Дону%2C%20ул.%2014-я%20линия%2C%2063"
         },
         {
           "@type": "MedicalWebPage",
@@ -162,8 +203,8 @@
           "isPartOf": { "@id": "__SITE_URL__#website" },
           "medicalAudience": "Patient",
           "medicalSpecialty": ["Gastroenterology", "PreventiveMedicine"],
-          "dateModified": "2026-10-29",
-          "lastReviewed": "2026-10-29",
+          "dateModified": "2026-11-14",
+          "lastReviewed": "2026-11-14",
           "reviewedBy": { "@id": "__SITE_URL__#physician" }
         },
         {

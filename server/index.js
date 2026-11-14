@@ -117,7 +117,7 @@ async function serveStatic(req, res, pathname) {
     try {
       info = await stat(target);
     } catch (statError) {
-      if (!extname(target) && /^\/articles\/[^/]+$/.test(pathname)) {
+      if (!extname(target) && /^\/(articles|roliki)\/[^/]+$/.test(pathname)) {
         target = `${target}.html`;
         info = await stat(target);
       } else {
@@ -280,6 +280,23 @@ const server = createServer(async (req, res) => {
 
     if (url.pathname === '/roliki') {
       redirect301(res, `/roliki/${url.search}`);
+      return;
+    }
+
+    if (url.pathname === '/roliki/index.html') {
+      redirect301(res, `/roliki/${url.search}`);
+      return;
+    }
+
+    const rolikHtml = url.pathname.match(/^\/roliki\/([^/]+)\.html$/);
+    if (rolikHtml && rolikHtml[1] !== 'index') {
+      redirect301(res, `/roliki/${rolikHtml[1]}${url.search}`);
+      return;
+    }
+
+    const rolikSlash = url.pathname.match(/^\/roliki\/([^/]+)\/$/);
+    if (rolikSlash) {
+      redirect301(res, `/roliki/${rolikSlash[1]}${url.search}`);
       return;
     }
 

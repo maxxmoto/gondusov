@@ -95,6 +95,8 @@ function seoPlugin(siteUrl) {
       const robots = [
         'User-agent: *',
         'Allow: /',
+        'Allow: /articles/',
+        'Allow: /roliki/',
         'Disallow: /api/',
         '',
         `Sitemap: ${siteUrl}sitemap.xml`,
@@ -131,6 +133,10 @@ function seoPlugin(siteUrl) {
         '    <changefreq>weekly</changefreq>',
         '    <priority>0.8</priority>',
         '  </url>',
+        ...['posle-edy-khochetsya-spat', 'vzdutie-ne-v-ede'].map(
+          (slug) =>
+            `  <url>\n    <loc>${siteUrl}roliki/${slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`
+        ),
         '  <url>',
         `    <loc>${siteUrl}articles/nbi-endoskopiya</loc>`,
         `    <lastmod>${lastmod}</lastmod>`,

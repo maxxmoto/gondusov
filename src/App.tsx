@@ -1636,9 +1636,10 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <div>
             <h4>Контакты</h4>
             <p><a href="tel:+79185680599">+7 918 568-05-99</a></p>
-            <p>Ростов-на-Дону</p>
-            <p>ФГБУ «НМИЦ Онкологии»</p>
-            <p><a href="https://mc-semya.ru/doktora/gastroenterologi/gondusov-denis-vadimovich/" target="_blank" rel="noopener noreferrer">МЦ «Семья»</a></p>
+            <p><a href="https://yandex.ru/maps/?text=Смартклиник%20на%20Московской%2C%20Азов%2C%20ул.%20Московская%2C%20292В" target="_blank" rel="noopener noreferrer">Смартклиник, Азов — ул. Московская, 292В</a></p>
+            <p><a href="https://yandex.ru/maps/?text=Смартклиник%20на%20Васильева%2C%20Азов%2C%20ул.%20Васильева%2C%2089" target="_blank" rel="noopener noreferrer">Смартклиник, Азов — ул. Васильева, 89</a></p>
+            <p><a href="https://yandex.ru/maps/?text=МЦ%20Семья%20на%20Дачной%2C%20Ростов-на-Дону%2C%20ул.%20Дачная%2C%208" target="_blank" rel="noopener noreferrer">МЦ «Семья», Ростов — ул. Дачная, 8</a></p>
+            <p><a href="https://yandex.ru/maps/?text=НМИЦ%20онкологии%2C%20Ростов-на-Дону%2C%20ул.%2014-я%20линия%2C%2063" target="_blank" rel="noopener noreferrer">НМИЦ онкологии — 14-я линия, 63</a></p>
           </div>
 
           <nav aria-label="Профили врача и соцсети">
@@ -1646,7 +1647,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
             <p><a href="https://t.me/Dr_161" target="_blank" rel="noopener noreferrer">Telegram</a></p>
             <p><a href="https://max.ru/u/f9LHodD0cOJ6Wuc1B1I1zpOqAY2QRnkXkD8DKaQuWvtWCRcO91v-DPp2YI8" target="_blank" rel="noopener noreferrer">Max</a></p>
             <p><a href="https://dzen.ru/drgondusov" target="_blank" rel="noopener noreferrer">Дзен</a></p>
-            <p><a href="https://prodoctorov.ru/azov/vrach/1139434-gondusov/" target="_blank" rel="noopener noreferrer">ПроДокторов</a></p>
+            <p><a href="https://prodoctorov.ru/azov/vrach/1139434-gondusov/" target="_blank" rel="noopener noreferrer">ПроДокторов — 5,0 · 44 отзыва</a></p>
             <p><a href="https://rnd.docdoc.ru/doctor/Gondusov_Denis?pid=27997" target="_blank" rel="noopener noreferrer">СберЗдоровье</a></p>
             <p><a href="https://napopravku.ru/rostov-na-donu/doctor-profile/gondusov-denis-vadimovich/" target="_blank" rel="noopener noreferrer">НаПоправку</a></p>
             <p><a href="https://doctu.ru/rostov/doctor/gondusov-denis-vadimovich" target="_blank" rel="noopener noreferrer">Doctu</a></p>
