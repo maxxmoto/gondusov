@@ -906,7 +906,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
               key={isDesktop ? 'desktop' : 'mobile'}
               ref={visitkaRef}
               className="visitka-video"
-              poster={isDesktop ? './visitka-poster.webp' : './visitka-540-poster.webp'}
+              poster={isDesktop ? './visitka-poster.webp?v=2' : './visitka-540-poster.webp?v=2'}
               preload="none"
               playsInline
               controls={isVisitkaPlaying}
