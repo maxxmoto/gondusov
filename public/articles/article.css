@@ -1659,6 +1659,13 @@ figcaption {
   font-weight: 700;
 }
 
+@media (max-width: 1400px) {
+  .site-header .header-phone,
+  .site-header .header-social {
+    display: none;
+  }
+}
+
 @media (max-width: 1080px) {
   .site-header .site-nav {
     gap: 12px;
@@ -1684,8 +1691,11 @@ figcaption {
   }
   .site-header .site-nav,
   .site-header .header-phone,
-  .site-header .header-social-dzen {
+  .site-header .header-social-max {
     display: none;
+  }
+  .site-header .header-social-tg {
+    display: flex;
   }
   .site-header .header-actions {
     gap: 8px;

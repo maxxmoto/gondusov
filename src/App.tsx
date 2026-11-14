@@ -798,6 +798,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <a href="#podhod">Подход</a>
           <a href="#kogda-obratitsya">Когда обратиться</a>
           <a href="#stati">Статьи</a>
+          <a href="#roliki">Ролики</a>
           <a href="#kontakty">Контакты</a>
         </nav>
 
@@ -815,13 +816,13 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           </a>
 
           <a
-            href="https://dzen.ru/drgondusov"
+            href="https://max.ru/u/f9LHodD0cOJ6Wuc1B1I1zpOqAY2QRnkXkD8DKaQuWvtWCRcO91v-DPp2YI8"
             target="_blank"
             rel="noopener noreferrer"
-            className="header-social header-social-dzen"
-            aria-label="Дзен"
+            className="header-social header-social-max"
+            aria-label="Написать в Max"
           >
-            <img src="./dzen.svg" alt="" width={38} height={38} loading="eager" />
+            <img src="./max.webp" alt="" width={38} height={38} loading="eager" />
           </a>
 
           <button
@@ -849,6 +850,7 @@ const [cookieConsent, setCookieConsent] = useState<CookieConsent>(() => {
           <a href="#podhod" onClick={closeMobileMenu}>Подход</a>
           <a href="#kogda-obratitsya" onClick={closeMobileMenu}>Когда обратиться</a>
           <a href="#stati" onClick={closeMobileMenu}>Статьи</a>
+          <a href="#roliki" onClick={closeMobileMenu}>Ролики</a>
           <a href="#kontakty" onClick={closeMobileMenu}>Контакты</a>
           <a href="tel:+79185680599" className="mobile-menu-phone" onClick={closeMobileMenu}>
             +7 918 568-05-99

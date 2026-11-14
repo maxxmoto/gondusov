@@ -158,7 +158,8 @@ body {
   border-radius: 50%;
 }
 
-.header-social-dzen img {
+.header-social-dzen img,
+.header-social-max img {
   width: 38px;
   height: 38px;
   display: block;
